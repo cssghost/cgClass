@@ -1,0 +1,221 @@
+.module-popup-layer {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 10100;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+}
+.module-popup {
+  display: none;
+  position: fixed;
+  _position: absolute;
+  left: 50%;
+  top: 30%;
+  z-index: 10101;
+  width: 200px;
+  width: auto;
+  min-width: 200px;
+  border-right: 1px solid #eae8e8;
+  border-bottom: 1px solid #eae8e8;
+  background: #ffffff url(../images/popup-tit.png) repeat-x;
+}
+.module-popup .popup-wrap {
+  width: 200px;
+  width: auto;
+  min-width: 200px;
+  border: 1px solid #cccccc;
+}
+.module-popup .popup-wrap a.popup-close {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  width: 16px;
+  height: 16px;
+  background: url("../images/lib/") no-repeat 0 -29px;
+}
+.module-popup .popup-wrap a.popup-close:hover {
+  background-position: -16px -29px;
+}
+.module-popup .popup-wrap .popup-tit {
+  height: 30px;
+  padding: 0 10px;
+  line-height: 30px;
+  font-weight: bold;
+  font-size: 14px;
+}
+.module-popup .popup-wrap .popup-con {
+  min-width: 200px;
+  padding: 20px;
+  border-top: 1px solid #ccc;
+}
+.module-popup .popup-wrap .btn-wrap {
+  text-align: center;
+  padding-bottom: 10px;
+}
+.module-popup .popup-wrap .btn-wrap .popup-btn {
+  margin: 0 10px;
+}
+.module-popup .popup-wrap .btn-wrap .input-btn {
+  width: 85px;
+  height: 28px;
+  line-height: 28px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  padding: 0 10px;
+  border: none;
+  cursor: pointer;
+  background: url("../images/lib/") repeat-x left top;
+}
+.module-popup .popup-wrap .text-input {
+  background: #FFFFFF;
+  height: 18px;
+  line-height: 18px;
+  padding: 3px;
+  margin-right: 110px;
+  border: 1px solid #cccccc;
+  box-shadow: 2px 2px 2px #E6E6E6 inset;
+  color: #999;
+}
+.module-popup .popup-wrap .focusColor {
+  background: #ebfee9;
+}
+.module-popup .popup-wrap .btn-new {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  height: 27px;
+  margin-left: 10px;
+  padding-right: 10px;
+  background: url("../images/lib/") right -46px;
+  line-height: 26px;
+  text-decoration: none;
+  vertical-align: top;
+  color: #000000;
+  cursor: pointer;
+}
+.module-popup .popup-wrap .btn-new span {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  height: 17px;
+  padding: 6px 0 4px 10px;
+  background: url("../images/lib/") 0 -46px;
+  line-height: 17px;
+  cursor: pointer;
+}
+.module-popup .popup-wrap .result-tips-error {
+  margin: 20px 0 0;
+}
+.module-popup .popup-wrap .result-tips {
+  padding: 10px;
+  margin: 20px;
+}
+
+/*  login popup  */
+.login-popup {
+    display: none;
+    position: fixed; _position: absolute; left: 50%; top: 30%; z-index: 10101;
+    width: 450px; height: 300px;
+    background: #FFF;
+    border: 1px solid #F70; border-radius: 5px;
+    box-shadow: 0 0 6px #CACACA;
+}
+.login-popup a.popup-close {
+  position: absolute;
+  right: -16px;
+  top: -16px;
+  width: 32px;
+  height: 32px;
+  background: url(../images/login-close.png) no-repeat;
+}
+.login-popup .popup-tit {
+    width: 410px; height: 50px;
+    margin: 0 auto;
+    border-bottom: 1px solid #F70;
+    font: 500 18px/50px "Microsoft YaHei";
+    color: #F70;
+}
+.login-popup .popup-tit {
+    width: 410px; height: 50px;
+    margin: 0 auto;
+    border-bottom: 1px solid #F70;
+    font: 500 18px/50px "Microsoft YaHei";
+    color: #F70;
+}
+.login-popup .error-tips {
+    width: 300px; height: 30px;
+    color: #F70;
+}
+.login-popup .popup-con {
+    width: 320px;
+    margin: 0 auto;
+}
+.login-popup .text {
+    position: relative; z-index: 10;
+    width: 300px; height: 34px;
+    margin: 0 auto 25px;
+    border: 1px solid #CCC;
+    transition : 300ms;
+}
+.login-popup .text-error {
+    border: 1px solid #F70;
+    box-shadow: 0 0 3px #F70;
+}
+.login-popup .text input {
+    width: 290px; height: 18px;
+    margin: 8px 5px;
+    background: transparent;
+    border: 0;
+}
+.login-popup .text .error {
+    display: none;
+    position: absolute; left: -1px; top: 34px;
+    width: 300px; height: 20px;
+    background: #FFF2F2 url(../images/login-error-tips.gif) no-repeat 3px center;
+    border: 1px solid #FF8080;
+    text-indent: 25px;
+    color: #F00;
+}
+.login-popup .remember {
+    position: relative; top: -20px;
+    width: 300px; height: 14px;
+    padding: 10px 0; margin: 0 auto;
+    line-height: 14px;
+    vertical-align: middle;
+}
+.login-popup .remember input {
+    position: relative; top: 3px;
+    margin-right: 4px;
+}
+.login-popup .btn-wrap {
+    position: relative; top: -12px;
+    width: 314px; height: 32px;
+    margin: 0 auto;
+}
+.login-popup .popup-btn {
+    float: left; display: inline;
+    width: 135px; height: 32px;
+    padding-left: 10px; margin: 0 5px;
+    background: #F1F1F1;
+    border: 1px solid #CCC; border-radius: 3px;
+    font: 500 16px/32px "Microsoft YaHei";
+    letter-spacing: 10px;
+    text-align: center;
+    color: #666;
+}
+.login-popup .done {
+    background: #F70;
+    border: 1px solid #F70; border-radius: 3px;
+    color: #FFF;
+}
+
+
+
+
+
+
