@@ -107,8 +107,9 @@ cgClass.AddClass(
 		    // };
 
 		    self.applyMethods(self, {
-				option : options,
+				option : option,
 				oPopup : $popup,
+				layer : $layer,
 				message : "hello world",
 				close : self.close,
 				open : self.close
@@ -136,7 +137,7 @@ cgClass.AddClass(
 		                if ( typeof(option.cancel) == "function" ) {
 		                    option.cancel(option);
 		                }
-		                option.close();
+		                self.close();
 		            });
 		            $btnClose.on("click", function(){
 		                $btnCancel.click();
@@ -144,7 +145,7 @@ cgClass.AddClass(
 		        } else{
 		            $btnCancel.remove();
 		            $btnClose.on("click", function(){
-		                option.close();
+		                self.close();
 		            });
 		        }
 		    }else{
@@ -153,7 +154,7 @@ cgClass.AddClass(
 		            if ( typeof(option.done) == "function" ) {
 		                option.done(option);
 		            }
-		            option.close();
+		            self.close();
 		        });
 		    }
 
@@ -168,8 +169,10 @@ cgClass.AddClass(
 		},
 		close : function(){
 			var self = this;
-			// console.log(self.outParam);
 			self.outParam.oPopup.remove();
+			if ( self.outParam.option.isLayer ) {
+                self.outParam.layer.remove();
+            }
 		}
 	}
 );
