@@ -81,12 +81,6 @@ cgClass.BaseClass = function(parent){
 			extended( _class );
 		}
 	}
-	_class.proxy = function(func){
-		var self = this;
-		return(function(){
-			return func.apply(self, arguments);
-		});  
-	}
 
     return _class;
 };
@@ -190,22 +184,8 @@ cgClass.AddClass = function(className){
 			 * @param {Value} value 属性值
 			 * @example var attr = newClass.set("attrName", "hello world!!"); 
 			 */
-			applyMethods : function(methods){
-				var _methods = methods,
-					_newMethods = {};
-				if ( !!_methods && typeof _methods == "object" ) {
-					for( var key in _methods ){
-						if ( typeof _methods[key] == "function" ) {
-							_newMethods[key] = _methods[key];
-							// _newMethods[key] = function(){
-							// 	_methods[key].apply(this, arguments);
-							// };
-						}else{
-							_newMethods[key] = _methods[key];
-						}
-					}
-				}
-				return _newMethods;
+			applyMethods : function(_this, methods){
+				_applyMethods.apply(_this, arguments);
 			}
 		});
 		return new _class;

@@ -28,10 +28,11 @@ cgClass.Create(
     {
         callback : function(opt){
             // console.log(opt.option);
-            opt.close("123");
+            
         },
         init : function(opt){
-            opt.option.callback(opt);
+            opt.close();
+            // opt.option.callback(opt);
         }
     }
 );

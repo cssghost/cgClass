@@ -13,6 +13,32 @@
 	<script src="js/cgClass/cgClass.popup.js"></script>
 </head>
 <body>
-	
+<script>
+	cgClass.Create(
+		"Popup",
+		{
+			title : "test popup",
+			template : "template",
+			content : function (opt) {
+				console.log(opt);
+				opt.close();
+			}
+		}
+	);
+// function F(){
+// 	this.param = "param"
+// }
+// F.prototype.edit = function(value){
+// 	this.param = value;
+// }
+// F.prototype.show = function(){
+// 	console.log(this.param);
+// }
+// var vv = new F();
+// var hh = new F();
+// vv.edit("fuck");
+// vv.show();
+// hh.show();
+</script>
 </body>
 </html>
