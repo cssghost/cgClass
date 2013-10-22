@@ -113,6 +113,7 @@ cgClass.AddClass = function(className){
 		parent = _arguments[1];
 	}
 	function _Class(arg){
+		this.outParam = {};
 		this.init(arg);
 		return this;
 	}
@@ -125,12 +126,29 @@ cgClass.AddClass = function(className){
 
     _Class.prototype.init = function(){};
 
-    if ( !!handler && typeof handler == "function" ) {
+    if ( !!handler && typeof handler == "object" ) {
 	    for( var key in handler ){
 	    	_Class.prototype[key] = handler[key];
 	    }	
     }
-    console.log(_Class.prototype);
+
+    _Class.prototype.applyMethods = function(_this, methods){
+    	var self = this,
+    		_methods = methods;
+    	if ( !!_methods && typeof _methods == "object" ) {
+		    for( var key in _methods ){
+		    	if ( typeof _methods[key] == "function" ) {
+		    		self.outParam[key] = function(){
+		    			_methods[key].apply(_this, arguments);
+		    		};
+		    	}else{
+		    		self.outParam[key] = _methods[key];
+		    	}
+		    }	
+	    }
+	    return self.outParam;
+    }
+
 	cgClass[className] = _Class;
 };
 /**

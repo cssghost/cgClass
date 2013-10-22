@@ -2,7 +2,6 @@ cgClass.AddClass(
 	"Popup",
 	{
 		init : function (options) {
-			console.log(options);
 			var self = this,
 				option = $.extend({
 					title: "提示",
@@ -107,12 +106,15 @@ cgClass.AddClass(
 		    // 	}
 		    // };
 
-		    self.outParam = self.applyMethods(self, {
+		    self.applyMethods(self, {
 				option : options,
 				oPopup : $popup,
+				message : "hello world",
 				close : self.close,
-				test : "test"
+				open : self.close
 			});
+
+			// self.close();
 
 		    // append content template
 		    $con.append(option.template);
@@ -166,6 +168,7 @@ cgClass.AddClass(
 		},
 		close : function(){
 			var self = this;
+			// console.log(self.outParam);
 			self.outParam.oPopup.remove();
 		}
 	}

@@ -11,7 +11,6 @@
 	<script src="js/jquery.plugin.js"></script>
 	<script src="js/cgClass/cgClass.js"></script>
 	<script src="js/cgClass/cgClass.popup.js"></script>
-	<script src="js/cgClass/cgClass.test.js"></script>
 </head>
 <body>
 <script>
@@ -19,16 +18,22 @@
 	cgClass.Create(
 		"Popup",
 		{
-			title : "test popup",
+			title : "test popup01",
 			template : "template",
 			content : function (opt) {
-				console.log(opt);
 				opt.close();
 			}
 		}
-		// ,function(self){
-		// 	console.log(self);
-		// }
+	);
+	cgClass.Create(
+		"Popup",
+		{
+			title : "test popup",
+			template : "templatetemplatetemplatetemplatetemplatetemplatetemplatetemplatetemplatetemplatetemplatetemplatetemplatetemplatetemplatetemplatetemplatetemplatetemplatetemplatetemplatetemplatetemplatetemplatetemplate",
+			content : function (opt) {
+				// opt.close();
+			}
+		}
 	);
 // function F(){
 // 	this.param = "param"
