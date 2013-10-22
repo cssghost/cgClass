@@ -93,6 +93,7 @@ cgClass.BaseClass = function(parent){
  * @extends cgClass
  * @since version 0.1 
  * @param {String} className 函数名称
+ * @param {String} parent [可选] 父类函数名称
  * @param {Object} handler 原型方法的集合
  * @example
  * var newClass = new cgClass.AddClass(
@@ -111,86 +112,26 @@ cgClass.AddClass = function(className){
 	if ( !!_arguments[1] && typeof _arguments[1] == "string" ) {
 		parent = _arguments[1];
 	}
-	function _F(arg){
-		var _class,
-			arg = arg;
-
-		// is have inherit
-		if ( parent ) {
-			_class = new cgClass.BaseClass(parent);
-		} else{
-			_class = new cgClass.BaseClass;
-		}
-
-		// add attrs for arguments
-		if ( !!arg && typeof arg == "object" ) {
-			_class.attrs(arg);
-		}
-
-		// add prototype methods
-		if ( !!handler && typeof handler == "object" ) {
-			_class.extend(handler);
-		}
-
-		var _init = _class.fn.init,
-			_applyMethods = function(methods){
-				var _methods = methods,
-					_newMethods = {};
-				if ( !!_methods && typeof _methods == "object" ) {
-					for( var key in _methods ){
-						if ( typeof _methods[key] == "function" ) {
-							_newMethods[key] = function(){
-								_methods[key].apply(this, arguments);
-							};
-						}else{
-							_newMethods[key] = _methods[key];
-						}
-					}
-				}
-				return _newMethods;
-			};
-
-		_class.extend({
-			// 重构默认init方法
-			init : function(){
-				_init.call(this, arg);
-			},
-			/**
-			 * @name AddClass#get
-			 * @desc  从内部原型中获取某属性值
-			 * @event
-			 * @param {String} attr 属性名称
-			 * @example var attr = newClass.get("attrName"); 
-			 */
-			get : function(attr){
-				return _class[attr];
-			},
-			/**
-			 * @name AddClass#set
-			 * @desc  设置内部原型中某属性值
-			 * @event
-			 * @param {String} attr 属性名称
-			 * @param {Value} value 属性值
-			 * @example var attr = newClass.set("attrName", "hello world!!"); 
-			 */
-			set : function(attr, value){
-				_class[attr] = value;
-			},
-			/**
-			 * @name AddClass#applyMethods
-			 * @desc  设置内部原型中某属性值
-			 * @event
-			 * @param {String} attr 属性名称
-			 * @param {Value} value 属性值
-			 * @example var attr = newClass.set("attrName", "hello world!!"); 
-			 */
-			applyMethods : function(_this, methods){
-				_applyMethods.apply(_this, arguments);
-			}
-		});
-		return new _class;
+	function _Class(arg){
+		this.init(arg);
+		return this;
 	}
-	cgClass[className] = _F;
+	// Inherit
+    if ( parent ) {
+    	var subClass = function(){};
+    	subClass.prototype = parent.prototype;
+    	_Class.prototype = new subClass;
+    }
+
+    _Class.prototype.init = function(){};
+
+    if ( !!handler && typeof handler == "function" ) {
+	    for( var key in handler ){
+	    	_Class.prototype[key] = handler[key];
+	    }	
+    }
+    console.log(_Class.prototype);
+	cgClass[className] = _Class;
 };
 /**
  * @author 徐晨 

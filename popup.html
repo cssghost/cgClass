@@ -11,9 +11,11 @@
 	<script src="js/jquery.plugin.js"></script>
 	<script src="js/cgClass/cgClass.js"></script>
 	<script src="js/cgClass/cgClass.popup.js"></script>
+	<script src="js/cgClass/cgClass.test.js"></script>
 </head>
 <body>
 <script>
+// console.log(cgClass);
 	cgClass.Create(
 		"Popup",
 		{
@@ -24,6 +26,9 @@
 				opt.close();
 			}
 		}
+		// ,function(self){
+		// 	console.log(self);
+		// }
 	);
 // function F(){
 // 	this.param = "param"

@@ -2,6 +2,7 @@ cgClass.AddClass(
 	"Popup",
 	{
 		init : function (options) {
+			console.log(options);
 			var self = this,
 				option = $.extend({
 					title: "提示",
