@@ -109,20 +109,52 @@ cgClass.BaseClass = function(parent){
  *     }
  * ); 
  */
-cgClass.AddClass = function(className, handler){
+cgClass.AddClass = function(className){
 	var className = className,
-		attrs = attrs,
-		handler = handler;
+		_arguments = [].slice.apply(arguments),
+		parent,
+		handler = _arguments.slice(-1)[0];
+	if ( !!_arguments[1] && typeof _arguments[1] == "string" ) {
+		parent = _arguments[1];
+	}
 	function _F(arg){
-		var _class = new cgClass.BaseClass,
+		var _class,
 			arg = arg;
+
+		// is have inherit
+		if ( parent ) {
+			_class = new cgClass.BaseClass(parent);
+		} else{
+			_class = new cgClass.BaseClass;
+		}
+
+		// add attrs for arguments
 		if ( !!arg && typeof arg == "object" ) {
 			_class.attrs(arg);
 		}
 
-		_class.extend(handler);
+		// add prototype methods
+		if ( !!handler && typeof handler == "object" ) {
+			_class.extend(handler);
+		}
 
-		var _init = _class.fn.init;
+		var _init = _class.fn.init,
+			_applyMethods = function(methods){
+				var _methods = methods,
+					_newMethods = {};
+				if ( !!_methods && typeof _methods == "object" ) {
+					for( var key in _methods ){
+						if ( typeof _methods[key] == "function" ) {
+							_newMethods[key] = function(){
+								_methods[key].apply(this, arguments);
+							};
+						}else{
+							_newMethods[key] = _methods[key];
+						}
+					}
+				}
+				return _newMethods;
+			};
 
 		_class.extend({
 			// 重构默认init方法
@@ -149,6 +181,31 @@ cgClass.AddClass = function(className, handler){
 			 */
 			set : function(attr, value){
 				_class[attr] = value;
+			},
+			/**
+			 * @name AddClass#applyMethods
+			 * @desc  设置内部原型中某属性值
+			 * @event
+			 * @param {String} attr 属性名称
+			 * @param {Value} value 属性值
+			 * @example var attr = newClass.set("attrName", "hello world!!"); 
+			 */
+			applyMethods : function(methods){
+				var _methods = methods,
+					_newMethods = {};
+				if ( !!_methods && typeof _methods == "object" ) {
+					for( var key in _methods ){
+						if ( typeof _methods[key] == "function" ) {
+							_newMethods[key] = _methods[key];
+							// _newMethods[key] = function(){
+							// 	_methods[key].apply(this, arguments);
+							// };
+						}else{
+							_newMethods[key] = _methods[key];
+						}
+					}
+				}
+				return _newMethods;
 			}
 		});
 		return new _class;

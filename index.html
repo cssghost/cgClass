@@ -16,92 +16,26 @@
 <script src="js/cgClass/cgClass.js"></script>
 <script src="js/cgClass/cgClass.test.js"></script>
 <script src="js/cgClass/cgClass.chooseArea.js"></script>
+<script src="js/cgClass/cgClass.popup.js"></script>
 <!-- <script src="js/cgClass/cgMVC.js"></script> -->
 </head>
 
 <body>
-<ul class="frame-fliter-input">
-    <li class="fliter-line">
-        <label class="fliter-label">地&nbsp;&nbsp;&nbsp;&nbsp;区：</label>
-        <div class="module-input-text-b fliter-text-box Js-frame-text-focus Js-frame-area-auto-complete" data-focus="module-input-text-b-focus">
-            <div class="text-bg"><input type="text" placeholder="请输入地区" class="text Js-frame-placeholder Js-frame-area-text"></div>
-            <a href="javascript:void(0)" class="i i-close-d Js-input-clear-btn" style="display: none;"></a>
-            <ul class="area-drop-wrap Js-frame-area-list">
-            	<li class="Js-auto-item" data-id="31886"><a href="javascript:void(0)" title="怀柔">怀柔</a></li>
-            	<li class="Js-auto-item" data-id="31958"><a href="javascript:void(0)" title="海淀">海淀</a></li>
-            </ul>
-            <div class="area-choose-wrap">
-            	<ul class="area-tag-list">
-            		<li class="selected">ABCD</li>
-            		<li>EFGHJ</li>
-            		<li>KLMN</li>
-            		<li>PQRSTW</li>
-            		<li>XYZ</li>
-            	</ul>
-            	<div class="area-con-list">
-            		<div class="con-item" style="display:block">
-            			<ul>
-            				<li class="Js-area-item">123</li>
-            				<li class="Js-area-item">456</li>
-            				<li class="Js-area-item">789</li>
-            				<li class="Js-area-item">000</li>
-            				<li class="Js-area-item">555</li>
-            			</ul>
-            		</div>
-            		<div class="con-item">
-            			<ul>
-            				<li class="Js-area-item">123</li>
-            				<li class="Js-area-item">456</li>
-            				<li class="Js-area-item">789</li>
-            				<li class="Js-area-item">000</li>
-            				<li class="Js-area-item">555</li>
-            			</ul>
-            		</div>
-            		<div class="con-item">
-            			<ul>
-            				<li class="Js-area-item">123</li>
-            				<li class="Js-area-item">456</li>
-            				<li class="Js-area-item">789</li>
-            				<li class="Js-area-item">000</li>
-            				<li class="Js-area-item">555</li>
-            			</ul>
-            		</div>
-            		<div class="con-item">
-            			<ul>
-            				<li class="Js-area-item">123</li>
-            				<li class="Js-area-item">456</li>
-            				<li class="Js-area-item">789</li>
-            				<li class="Js-area-item">000</li>
-            				<li class="Js-area-item">555</li>
-            			</ul>
-            		</div>
-            		<div class="con-item">
-            			<ul>
-            				<li class="Js-area-item">123</li>
-            				<li class="Js-area-item">456</li>
-            				<li class="Js-area-item">789</li>
-            				<li class="Js-area-item">000</li>
-            				<li class="Js-area-item">555</li>
-            			</ul>
-            		</div>
-            	</div>
-            </div>
-        </div>
-    </li>
-</ul>
-<!-- 	<ul class="nav">
-		<li class="nav-item selected"></li>
-		<li class="nav-item"></li>
-		<li class="nav-item"></li>
-		<li class="nav-item"></li>
-	</ul>
-	<ul class="con">
-		<li class="con-item">1</li>
-		<li class="con-item" style="display:none">2</li>
-		<li class="con-item" style="display:none">3</li>
-		<li class="con-item" style="display:none">4</li>
-	</ul> -->
+    <div></div>
 <script>
+cgClass.Create(
+    "Popup",
+    {
+        callback : function(opt){
+            // console.log(opt.option);
+            opt.close("123");
+        },
+        init : function(opt){
+            opt.option.callback(opt);
+        }
+    }
+);
+
 
 // cgClass.Create(
 // 	"ChooseArea",
@@ -146,9 +80,9 @@
 
 
 
-var vv = cgClass.Create("test", {
-    init : function(){}
-});
+// var vv = cgClass.Create("test", {
+//     init : function(){}
+// });
 // console.log(cgClass);
 // var _test = cgClass.Create("test", { view : "view" });
 // var _test02 = cgClass.Create("test", { view : "view01" });
@@ -157,6 +91,9 @@ var vv = cgClass.Create("test", {
 // _test.showView();
 // _test.set("view", "new view");
 // _test.showView();
+// jQuery(document).ready(function($) {
+//     console.log(cgClass);
+// });
 </script>
 </body>
 </html>
