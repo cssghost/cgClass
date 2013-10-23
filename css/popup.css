@@ -22,78 +22,42 @@
   filter: alpha(opacity= 50 );
 }
 /* line 13, popup.less */
-.module-popup .popup-wrap {
-  width: auto;
-  min-width: 200px;
-  border: 1px solid #cccccc;
-}
-/* line 17, popup.less */
 .module-popup a.popup-close {
   position: absolute;
   right: 8px;
   top: 8px;
   width: 16px;
   height: 16px;
-  background: url("../../images/tpls/popup-close") no-repeat;
+  background: url("../../images/tpls/popup-close") no-repeat 0 0;
 }
-/* line 23, popup.less */
-.module-popup {
-  display: none;
-  position: fixed;
-  left: 50%;
-  top: 30%;
-  z-index: 10101;
-  width: 200px;
-  width: auto;
-  min-width: 200px;
-  border-right: 1px solid #eae8e8;
-  border-bottom: 1px solid #eae8e8;
-  background: #ffffff url(../images/popup-tit.png) repeat-x;
+/* line 17, popup.less */
+.module-popup a.popup-close:hover {
+  background-position: 0 -16px;
 }
-/* line 36, popup.less */
-.module-popup .popup-wrap {
-  width: 200px;
-  width: auto;
-  min-width: 200px;
-  border: 1px solid #cccccc;
-}
-/* line 42, popup.less */
-.module-popup .popup-wrap a.popup-close {
-  position: absolute;
-  right: 8px;
-  top: 8px;
-  width: 16px;
-  height: 16px;
-  background: url("../images/lib/") no-repeat 0 -29px;
-}
-/* line 50, popup.less */
-.module-popup .popup-wrap a.popup-close:hover {
-  background-position: -16px -29px;
-}
-/* line 53, popup.less */
-.module-popup .popup-wrap .popup-tit {
+/* line 21, popup.less */
+.module-popup .popup-title {
   height: 30px;
   padding: 0 10px;
   line-height: 30px;
   font-weight: bold;
   font-size: 14px;
 }
-/* line 60, popup.less */
-.module-popup .popup-wrap .popup-con {
+/* line 28, popup.less */
+.module-popup .popup-con {
   min-width: 200px;
   padding: 20px;
-  border-top: 1px solid #ccc;
+  border-top: 1px solid #cccccc;
 }
-/* line 65, popup.less */
+/* line 34, popup.less */
 .module-popup .popup-wrap .btn-wrap {
   text-align: center;
   padding-bottom: 10px;
 }
-/* line 69, popup.less */
+/* line 38, popup.less */
 .module-popup .popup-wrap .btn-wrap .popup-btn {
   margin: 0 10px;
 }
-/* line 72, popup.less */
+/* line 41, popup.less */
 .module-popup .popup-wrap .btn-wrap .input-btn {
   width: 85px;
   height: 28px;
@@ -106,7 +70,7 @@
   cursor: pointer;
   background: url("../images/lib/") repeat-x left top;
 }
-/* line 84, popup.less */
+/* line 53, popup.less */
 .module-popup .popup-wrap .text-input {
   background: #FFFFFF;
   height: 18px;
@@ -117,11 +81,11 @@
   box-shadow: 2px 2px 2px #E6E6E6 inset;
   color: #999;
 }
-/* line 94, popup.less */
+/* line 63, popup.less */
 .module-popup .popup-wrap .focusColor {
   background: #ebfee9;
 }
-/* line 97, popup.less */
+/* line 66, popup.less */
 .module-popup .popup-wrap .btn-new {
   display: inline-block;
   *display: inline;
@@ -136,7 +100,7 @@
   color: #000000;
   cursor: pointer;
 }
-/* line 111, popup.less */
+/* line 80, popup.less */
 .module-popup .popup-wrap .btn-new span {
   display: inline-block;
   *display: inline;
@@ -147,17 +111,17 @@
   line-height: 17px;
   cursor: pointer;
 }
-/* line 121, popup.less */
+/* line 90, popup.less */
 .module-popup .popup-wrap .result-tips-error {
   margin: 20px 0 0;
 }
-/* line 124, popup.less */
+/* line 93, popup.less */
 .module-popup .popup-wrap .result-tips {
   padding: 10px;
   margin: 20px;
 }
 /*  login popup  */
-/* line 130, popup.less */
+/* line 99, popup.less */
 .login-popup {
   display: none;
   position: fixed;
@@ -172,7 +136,7 @@
   border-radius: 5px;
   box-shadow: 0 0 6px #CACACA;
 }
-/* line 138, popup.less */
+/* line 107, popup.less */
 .login-popup a.popup-close {
   position: absolute;
   right: -16px;
@@ -181,7 +145,7 @@
   height: 32px;
   background: url(../images/login-close.png) no-repeat;
 }
-/* line 146, popup.less */
+/* line 115, popup.less */
 .login-popup .popup-tit {
   width: 410px;
   height: 50px;
@@ -190,7 +154,7 @@
   font: 500 18px/50px "Microsoft YaHei";
   color: #F70;
 }
-/* line 153, popup.less */
+/* line 122, popup.less */
 .login-popup .popup-tit {
   width: 410px;
   height: 50px;
@@ -199,18 +163,18 @@
   font: 500 18px/50px "Microsoft YaHei";
   color: #F70;
 }
-/* line 160, popup.less */
+/* line 129, popup.less */
 .login-popup .error-tips {
   width: 300px;
   height: 30px;
   color: #F70;
 }
-/* line 164, popup.less */
+/* line 133, popup.less */
 .login-popup .popup-con {
   width: 320px;
   margin: 0 auto;
 }
-/* line 168, popup.less */
+/* line 137, popup.less */
 .login-popup .text {
   position: relative;
   z-index: 10;
@@ -220,12 +184,12 @@
   border: 1px solid #CCC;
   transition: 300ms;
 }
-/* line 175, popup.less */
+/* line 144, popup.less */
 .login-popup .text-error {
   border: 1px solid #F70;
   box-shadow: 0 0 3px #F70;
 }
-/* line 179, popup.less */
+/* line 148, popup.less */
 .login-popup .text input {
   width: 290px;
   height: 18px;
@@ -233,7 +197,7 @@
   background: transparent;
   border: 0;
 }
-/* line 185, popup.less */
+/* line 154, popup.less */
 .login-popup .text .error {
   display: none;
   position: absolute;
@@ -246,7 +210,7 @@
   text-indent: 25px;
   color: #F00;
 }
-/* line 194, popup.less */
+/* line 163, popup.less */
 .login-popup .remember {
   position: relative;
   top: -20px;
@@ -257,13 +221,13 @@
   line-height: 14px;
   vertical-align: middle;
 }
-/* line 201, popup.less */
+/* line 170, popup.less */
 .login-popup .remember input {
   position: relative;
   top: 3px;
   margin-right: 4px;
 }
-/* line 205, popup.less */
+/* line 174, popup.less */
 .login-popup .btn-wrap {
   position: relative;
   top: -12px;
@@ -271,7 +235,7 @@
   height: 32px;
   margin: 0 auto;
 }
-/* line 210, popup.less */
+/* line 179, popup.less */
 .login-popup .popup-btn {
   float: left;
   display: inline;
@@ -287,7 +251,7 @@
   text-align: center;
   color: #666;
 }
-/* line 221, popup.less */
+/* line 190, popup.less */
 .login-popup .done {
   background: #F70;
   border: 1px solid #F70;

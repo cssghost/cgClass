@@ -10,57 +10,26 @@
     .w(auto); min-width: 200px;
     .bg("popup-tit.png", repeat-x #FFF);
     .br(#EAE8E8); .bb(#EAE8E8);
-    & .popup-wrap {
-        .w(auto); min-width: 200px;
-        .bd(#CCC);
-    }
     & a.popup-close {
         .pos-a(); right: 8px; top: 8px;
         .w(16px); .h(16px);
-        .bg-tpls("popup-close", no-repeat);
+        .bg-tpls("popup-close", no-repeat 0 0);
+        &:hover {
+            .bp(0 -16px);
+        }
     }
-}
-.module-popup {
-  display: none;
-  position: fixed;
-  left: 50%;
-  top: 30%;
-  z-index: 10101;
-  width: 200px;
-  width: auto;
-  min-width: 200px;
-  border-right: 1px solid #eae8e8;
-  border-bottom: 1px solid #eae8e8;
-  background: #ffffff url(../images/popup-tit.png) repeat-x;
-}
-.module-popup .popup-wrap {
-  width: 200px;
-  width: auto;
-  min-width: 200px;
-  border: 1px solid #cccccc;
-}
-.module-popup .popup-wrap a.popup-close {
-  position: absolute;
-  right: 8px;
-  top: 8px;
-  width: 16px;
-  height: 16px;
-  background: url("../images/lib/") no-repeat 0 -29px;
-}
-.module-popup .popup-wrap a.popup-close:hover {
-  background-position: -16px -29px;
-}
-.module-popup .popup-wrap .popup-tit {
-  height: 30px;
-  padding: 0 10px;
-  line-height: 30px;
-  font-weight: bold;
-  font-size: 14px;
-}
-.module-popup .popup-wrap .popup-con {
-  min-width: 200px;
-  padding: 20px;
-  border-top: 1px solid #ccc;
+    & .popup-title {
+        .h(30px);
+        .pd(0 10px);
+        .lh(30px);
+        .fw(bold);
+        .fz(14px);
+    }
+    & .popup-con {
+        min-width: 200px;
+        .pd(20px);
+        .bt(#CCC);
+    }
 }
 .module-popup .popup-wrap .btn-wrap {
   text-align: center;
