@@ -14,7 +14,7 @@
  * @example var cgClass = {};
  */
 
-var cgClass = window.cgClass = { ajaxQueue : {} };
+var cgClass = window.cgClass = { ajaxQueue : {}, ajaxQueueCallback : {} };
 
 
 /**
@@ -256,25 +256,43 @@ cgClass.Ajax = function(config, defData){
 				queue : "",
 				timeout: (30 * 1000),
 				beforeSend : function(xhr, ajax){},
-				success: function( response, statusText ){},
+				success: function( request, statusText ){},
 				error: function( request, statusText, error ){},
-				complete: function( request, statusText ){
-					console.log(statusText);
-				}
+				complete: function( request, statusText ){}
 			},
 			config
 		);
 
 	option.data = $.extend(defData, option.data);
 
+	var targetSuccess = config.success,
+		targetError = config.error,
+		targetComplete = config.complete;
+
+	if ( option.dataType == "textJson" && config.success ) {
+		option.dataType = "text";
+		option.success = function(request, statusText){
+			request = $.parseJSON( request );
+			targetSuccess(request, statusText);
+		};
+	}
+
 	if ( !!option.queue ) {
 		var _ajaxQueue = self.ajaxQueue[option.queue];
 		if ( !_ajaxQueue ) {
-			_ajaxQueue = [];
+			_ajaxQueue = 0;
 		}
-		_ajaxQueue.push(option.success);
-		thisQueue = _ajaxQueue.length;
+		_ajaxQueue++;
 		self.ajaxQueue[option.queue] = _ajaxQueue;
+		option.complete = function(request, statusText){
+			self.ajaxQueue[option.queue]--;
+			if ( config.complete  ) {
+				targetComplete(request, statusText);
+			}
+			if ( !self.ajaxQueue[option.queue] && !!self.ajaxQueueCallback[option.queue] && typeof self.ajaxQueueCallback[option.queue] == "function" ) {
+				self.ajaxQueueCallback[option.queue]();
+			}
+		};
 	}
 
 	return $.ajax( option );			

@@ -27,8 +27,23 @@ cgClass.Create(
 );
 cgClass.Ajax({
 	url : "api/area.txt",
-	dataType : "text"
+	dataType : "textJson",
+	queue : "test",
+	success : function(result){
+		console.log(0);
+	}
 });
+cgClass.Ajax({
+	url : "api/area.txt",
+	dataType : "textJson",
+	queue : "test",
+	success : function(result){
+		console.log(1);
+	}
+});
+cgClass.ajaxQueueCallback.test = function(){
+	console.log("fuck");
+};
 </script>
 </body>
 </html>
