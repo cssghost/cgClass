@@ -214,7 +214,7 @@ cgClass.Create = function(className, arg, callback){
 		}
 	}else{
 		var _script = document.createElement("script");  
-		_script.type= 'text/javascript';  
+		_script.type = 'text/javascript';  
 		_script.onload = _script.onreadystatechange = function() {  
 		    if (!this.readyState || this.readyState === "loaded" || this.readyState === "complete" ) { 
 		        _class = new cgClass[className](arg);
@@ -224,7 +224,7 @@ cgClass.Create = function(className, arg, callback){
 		        _script.onload = _script.onreadystatechange = null;  
 		    }
 		};  
-		_script.src= "js/cgClass/cgClass." + className + ".js";  
+		_script.src = "js/cgClass/cgClass." + className + ".js";  
 		document.body.appendChild(_script);  
 	}
 };
@@ -295,6 +295,7 @@ cgClass.Ajax = function(config, defData){
 		targetError = config.error,
 		targetComplete = config.complete;
 
+	// 添加dataType==>textJson
 	if ( option.dataType == "textJson" && config.success ) {
 		option.dataType = "text";
 		option.success = function(request, statusText){
@@ -303,6 +304,7 @@ cgClass.Ajax = function(config, defData){
 		};
 	}
 
+	// ajax queue
 	if ( !!option.queue ) {
 		var _ajaxQueue = self.ajaxQueue[option.queue];
 		if ( !_ajaxQueue ) {
