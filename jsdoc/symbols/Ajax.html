@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <meta name="generator" content="JsDoc Toolkit" />
         
-        <title>cgClass.BaseClass</title>
+        <title>Ajax</title>
         <style>
             /*************************************************************************************
  * Reset
@@ -262,26 +262,32 @@ dl.data .dd{
                             <div class="box constructor-box">
                                 <div class="box-hd">
                                     
-                                    <h3><b class="name"><a href="../symbols/cgClass.BaseClass.html#constructor">cgClass.BaseClass</a></b>
-                                        <span class="param">(parent)</span>
+                                    <h3><b class="name"><a href="../symbols/Ajax.html#constructor">Ajax</a></b>
+                                        <span class="param">(config)</span>
                                         
                                         
-                                        <span class="desc">生成基础js类</span>
+                                        
                                     </h3>
                                     
                                 </div>
                                 <div class="box-bd">
                                     
+                                        <p class="desc">描述：Ajax方法</p>
+                                    
 
                                     
 
+                                    
+                                        <p>继承自：
+                                            <a href="../symbols/cgClass.html">cgClass</a>, jQuery
+                                        </p>
                                     
 
                                     
 
                                     
                                         <p>源码：
-                                            <a href="../symbols/src/E__project_cgClass_js_cgClass_cgClass.js.html">cgClass.js</a></p>
+                                            <a href="../symbols/src/E__Git_cgClass_js_cgClass_cgClass.js.html">cgClass.js</a></p>
 
                                     
 
@@ -301,31 +307,6 @@ dl.data .dd{
                             
                             <!-- events START -->
                             
-                                
-                                
-                                <div class="box events-box">
-                                    <div class="box-hd">
-                                        <h3>Events</h3>
-                                    </div>
-                                    <div class="box-bd">
-                                        <ul class="list summary-list">
-                                            
-                                            <li class="li">
-                                                
-                                                <b class="name"><a href="../symbols/cgClass.BaseClass.html#event:attrs">attrs</a></b>
-                                                <span class="param">(obj)</span>
-                                                
-                                                
-                                                
-                                                <span class="desc">为实体类添加属性</span>
-                                            </li>
-                                            
-                                        </ul>
-                                        
-                                    </div>
-                                </div>
-                                
-                            
                             <!-- events END -->
 
                             <!-- constructor details START-->
@@ -339,11 +320,11 @@ dl.data .dd{
                                     <ul class="list detail-list">
                                         <li class="li">
                                             <div class="title">
-                                                <b class="name">cgClass.BaseClass</b>
-                                                <span class="param">(parent)</span>
+                                                <b class="name">Ajax</b>
+                                                <span class="param">(config)</span>
                                             </div>
                                             
-                                            <div class="desc"></div>
+                                            <div class="desc">Ajax方法</div>
                                             
                                             <dl>                                                
                                                 
@@ -355,11 +336,11 @@ dl.data .dd{
                                                         
                                                         <li class="li">
                                                             &nbsp;
-                                                                <b>parent</b>
+                                                                <b>config</b>
                                                             
                                                             
                                                             <span class="type"><span class="light fixedFont">{Object}</span> </span>
-                                                            <span class="desc">parentClass</span>
+                                                            <span class="desc">配置对象</span>
                                                         </li>
                                                         
                                                     </ul>
@@ -375,25 +356,13 @@ dl.data .dd{
                                                 
 
                                                 
-                                                <dt>Returns</dt>
-                                                <dd>
-                                                    <ul>
-                                                    
-                                                        <li>
-                                                            <span>{Object}</span> 
-                                                            <span class="desc">基础类</span>
-                                                        </li>
-                                                    
-                                                    </ul>
-                                                </dd>
-                                                
                                                 
                                                 
                                                 
                                                 <dt>示例：</dt>
                                                 <dd>
                                                     
-                                                    <pre class='brush: js;'>new cgClass.BaseClass(parentClass);</pre>
+                                                    <pre class='brush: js;'>cgClass.Ajax({    url : "url",	    data : {}	});</pre>
                                                     
                                                 </dd>                                                
                                                 
@@ -415,70 +384,6 @@ dl.data .dd{
 
                             <!-- events detail START -->
                             
-                            <div class="box">
-                                <div class="box-hd">
-                                    <h3>Events Detail</h3>
-                                </div>
-                                <div class="box-bd">
-                                <ul class="detail-list">
-                                    
-                                    <li>
-                                        <div class="title">
-                                            
-                                            
-                                            <b class="name">attrs</b>
-                                            <span class="param">(obj)</span>
-                                            
-                                            
-                                            
-                                        </div>
-                                        
-                                        <div class="desc">
-                                            为实体类添加属性
-                                            
-                                            
-                                        </div>
-                                        
-                                        <dl>
-                                            
-                                            <dt>参数：</dt>
-                                            <dd>
-                                                <ul class="list param-list">
-                                                
-                                                    <li class="li">
-                                                        &nbsp;
-                                                        <b class="name">obj</b>
-                                                        
-                                                        
-                                                        <span class="type">{Object}</span> 
-                                                        <span class="desc">需要添加的属性</span>
-                                                    </li>
-                                                
-                                                </ul>
-                                            </dd>
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            <dt>
-
-                                            
-                                            
-                                        </dl>
-                                    </li>
-                                    
-                                </ul>
-                                </div>
-                            </div>
-                            
                             <!-- events detail START -->
 
                         </div>
@@ -494,16 +399,25 @@ dl.data .dd{
         <ul class="list class-list">
             
             
+            <li><a href="../symbols/AddClass.html">AddClass</a></li>
+            
+            
+            <li><a href="../symbols/Ajax.html">Ajax</a></li>
+            
+            
+            <li><a href="../symbols/BaseClass.html">BaseClass</a></li>
+            
+            
             <li><a href="../symbols/BaseMVC.html">BaseMVC</a></li>
             
             
             <li><a href="../symbols/cgClass.html">cgClass</a></li>
             
             
-            <li><a href="../symbols/cgClass.BaseClass.html">cgClass.BaseClass</a></li>
-            
-            
             <li><a href="../symbols/cgMVC.html">cgMVC</a></li>
+            
+            
+            <li><a href="../symbols/Create.html">Create</a></li>
             
         </ul>
     </div>

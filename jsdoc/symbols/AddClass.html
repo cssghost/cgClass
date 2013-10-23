@@ -263,7 +263,7 @@ dl.data .dd{
                                 <div class="box-hd">
                                     
                                     <h3><b class="name"><a href="../symbols/AddClass.html#constructor">AddClass</a></b>
-                                        <span class="param">(className, handler)</span>
+                                        <span class="param">(className, parent, handler)</span>
                                         
                                         
                                         
@@ -287,7 +287,7 @@ dl.data .dd{
 
                                     
                                         <p>源码：
-                                            <a href="../symbols/src/E__project_cgClass_js_cgClass_cgClass.js.html">cgClass.js</a></p>
+                                            <a href="../symbols/src/E__Git_cgClass_js_cgClass_cgClass.js.html">cgClass.js</a></p>
 
                                     
 
@@ -318,22 +318,12 @@ dl.data .dd{
                                             
                                             <li class="li">
                                                 
-                                                <b class="name"><a href="../symbols/AddClass.html#event:get">get</a></b>
-                                                <span class="param">(attr)</span>
+                                                <b class="name"><a href="../symbols/AddClass.html#event:applyMethods">applyMethods</a></b>
+                                                <span class="param">(_this, moethods)</span>
                                                 
                                                 
                                                 
-                                                <span class="desc">从内部原型中获取某属性值</span>
-                                            </li>
-                                            
-                                            <li class="li">
-                                                
-                                                <b class="name"><a href="../symbols/AddClass.html#event:set">set</a></b>
-                                                <span class="param">(attr, value)</span>
-                                                
-                                                
-                                                
-                                                <span class="desc">设置内部原型中某属性值</span>
+                                                <span class="desc">生成外部调用的对象 赋值于this.outParam并返回赋值</span>
                                             </li>
                                             
                                         </ul>
@@ -361,7 +351,7 @@ dl.data .dd{
                                         <li class="li">
                                             <div class="title">
                                                 <b class="name">AddClass</b>
-                                                <span class="param">(className, handler)</span>
+                                                <span class="param">(className, parent, handler)</span>
                                             </div>
                                             
                                             <div class="desc">创建一个构造函数</div>
@@ -381,6 +371,15 @@ dl.data .dd{
                                                             
                                                             <span class="type"><span class="light fixedFont">{String}</span> </span>
                                                             <span class="desc">函数名称</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>parent</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{String}</span> </span>
+                                                            <span class="desc">[可选] 父类函数名称</span>
                                                         </li>
                                                         
                                                         <li class="li">
@@ -411,7 +410,7 @@ dl.data .dd{
                                                 <dt>示例：</dt>
                                                 <dd>
                                                     
-                                                    <pre class='brush: js;'>var newClass = new cgClass.AddClass(    "ClassName",    {        init : function(options){},	        test : function(){}	    });</pre>
+                                                    <pre class='brush: js;'>cgClass.AddClass(    "ClassName",    {        init : function(options){},	        test : function(){}	    });</pre>
                                                     
                                                 </dd>                                                
                                                 
@@ -444,15 +443,15 @@ dl.data .dd{
                                         <div class="title">
                                             
                                             
-                                            <b class="name">get</b>
-                                            <span class="param">(attr)</span>
+                                            <b class="name">applyMethods</b>
+                                            <span class="param">(_this, moethods)</span>
                                             
                                             
                                             
                                         </div>
                                         
                                         <div class="desc">
-                                            从内部原型中获取某属性值
+                                            生成外部调用的对象 赋值于this.outParam并返回赋值
                                             
                                             
                                         </div>
@@ -465,11 +464,20 @@ dl.data .dd{
                                                 
                                                     <li class="li">
                                                         &nbsp;
-                                                        <b class="name">attr</b>
+                                                        <b class="name">_this</b>
                                                         
                                                         
-                                                        <span class="type">{String}</span> 
-                                                        <span class="desc">属性名称</span>
+                                                        <span class="type">{Object}</span> 
+                                                        <span class="desc">当前作用于this</span>
+                                                    </li>
+                                                
+                                                    <li class="li">
+                                                        &nbsp;
+                                                        <b class="name">moethods</b>
+                                                        
+                                                        
+                                                        <span class="type">{Object}</span> 
+                                                        <span class="desc">被复制对象</span>
                                                     </li>
                                                 
                                                 </ul>
@@ -494,80 +502,7 @@ dl.data .dd{
                                                 <ul class="list">
                                                     
                                                     <li class="li">
-                                                        <pre class="code">var attr = newClass.get("attrName");</pre>
-                                                    </li>
-                                                    
-                                                </ul>
-                                            </dd>
-                                            
-                                            
-                                        </dl>
-                                    </li>
-                                    
-                                    <li>
-                                        <div class="title">
-                                            
-                                            
-                                            <b class="name">set</b>
-                                            <span class="param">(attr, value)</span>
-                                            
-                                            
-                                            
-                                        </div>
-                                        
-                                        <div class="desc">
-                                            设置内部原型中某属性值
-                                            
-                                            
-                                        </div>
-                                        
-                                        <dl>
-                                            
-                                            <dt>参数：</dt>
-                                            <dd>
-                                                <ul class="list param-list">
-                                                
-                                                    <li class="li">
-                                                        &nbsp;
-                                                        <b class="name">attr</b>
-                                                        
-                                                        
-                                                        <span class="type">{String}</span> 
-                                                        <span class="desc">属性名称</span>
-                                                    </li>
-                                                
-                                                    <li class="li">
-                                                        &nbsp;
-                                                        <b class="name">value</b>
-                                                        
-                                                        
-                                                        <span class="type">{Value}</span> 
-                                                        <span class="desc">属性值</span>
-                                                    </li>
-                                                
-                                                </ul>
-                                            </dd>
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            <dt>
-
-                                            
-                                            <dt>Example</dt>
-                                            <dd>
-                                                <ul class="list">
-                                                    
-                                                    <li class="li">
-                                                        <pre class="code">var attr = newClass.set("attrName", "hello world!!");</pre>
+                                                        <pre class="code">applyMethods({    attrKey : value,    methodKey : function(arguments){}});</pre>
                                                     </li>
                                                     
                                                 </ul>
@@ -597,6 +532,9 @@ dl.data .dd{
             
             
             <li><a href="../symbols/AddClass.html">AddClass</a></li>
+            
+            
+            <li><a href="../symbols/Ajax.html">Ajax</a></li>
             
             
             <li><a href="../symbols/BaseClass.html">BaseClass</a></li>

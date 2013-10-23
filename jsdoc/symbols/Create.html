@@ -287,7 +287,7 @@ dl.data .dd{
 
                                     
                                         <p>源码：
-                                            <a href="../symbols/src/E__project_cgClass_js_cgClass_cgClass.js.html">cgClass.js</a></p>
+                                            <a href="../symbols/src/E__Git_cgClass_js_cgClass_cgClass.js.html">cgClass.js</a></p>
 
                                     
 
@@ -389,7 +389,21 @@ dl.data .dd{
                                                 <dt>示例：</dt>
                                                 <dd>
                                                     
-                                                    <pre class='brush: js;'>var newInstance = new cgClass.Create("className", { arg : "value" });</pre>
+                                                    <pre class='brush: js;'>var newInstance = new cgClass.Create(
+	"className",
+	{
+		arg : "value",
+		method : function(){}
+	}
+);</pre>
+                                                    
+                                                    <pre class='brush: js;'>cgClass.Create(
+	"className",
+	{
+		arg : "value",
+		method : function(){}
+	}
+);</pre>
                                                     
                                                     <pre class='brush: js;'>cgClass.Create(
 	"className",
@@ -437,6 +451,9 @@ dl.data .dd{
             
             
             <li><a href="../symbols/AddClass.html">AddClass</a></li>
+            
+            
+            <li><a href="../symbols/Ajax.html">Ajax</a></li>
             
             
             <li><a href="../symbols/BaseClass.html">BaseClass</a></li>

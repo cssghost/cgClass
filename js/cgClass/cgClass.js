@@ -14,7 +14,7 @@
  * @example var cgClass = {};
  */
 
-var cgClass = window.cgClass = {};
+var cgClass = window.cgClass = { ajaxQueue : {} };
 
 
 /**
@@ -96,7 +96,7 @@ cgClass.BaseClass = function(parent){
  * @param {String} parent [可选] 父类函数名称
  * @param {Object} handler 原型方法的集合
  * @example
- * var newClass = new cgClass.AddClass(
+ * cgClass.AddClass(
  *     "ClassName",
  *     {
  *         init : function(options){},	
@@ -105,8 +105,12 @@ cgClass.BaseClass = function(parent){
  * ); 
  */
 cgClass.AddClass = function(className){
-	var className = className,
-		_arguments = [].slice.apply(arguments),
+	var className = className;
+	if ( !!cgClass[className] ) {
+		alert("this class is had");
+		return false;
+	}
+	var	_arguments = [].slice.apply(arguments),
 		parent,
 		handler = _arguments.slice(-1)[0];
 	if ( !!_arguments[1] && typeof _arguments[1] == "string" ) {
@@ -132,6 +136,17 @@ cgClass.AddClass = function(className){
 	    }	
     }
 
+    /**
+	 * @name AddClass#applyMethods
+	 * @desc  生成外部调用的对象 赋值于this.outParam并返回赋值
+	 * @event
+	 * @param {Object} _this 当前作用于this
+	 * @param {Object} moethods 被复制对象
+	 * @example applyMethods({
+	 *     attrKey : value,
+	 *     methodKey : function(arguments){}
+	 * }); 
+	 */
     _Class.prototype.applyMethods = function(_this, methods){
     	var self = this,
     		_methods = methods;
@@ -162,7 +177,20 @@ cgClass.AddClass = function(className){
  * @param {Object} arg 实例默认参数
  * @param {Function} callback [可选] 回调函数
  * @param {Object} callback.self 生成的实例
- * @example var newInstance = new cgClass.Create("className", { arg : "value" }); 
+ * @example var newInstance = new cgClass.Create(
+	"className",
+	{
+		arg : "value",
+		method : function(){}
+	}
+); 
+ * @example cgClass.Create(
+	"className",
+	{
+		arg : "value",
+		method : function(){}
+	}
+); 
  * @example cgClass.Create(
 	"className",
 	{
@@ -199,6 +227,57 @@ cgClass.Create = function(className, arg, callback){
 		_script.src= "js/cgClass/cgClass." + className + ".js";  
 		document.body.appendChild(_script);  
 	}
+};
+
+/**
+ * @author 徐晨 
+ * @name Ajax
+ * @class Ajax方法
+ * @constructor
+ * @extends cgClass
+ * @extends jQuery
+ * @since version 0.1 
+ * @param {Object} config 配置对象
+ * @example
+ * cgClass.Ajax({
+ *     url : "url",	
+ *     data : {}	
+ * }); 
+ */
+cgClass.Ajax = function(config, defData){
+	var self = this,
+		defData = defData || {},
+		thisQueue,
+		option = $.extend(
+			{
+				url : "url",
+				type: "get",
+				dataType: "json",
+				queue : "",
+				timeout: (30 * 1000),
+				beforeSend : function(xhr, ajax){},
+				success: function( response, statusText ){},
+				error: function( request, statusText, error ){},
+				complete: function( request, statusText ){
+					console.log(statusText);
+				}
+			},
+			config
+		);
+
+	option.data = $.extend(defData, option.data);
+
+	if ( !!option.queue ) {
+		var _ajaxQueue = self.ajaxQueue[option.queue];
+		if ( !_ajaxQueue ) {
+			_ajaxQueue = [];
+		}
+		_ajaxQueue.push(option.success);
+		thisQueue = _ajaxQueue.length;
+		self.ajaxQueue[option.queue] = _ajaxQueue;
+	}
+
+	return $.ajax( option );			
 };
 
 

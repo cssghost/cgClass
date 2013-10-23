@@ -11,44 +11,24 @@
 	<script src="js/jquery.plugin.js"></script>
 	<script src="js/cgClass/cgClass.js"></script>
 	<script src="js/cgClass/cgClass.popup.js"></script>
+	<script src="js/cgClass/cgClass.test.js"></script>
 </head>
 <body>
 <script>
-// console.log(cgClass);
-	cgClass.Create(
-		"Popup",
-		{
-			title : "test popup01",
-			template : "template",
-			content : function (opt) {
-				// opt.close();
-			}
+cgClass.Create(
+	"Popup",
+	{
+		title : "test popup01",
+		template : "template",
+		content : function (opt) {
+			opt.close();
 		}
-	);
-	cgClass.Create(
-		"Popup",
-		{
-			title : "test popup",
-			template : "templatetemplatetemplatetemplatetemplatetemplatetemplatetemplatetemplatetemplatetemplatetemplatetemplatetemplatetemplatetemplatetemplatetemplatetemplatetemplatetemplatetemplatetemplatetemplatetemplate",
-			content : function (opt) {
-				// opt.close();
-			}
-		}
-	);
-// function F(){
-// 	this.param = "param"
-// }
-// F.prototype.edit = function(value){
-// 	this.param = value;
-// }
-// F.prototype.show = function(){
-// 	console.log(this.param);
-// }
-// var vv = new F();
-// var hh = new F();
-// vv.edit("fuck");
-// vv.show();
-// hh.show();
+	}
+);
+cgClass.Ajax({
+	url : "api/area.txt",
+	dataType : "text"
+});
 </script>
 </body>
 </html>
