@@ -263,7 +263,7 @@ dl.data .dd{
                                 <div class="box-hd">
                                     
                                     <h3><b class="name"><a href="../symbols/Ajax.html#constructor">Ajax</a></b>
-                                        <span class="param">(config)</span>
+                                        <span class="param">(config, defData)</span>
                                         
                                         
                                         
@@ -321,7 +321,7 @@ dl.data .dd{
                                         <li class="li">
                                             <div class="title">
                                                 <b class="name">Ajax</b>
-                                                <span class="param">(config)</span>
+                                                <span class="param">(config, defData)</span>
                                             </div>
                                             
                                             <div class="desc">Ajax方法</div>
@@ -343,6 +343,159 @@ dl.data .dd{
                                                             <span class="desc">配置对象</span>
                                                         </li>
                                                         
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>config.url</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{String}</span> </span>
+                                                            <span class="desc">发送请求的地址</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>config.type</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{String}</span> </span>
+                                                            <span class="desc">["get" : "post"] 请求方式</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>config.dataType</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{String}</span> </span>
+                                                            <span class="desc">请求方式</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>config.dataType.xml</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{String}</span> </span>
+                                                            <span class="desc">返回 XML 文档，可用 jQuery 处理。</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>config.dataType.text</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{String}</span> </span>
+                                                            <span class="desc">返回 String 字符串，可用 jQuery 处理。</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>config.dataType.textJson</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{String}</span> </span>
+                                                            <span class="desc">type自动转为text，返回数据预处理为 JSON 数据。</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>config.dataType.html</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{String}</span> </span>
+                                                            <span class="desc">返回纯文本 HTML 信息；包含 script 元素。</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>config.dataType.script</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{String}</span> </span>
+                                                            <span class="desc">返回纯文本 JavaScript 代码。不会自动缓存结果。</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>config.dataType.json</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{String}</span> </span>
+                                                            <span class="desc">返回 JSON 数据 。</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>config.dataType.jsonp</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{String}</span> </span>
+                                                            <span class="desc">使用 JSONP 形式调用函数时，如 "myurl?callback=?" jQuery 将自动替换 ? 为正确的函数名，以执行回调函数。</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>config.queue</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{String}</span> </span>
+                                                            <span class="desc">ajax队列的名称</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>config.timeout</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{Number}</span> </span>
+                                                            <span class="desc">设置请求超时时间（毫秒）。此设置将覆盖全局设置。</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>config.beforeSend</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{Function}</span> </span>
+                                                            <span class="desc">在发送请求之前调用，并且传入一个 XMLHttpRequest 作为参数</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>config.success</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{Function}</span> </span>
+                                                            <span class="desc">当请求之后调用。传入返回后的数据，以及包含成功代码的字符串。</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>config.error</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{Function}</span> </span>
+                                                            <span class="desc">在请求出错时调用。传入 XMLHttpRequest 对象，描述错误类型的字符串以及一个异常对象（如果有的话）</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>config.complete</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{Function}</span> </span>
+                                                            <span class="desc">请求完成后回调函数 (请求成功或失败时均调用)</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>defData</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{Object}</span> </span>
+                                                            <span class="desc">默认参数</span>
+                                                        </li>
+                                                        
                                                     </ul>
                                                 </dd>
                                                 
@@ -362,7 +515,7 @@ dl.data .dd{
                                                 <dt>示例：</dt>
                                                 <dd>
                                                     
-                                                    <pre class='brush: js;'>cgClass.Ajax({    url : "url",	    data : {}	});</pre>
+                                                    <pre class='brush: js;'>cgClass.Ajax({    url : "api/ajax.txt",	    data : {},	    dataType : "textJson",	    queue : "ajaxQueue",	    success : function(){},	    error : function(){}	}); cgClass.AjaxQueueCallback.ajaxQueue = function(){}</pre>
                                                     
                                                 </dd>                                                
                                                 

@@ -238,16 +238,42 @@ cgClass.Create = function(className, arg, callback){
  * @extends jQuery
  * @since version 0.1 
  * @param {Object} config 配置对象
+ * @param {String} config.url 发送请求的地址
+ * @param {String} config.type ["get" : "post"] 请求方式
+
+ * @param {String} config.dataType 请求方式
+ * @param {String} config.dataType.xml  返回 XML 文档，可用 jQuery 处理。
+ * @param {String} config.dataType.text  返回 String 字符串，可用 jQuery 处理。
+ * @param {String} config.dataType.textJson type自动转为text，返回数据预处理为 JSON 数据。
+ * @param {String} config.dataType.html 返回纯文本 HTML 信息；包含 script 元素。
+ * @param {String} config.dataType.script 返回纯文本 JavaScript 代码。不会自动缓存结果。
+ * @param {String} config.dataType.json 返回 JSON 数据 。
+ * @param {String} config.dataType.jsonp 使用 JSONP 形式调用函数时，如 "myurl?callback=?" jQuery 将自动替换 ? 为正确的函数名，以执行回调函数。
+
+ * @param {String} config.queue ajax队列的名称
+ * @param {Number} config.timeout 设置请求超时时间（毫秒）。此设置将覆盖全局设置。
+
+ * @param {Function} config.beforeSend 在发送请求之前调用，并且传入一个 XMLHttpRequest 作为参数
+ * @param {Function} config.success 当请求之后调用。传入返回后的数据，以及包含成功代码的字符串。
+ * @param {Function} config.error 在请求出错时调用。传入 XMLHttpRequest 对象，描述错误类型的字符串以及一个异常对象（如果有的话）
+ * @param {Function} config.complete 请求完成后回调函数 (请求成功或失败时均调用)
+
+ * @param {Object} defData 默认参数
+
  * @example
  * cgClass.Ajax({
- *     url : "url",	
- *     data : {}	
+ *     url : "api/ajax.txt",	
+ *     data : {},	
+ *     dataType : "textJson",	
+ *     queue : "ajaxQueue",	
+ *     success : function(){},	
+ *     error : function(){}	
  * }); 
+ * cgClass.AjaxQueueCallback.ajaxQueue = function(){}
  */
 cgClass.Ajax = function(config, defData){
 	var self = this,
 		defData = defData || {},
-		thisQueue,
 		option = $.extend(
 			{
 				url : "url",
@@ -289,7 +315,12 @@ cgClass.Ajax = function(config, defData){
 			if ( config.complete  ) {
 				targetComplete(request, statusText);
 			}
-			if ( !self.ajaxQueue[option.queue] && !!self.ajaxQueueCallback[option.queue] && typeof self.ajaxQueueCallback[option.queue] == "function" ) {
+			if (
+				!self.ajaxQueue[option.queue]
+				&& !!self.ajaxQueueCallback[option.queue]
+				&& typeof self.ajaxQueueCallback[option.queue] == "function" 
+			   )
+			{
 				self.ajaxQueueCallback[option.queue]();
 			}
 		};
