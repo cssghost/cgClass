@@ -1,3 +1,4 @@
+/* line 1, popup.less */
 .module-popup-layer {
   position: fixed;
   left: 0;
@@ -9,6 +10,7 @@
   opacity: 0.5;
   filter: alpha(opacity=50);
 }
+/* line 12, popup.less */
 .module-popup {
   display: none;
   position: fixed;
@@ -23,12 +25,14 @@
   border-bottom: 1px solid #eae8e8;
   background: #ffffff url(../images/popup-tit.png) repeat-x;
 }
+/* line 26, popup.less */
 .module-popup .popup-wrap {
   width: 200px;
   width: auto;
   min-width: 200px;
   border: 1px solid #cccccc;
 }
+/* line 32, popup.less */
 .module-popup .popup-wrap a.popup-close {
   position: absolute;
   right: 8px;
@@ -37,9 +41,11 @@
   height: 16px;
   background: url("../images/lib/") no-repeat 0 -29px;
 }
+/* line 40, popup.less */
 .module-popup .popup-wrap a.popup-close:hover {
   background-position: -16px -29px;
 }
+/* line 43, popup.less */
 .module-popup .popup-wrap .popup-tit {
   height: 30px;
   padding: 0 10px;
@@ -47,18 +53,22 @@
   font-weight: bold;
   font-size: 14px;
 }
+/* line 50, popup.less */
 .module-popup .popup-wrap .popup-con {
   min-width: 200px;
   padding: 20px;
   border-top: 1px solid #ccc;
 }
+/* line 55, popup.less */
 .module-popup .popup-wrap .btn-wrap {
   text-align: center;
   padding-bottom: 10px;
 }
+/* line 59, popup.less */
 .module-popup .popup-wrap .btn-wrap .popup-btn {
   margin: 0 10px;
 }
+/* line 62, popup.less */
 .module-popup .popup-wrap .btn-wrap .input-btn {
   width: 85px;
   height: 28px;
@@ -71,6 +81,7 @@
   cursor: pointer;
   background: url("../images/lib/") repeat-x left top;
 }
+/* line 74, popup.less */
 .module-popup .popup-wrap .text-input {
   background: #FFFFFF;
   height: 18px;
@@ -81,9 +92,11 @@
   box-shadow: 2px 2px 2px #E6E6E6 inset;
   color: #999;
 }
+/* line 84, popup.less */
 .module-popup .popup-wrap .focusColor {
   background: #ebfee9;
 }
+/* line 87, popup.less */
 .module-popup .popup-wrap .btn-new {
   display: inline-block;
   *display: inline;
@@ -98,6 +111,7 @@
   color: #000000;
   cursor: pointer;
 }
+/* line 101, popup.less */
 .module-popup .popup-wrap .btn-new span {
   display: inline-block;
   *display: inline;
@@ -108,23 +122,32 @@
   line-height: 17px;
   cursor: pointer;
 }
+/* line 111, popup.less */
 .module-popup .popup-wrap .result-tips-error {
   margin: 20px 0 0;
 }
+/* line 114, popup.less */
 .module-popup .popup-wrap .result-tips {
   padding: 10px;
   margin: 20px;
 }
-
 /*  login popup  */
+/* line 120, popup.less */
 .login-popup {
-    display: none;
-    position: fixed; _position: absolute; left: 50%; top: 30%; z-index: 10101;
-    width: 450px; height: 300px;
-    background: #FFF;
-    border: 1px solid #F70; border-radius: 5px;
-    box-shadow: 0 0 6px #CACACA;
+  display: none;
+  position: fixed;
+  _position: absolute;
+  left: 50%;
+  top: 30%;
+  z-index: 10101;
+  width: 450px;
+  height: 300px;
+  background: #FFF;
+  border: 1px solid #F70;
+  border-radius: 5px;
+  box-shadow: 0 0 6px #CACACA;
 }
+/* line 128, popup.less */
 .login-popup a.popup-close {
   position: absolute;
   right: -16px;
@@ -133,89 +156,116 @@
   height: 32px;
   background: url(../images/login-close.png) no-repeat;
 }
+/* line 136, popup.less */
 .login-popup .popup-tit {
-    width: 410px; height: 50px;
-    margin: 0 auto;
-    border-bottom: 1px solid #F70;
-    font: 500 18px/50px "Microsoft YaHei";
-    color: #F70;
+  width: 410px;
+  height: 50px;
+  margin: 0 auto;
+  border-bottom: 1px solid #F70;
+  font: 500 18px/50px "Microsoft YaHei";
+  color: #F70;
 }
+/* line 143, popup.less */
 .login-popup .popup-tit {
-    width: 410px; height: 50px;
-    margin: 0 auto;
-    border-bottom: 1px solid #F70;
-    font: 500 18px/50px "Microsoft YaHei";
-    color: #F70;
+  width: 410px;
+  height: 50px;
+  margin: 0 auto;
+  border-bottom: 1px solid #F70;
+  font: 500 18px/50px "Microsoft YaHei";
+  color: #F70;
 }
+/* line 150, popup.less */
 .login-popup .error-tips {
-    width: 300px; height: 30px;
-    color: #F70;
+  width: 300px;
+  height: 30px;
+  color: #F70;
 }
+/* line 154, popup.less */
 .login-popup .popup-con {
-    width: 320px;
-    margin: 0 auto;
+  width: 320px;
+  margin: 0 auto;
 }
+/* line 158, popup.less */
 .login-popup .text {
-    position: relative; z-index: 10;
-    width: 300px; height: 34px;
-    margin: 0 auto 25px;
-    border: 1px solid #CCC;
-    transition : 300ms;
+  position: relative;
+  z-index: 10;
+  width: 300px;
+  height: 34px;
+  margin: 0 auto 25px;
+  border: 1px solid #CCC;
+  transition: 300ms;
 }
+/* line 165, popup.less */
 .login-popup .text-error {
-    border: 1px solid #F70;
-    box-shadow: 0 0 3px #F70;
+  border: 1px solid #F70;
+  box-shadow: 0 0 3px #F70;
 }
+/* line 169, popup.less */
 .login-popup .text input {
-    width: 290px; height: 18px;
-    margin: 8px 5px;
-    background: transparent;
-    border: 0;
+  width: 290px;
+  height: 18px;
+  margin: 8px 5px;
+  background: transparent;
+  border: 0;
 }
+/* line 175, popup.less */
 .login-popup .text .error {
-    display: none;
-    position: absolute; left: -1px; top: 34px;
-    width: 300px; height: 20px;
-    background: #FFF2F2 url(../images/login-error-tips.gif) no-repeat 3px center;
-    border: 1px solid #FF8080;
-    text-indent: 25px;
-    color: #F00;
+  display: none;
+  position: absolute;
+  left: -1px;
+  top: 34px;
+  width: 300px;
+  height: 20px;
+  background: #fff2f2 url(../images/login-error-tips.gif) no-repeat 3px center;
+  border: 1px solid #FF8080;
+  text-indent: 25px;
+  color: #F00;
 }
+/* line 184, popup.less */
 .login-popup .remember {
-    position: relative; top: -20px;
-    width: 300px; height: 14px;
-    padding: 10px 0; margin: 0 auto;
-    line-height: 14px;
-    vertical-align: middle;
+  position: relative;
+  top: -20px;
+  width: 300px;
+  height: 14px;
+  padding: 10px 0;
+  margin: 0 auto;
+  line-height: 14px;
+  vertical-align: middle;
 }
+/* line 191, popup.less */
 .login-popup .remember input {
-    position: relative; top: 3px;
-    margin-right: 4px;
+  position: relative;
+  top: 3px;
+  margin-right: 4px;
 }
+/* line 195, popup.less */
 .login-popup .btn-wrap {
-    position: relative; top: -12px;
-    width: 314px; height: 32px;
-    margin: 0 auto;
+  position: relative;
+  top: -12px;
+  width: 314px;
+  height: 32px;
+  margin: 0 auto;
 }
+/* line 200, popup.less */
 .login-popup .popup-btn {
-    float: left; display: inline;
-    width: 135px; height: 32px;
-    padding-left: 10px; margin: 0 5px;
-    background: #F1F1F1;
-    border: 1px solid #CCC; border-radius: 3px;
-    font: 500 16px/32px "Microsoft YaHei";
-    letter-spacing: 10px;
-    text-align: center;
-    color: #666;
+  float: left;
+  display: inline;
+  width: 135px;
+  height: 32px;
+  padding-left: 10px;
+  margin: 0 5px;
+  background: #F1F1F1;
+  border: 1px solid #CCC;
+  border-radius: 3px;
+  font: 500 16px/32px "Microsoft YaHei";
+  letter-spacing: 10px;
+  text-align: center;
+  color: #666;
 }
+/* line 211, popup.less */
 .login-popup .done {
-    background: #F70;
-    border: 1px solid #F70; border-radius: 3px;
-    color: #FFF;
+  background: #F70;
+  border: 1px solid #F70;
+  border-radius: 3px;
+  color: #FFF;
 }
-
-
-
-
-
-

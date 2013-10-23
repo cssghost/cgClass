@@ -24,7 +24,9 @@ cgClass.AddClass(
 				}, options);
 			if ( option.template == "" ) {
 		        return false;
-		    }	
+		    }
+		    self.option = option;
+
 		    var $popup = option.popupTemp || $('<div class="module-popup fn-clear Js-popup-wrap">'+
 				  	'<a href="javascript:void(0)" class="popup-close Js-popup-close"></a> '+
 				    '<h6 class="fn-clear popup-tit Js-popup-title">' + option.title + '</h6>'+
