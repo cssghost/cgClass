@@ -3,6 +3,7 @@
 @imgUrlLib : "../../images/lib/";
 @imgUrlTpls : "../../images/tpls/";
 @imgUrlTemp : "../../images/temp/";
+@imgUrl : "../images/";
 
 // display
 
@@ -99,6 +100,9 @@
 
 //  background 
 
+.bg(@name: "i.gif", @rest...){
+    background: url("@{imgUrl}@{name}") @rest;
+}
 .bg-lib(@name: "i.gif", @rest...){
     background: url("@{imgUrlLib}@{name}") @rest;
 }
@@ -110,6 +114,9 @@
 }
 .bc(@color: #FFF){
     background-color: @color;
+}
+.bi(@name: "i.gif"){
+    background-image: url("@{imgUrl}@{name}");
 }
 .bi-lib(@name: "i.gif"){
     background-image: url("@{imgUrlLib}@{name}");
@@ -223,11 +230,21 @@
     cursor: pointer;
 }
 
+.opacity(@size){
+    opacity: @size;
+    filter:~'alpha(opacity='(@size * 100) ~')';
+}
+
 // css3
 
 .box-shadow(@color: #000, @size: 0 0 1 0){
     -moz-box-shadow: @size @color;
     -webkit-box-shadow: @size @color;
     box-shadow: @size @color;
+}
+.border-radius(@size){
+    -moz-border-radius : @size;
+    -webkit-border-radius : @size;
+    border-radius : @size;
 }
 

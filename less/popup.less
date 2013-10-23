@@ -1,3 +1,9 @@
+@import "less-base.less";
+.module-popup {
+    &-layer {
+        .pos-f(); left: 0; top: 0; z-index: 10100;
+    }
+}
 .module-popup-layer {
   position: fixed;
   left: 0;
@@ -12,7 +18,6 @@
 .module-popup {
   display: none;
   position: fixed;
-  _position: absolute;
   left: 50%;
   top: 30%;
   z-index: 10101;

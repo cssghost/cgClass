@@ -1,4 +1,11 @@
-/* line 1, popup.less */
+/* line 3, popup.less */
+.module-popup-layer {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 10100;
+}
+/* line 7, popup.less */
 .module-popup-layer {
   position: fixed;
   left: 0;
@@ -10,11 +17,10 @@
   opacity: 0.5;
   filter: alpha(opacity=50);
 }
-/* line 12, popup.less */
+/* line 18, popup.less */
 .module-popup {
   display: none;
   position: fixed;
-  _position: absolute;
   left: 50%;
   top: 30%;
   z-index: 10101;
@@ -25,14 +31,14 @@
   border-bottom: 1px solid #eae8e8;
   background: #ffffff url(../images/popup-tit.png) repeat-x;
 }
-/* line 26, popup.less */
+/* line 31, popup.less */
 .module-popup .popup-wrap {
   width: 200px;
   width: auto;
   min-width: 200px;
   border: 1px solid #cccccc;
 }
-/* line 32, popup.less */
+/* line 37, popup.less */
 .module-popup .popup-wrap a.popup-close {
   position: absolute;
   right: 8px;
@@ -41,11 +47,11 @@
   height: 16px;
   background: url("../images/lib/") no-repeat 0 -29px;
 }
-/* line 40, popup.less */
+/* line 45, popup.less */
 .module-popup .popup-wrap a.popup-close:hover {
   background-position: -16px -29px;
 }
-/* line 43, popup.less */
+/* line 48, popup.less */
 .module-popup .popup-wrap .popup-tit {
   height: 30px;
   padding: 0 10px;
@@ -53,22 +59,22 @@
   font-weight: bold;
   font-size: 14px;
 }
-/* line 50, popup.less */
+/* line 55, popup.less */
 .module-popup .popup-wrap .popup-con {
   min-width: 200px;
   padding: 20px;
   border-top: 1px solid #ccc;
 }
-/* line 55, popup.less */
+/* line 60, popup.less */
 .module-popup .popup-wrap .btn-wrap {
   text-align: center;
   padding-bottom: 10px;
 }
-/* line 59, popup.less */
+/* line 64, popup.less */
 .module-popup .popup-wrap .btn-wrap .popup-btn {
   margin: 0 10px;
 }
-/* line 62, popup.less */
+/* line 67, popup.less */
 .module-popup .popup-wrap .btn-wrap .input-btn {
   width: 85px;
   height: 28px;
@@ -81,7 +87,7 @@
   cursor: pointer;
   background: url("../images/lib/") repeat-x left top;
 }
-/* line 74, popup.less */
+/* line 79, popup.less */
 .module-popup .popup-wrap .text-input {
   background: #FFFFFF;
   height: 18px;
@@ -92,11 +98,11 @@
   box-shadow: 2px 2px 2px #E6E6E6 inset;
   color: #999;
 }
-/* line 84, popup.less */
+/* line 89, popup.less */
 .module-popup .popup-wrap .focusColor {
   background: #ebfee9;
 }
-/* line 87, popup.less */
+/* line 92, popup.less */
 .module-popup .popup-wrap .btn-new {
   display: inline-block;
   *display: inline;
@@ -111,7 +117,7 @@
   color: #000000;
   cursor: pointer;
 }
-/* line 101, popup.less */
+/* line 106, popup.less */
 .module-popup .popup-wrap .btn-new span {
   display: inline-block;
   *display: inline;
@@ -122,17 +128,17 @@
   line-height: 17px;
   cursor: pointer;
 }
-/* line 111, popup.less */
+/* line 116, popup.less */
 .module-popup .popup-wrap .result-tips-error {
   margin: 20px 0 0;
 }
-/* line 114, popup.less */
+/* line 119, popup.less */
 .module-popup .popup-wrap .result-tips {
   padding: 10px;
   margin: 20px;
 }
 /*  login popup  */
-/* line 120, popup.less */
+/* line 125, popup.less */
 .login-popup {
   display: none;
   position: fixed;
@@ -147,7 +153,7 @@
   border-radius: 5px;
   box-shadow: 0 0 6px #CACACA;
 }
-/* line 128, popup.less */
+/* line 133, popup.less */
 .login-popup a.popup-close {
   position: absolute;
   right: -16px;
@@ -156,7 +162,7 @@
   height: 32px;
   background: url(../images/login-close.png) no-repeat;
 }
-/* line 136, popup.less */
+/* line 141, popup.less */
 .login-popup .popup-tit {
   width: 410px;
   height: 50px;
@@ -165,7 +171,7 @@
   font: 500 18px/50px "Microsoft YaHei";
   color: #F70;
 }
-/* line 143, popup.less */
+/* line 148, popup.less */
 .login-popup .popup-tit {
   width: 410px;
   height: 50px;
@@ -174,18 +180,18 @@
   font: 500 18px/50px "Microsoft YaHei";
   color: #F70;
 }
-/* line 150, popup.less */
+/* line 155, popup.less */
 .login-popup .error-tips {
   width: 300px;
   height: 30px;
   color: #F70;
 }
-/* line 154, popup.less */
+/* line 159, popup.less */
 .login-popup .popup-con {
   width: 320px;
   margin: 0 auto;
 }
-/* line 158, popup.less */
+/* line 163, popup.less */
 .login-popup .text {
   position: relative;
   z-index: 10;
@@ -195,12 +201,12 @@
   border: 1px solid #CCC;
   transition: 300ms;
 }
-/* line 165, popup.less */
+/* line 170, popup.less */
 .login-popup .text-error {
   border: 1px solid #F70;
   box-shadow: 0 0 3px #F70;
 }
-/* line 169, popup.less */
+/* line 174, popup.less */
 .login-popup .text input {
   width: 290px;
   height: 18px;
@@ -208,7 +214,7 @@
   background: transparent;
   border: 0;
 }
-/* line 175, popup.less */
+/* line 180, popup.less */
 .login-popup .text .error {
   display: none;
   position: absolute;
@@ -221,7 +227,7 @@
   text-indent: 25px;
   color: #F00;
 }
-/* line 184, popup.less */
+/* line 189, popup.less */
 .login-popup .remember {
   position: relative;
   top: -20px;
@@ -232,13 +238,13 @@
   line-height: 14px;
   vertical-align: middle;
 }
-/* line 191, popup.less */
+/* line 196, popup.less */
 .login-popup .remember input {
   position: relative;
   top: 3px;
   margin-right: 4px;
 }
-/* line 195, popup.less */
+/* line 200, popup.less */
 .login-popup .btn-wrap {
   position: relative;
   top: -12px;
@@ -246,7 +252,7 @@
   height: 32px;
   margin: 0 auto;
 }
-/* line 200, popup.less */
+/* line 205, popup.less */
 .login-popup .popup-btn {
   float: left;
   display: inline;
@@ -262,7 +268,7 @@
   text-align: center;
   color: #666;
 }
-/* line 211, popup.less */
+/* line 216, popup.less */
 .login-popup .done {
   background: #F70;
   border: 1px solid #F70;
