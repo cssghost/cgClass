@@ -3,6 +3,7 @@ cgClass.AddClass(
 	{
 		init : function (options) {
 			var self = this,
+				$layer, $popup, $close, $con, $error, $btnWrap, $done, $cancel,
 				option = $.extend({
 					title: "提示",
 			        popupTemp : null,
@@ -11,36 +12,36 @@ cgClass.AddClass(
 			        isLayer : true,
 			        isCenter : true,
 			        isOnly : false,
+			        autoShow : true,
 			        append : {
 			            isAppend : false,
 			            dom : $(".dom")
 			        },
-			        // hasError : false,
 			        hasBtn : true,
 			        hasCancel : true,
-			        content : function(option){},
-			        done : function(option){},
-			        cancel : function(option){}
+			        content :null,
+			        done :null,
+			        cancel :null
 				}, options);
 			if ( option.template == "" ) {
 		        return false;
 		    }
 		    self.option = option;
 
-		    var $popup = option.popupTemp || $('<div class="module-popup fn-clear Js-popup-wrap">'+
+		    self.popup = $popup = option.popupTemp || $('<div class="module-popup fn-clear Js-popup-wrap">'+
 				  	'<a href="javascript:void(0)" class="popup-close Js-popup-close"></a> '+
 				    '<h6 class="fn-clear popup-tit Js-popup-title">' + option.title + '</h6>'+
 				    '<div class="popup-con Js-popup-con"></div>'+
-				    '<div class="btn-wrap Js-popup-btn-wrap">'+
+				    '<div class="popup-btn-wrap Js-popup-btn-wrap">'+
 				    	'<a class="popup-btn Js-popup-done" href="javascript:;;"><span class="popup-btn-text">确认</span></a>'+
             			'<a class="popup-btn Js-popup-cancel" href="javascript:;;"><span class="popup-btn-text">取消</span></a>'+
 				    '</div>'+
 				'</div>');
 
-		    var $error = $('<ul class="result-tips-error result-tips"></ul>');
+		    self.error = $error = $('<ul class="popup-tips"></ul>');
 
 		    if ( option.isLayer ) {
-		        var $layer = $("<div class='module-popup-layer'></div>");
+		        self.layer = $layer = $("<div class='module-popup-layer'></div>");
 		        $("body").append($layer);
 		    }
 		    if ( option.isOnly ) {
@@ -52,129 +53,147 @@ cgClass.AddClass(
 		    } else{
 		        $("body").append( $popup );
 		    }
-		    // if ( option.hasError ) {
-		    //     $popup.find(".Js-popup-btn-wrap").after($error);
-		    // }
 		    // add new class
 		    if ( option.addClass ) {
 		        $popup.addClass(option.addClass);
 		    }
-		    var $mainWrap = $popup.find(".Js-popup-main-wrap"),
-		        $btnWrap = $popup.find(".Js-popup-btn-wrap"),
-		        $btnDone = $btnWrap.find(".Js-popup-done"),
-		        $btnCancel = $btnWrap.find(".Js-popup-cancel"),
-		        $btnClose = $popup.find(".Js-popup-close"),
-		        $con = $popup.find(".Js-popup-con"),
-		        positionCenter = function(){
-		            var objWidht = $popup.width(),
-		                objHeight = $popup.height();
-		            $popup.css( { "margin-left" : "-" + objWidht / 2 + "px" } );
-		        };
+		    self.template = option.template;
+		    self.btnWrap = $btnWrap = $popup.find(".Js-popup-btn-wrap");
+	        self.btnDone = $done = $btnWrap.find(".Js-popup-done");
+	        self.btnCancel = $cancel = $btnWrap.find(".Js-popup-cancel");
+	        self.btnClose = $close = $popup.find(".Js-popup-close");
+	        self.con = $con = $popup.find(".Js-popup-con");
 		    // out param
-		    $.extend(option, {
-		        oPopup : $popup,
-		        oBtnWrap : $btnWrap,
-		        oBtnDone : $btnDone,
-		        oBtnCancel : $btnCancel,
-		        oBtnClose : $btnClose,
-		        oCon : $con,
-		        oTip : $error,
-		        close : function(){
-		            $popup.remove();
-		            if ( option.isLayer ) {
-		                $layer.remove();
-		            }
-		        },
-		        showTip : function(str){
-		            // $mainWrap.append($error);
-		            $popup.append($error);
-		            $error.html(str);
-		        },
-		        removeTip : function(str){
-		            $error.remove();
-		        },
-		        disableBtn : function(disable){
-		            if (disable) {
-		                option.oBtnDone.prop("disabled", true);
-		            }else{
-		                option.oBtnDone.prop("disabled", false);
-		            }
-		        }
-		    });
-		    // self.outParam = {
-		    // 	oPopup : $popup,
-		    // 	close : function(){
-		    // 		self.close.apply(self, arguments);
-		    // 	}
-		    // };
-
-		    self.applyMethods(self, {
-				option : option,
+		    self.outParam = self.applyMethods(self, {
 				oPopup : $popup,
-				layer : $layer,
-				message : "hello world",
+		        oBtnWrap : $btnWrap,
+		        oBtnDone : $done,
+		        oBtnCancel : $cancel,
+		        oBtnClose : $close,
+				oLayer : $layer,
+				show : self.show,
+				hide : self.hide,
 				close : self.close,
-				open : self.close
+				reset : self.reset,
+				showTip : self.showTip,
+				removeTip : self.removeTip
 			});
-
-			// self.close();
 
 		    // append content template
 		    $con.append(option.template);
 
-		    $popup.show();
 		    // bind popup init function
 		    if ( typeof(option.content) == "function" ) {
 		        option.content( self.outParam );
 		    }
 
+		    $popup.on("click", ".Js-popup-close", function() {
+		    	if ( option.hasBtn ) {
+		    		if ( option.hasCancel && typeof(option.cancel) == "function" ) {
+		                option.cancel(self.outParam);
+		    		} else{
+		    			self.close();
+		    		}
+		    	} else{
+		    		if ( typeof(option.done) == "function" ) {
+		                option.done(self.outParam);
+		            } else{
+		    			self.close();
+		    		}
+		    	}
+		    }).on("click", ".Js-popup-done", function() {
+		    	if ( option.hasBtn && !$(this).hasClass("popup-btn-disabled") && typeof(option.done) == "function" ) {
+		            option.done(self.outParam);
+		    	}
+		    	return false;
+		    }).on("click", ".Js-popup-cancel", function() {
+		    	if ( typeof(option.cancel) == "function" ) {
+                    option.cancel(self.outParam);
+                }else{
+                	self.close();
+                }
+		    });
+
 		    if ( option.hasBtn ) {
-		        $btnDone.on("click", function(){
-		            if ( typeof(option.done) == "function" && !$(this).prop("disabled") ) {
-		                option.done(option);
-		            }
-		        });
-		        if ( option.hasCancel ) {
-		            $btnCancel.on("click", function(){
-		                if ( typeof(option.cancel) == "function" ) {
-		                    option.cancel(option);
-		                }
-		                self.close();
-		            });
-		            $btnClose.on("click", function(){
-		                $btnCancel.click();
-		            });
-		        } else{
-		            $btnCancel.remove();
-		            $btnClose.on("click", function(){
-		                self.close();
-		            });
+		        if ( !option.hasCancel ) {
+		            $cancel.remove();
 		        }
 		    }else{
 		        $btnWrap.remove();
-		        $btnClose.on("click", function(){
-		            if ( typeof(option.done) == "function" ) {
-		                option.done(option);
-		            }
-		            self.close();
-		        });
 		    }
 
 		    // bind wrap position
 		    if ( option.isCenter ) {
-		        positionCenter();
 		        $(window).resize(function(){
-		            positionCenter();
+		            self.positionCenter();
 		        });
 		    }
-
+		    if ( option.autoShow ) {
+		    	self.show();
+		    }
 		},
-		close : function(){
+		positionCenter : function(){
+			var self = this,
+				width = self.popup.width(),
+                height = self.popup.height();
+            self.popup.css({
+            	"position" : "fixed",
+            	"top" : "40%",
+            	"left" : "50%",
+            	"margin" : "-" + height / 2 + "px 0 0 -" + width / 2 + "px" 
+        	});
+		},
+		show : function(callback){
 			var self = this;
-			self.outParam.oPopup.remove();
-			if ( self.outParam.option.isLayer ) {
-                self.outParam.layer.remove();
+			self.positionCenter();
+			self.popup.show();
+			if (Modernizr.csstransitions) {
+				self.popup.addClass("fadeInDown").delay(800).show(0, function(){$(this).removeClass("fadeInDown");});
+			}
+			if ( typeof callback == "function" ) {
+				callback(self.outParam);
+			}
+		},
+		hide : function(callback){
+			var self = this;
+			if ( self.option.isLayer ) {
+                self.layer.hide();
             }
-		}
+			if (!Modernizr.csstransitions) {
+				self.popup.hide();
+			}else{
+				self.popup.addClass("fadeOutUp").delay(800).hide(0, function(){$(this).removeClass("fadeOutUp");});
+			}
+			if ( typeof callback == "function" ) {
+				callback(self.outParam);
+			}
+		},
+		close : function(callback){
+			var self = this;
+			if ( self.option.isLayer ) {
+                self.layer.remove();
+            }
+            if (!Modernizr.csstransitions) {
+				self.popup.remove();
+			}else{
+				self.popup.addClass("fadeOutUp").delay(700).hide(0, function(){
+					self.popup.remove();
+				});
+			}
+			if ( typeof callback == "function" ) {
+				callback(self.outParam);
+			}
+		},
+		showTip : function(str){
+			self.con.append(self.error);
+		    self.error.html(str);
+		},
+		removeTip : function(){
+			self.error.hide();
+		},
+		reset : function(){
+			self.con.html(self.template);
+		},
+		disableBtn : function(){}
 	}
 );

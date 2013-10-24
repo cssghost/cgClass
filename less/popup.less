@@ -1,198 +1,314 @@
 @import "less-base.less";
 .module-popup {
     &-layer {
+        .dis-n();
         .pos-f(); left: 0; top: 0; z-index: 10100;
+        .w(100%); .h(100%);
         .bc(#000);
-        .opacity(0.5);
+        .opacity(0.6);
     }
     .dis-n();
-    .pos-f(); left: 50%; top: 30%; z-index: 10101;
+    z-index: 10101;
     .w(auto); min-width: 200px;
     .bg("popup-tit.png", repeat-x #FFF);
-    .br(#EAE8E8); .bb(#EAE8E8);
+    .bd(#DEDEDE,); .border-radius(3px);
+    .box-shadow( rgba(189, 189, 189, 0.4), 0 0 10px);
     & a.popup-close {
         .pos-a(); right: 8px; top: 8px;
         .w(16px); .h(16px);
-        .bg-tpls("popup-close", no-repeat 0 0);
+        .bg("popup-bg.png", no-repeat 0 0);
+        .transition(background-position 0.1s linear);
         &:hover {
-            .bp(0 -16px);
+            .bp(-16px 0);
         }
     }
-    & .popup-title {
-        .h(30px);
-        .pd(0 10px);
-        .lh(30px);
+    & .popup-tit {
+        .h(18px);
+        .pd(9px);
+        background-color: #f5f5f5;
+        background: -moz-linear-gradient(top,  rgba(255,255,255,0) 0%, rgba(0,0,0,0.1) 100%);
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0)), color-stop(100%,rgba(0,0,0,0.1)));
+        background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(0,0,0,0.1) 100%);
+        background: -o-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(0,0,0,0.1) 100%);
+        background: -ms-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(0,0,0,0.1) 100%);
+        background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(0,0,0,0.1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#1a000000',GradientType=0 );
+        .box-shadow(inset rgba(0, 0, 0, 0.05), 0 1px 1px);
+        .bb(#DEDEDE);
+        .lh(18px);
         .fw(bold);
         .fz(14px);
     }
     & .popup-con {
         min-width: 200px;
         .pd(20px);
-        .bt(#CCC);
+    }
+    & .popup-btn-wrap {
+        .pb(10px);
+        .tc();
+    }
+    & .popup-btn,
+    & .popup-btn-text {
+        .dis-ib();
+        .h(30px);
+        .bg("popup-bg.png", no-repeat);
+        .lh(30px);
+        .td-none();
+        .fz(12px);
+        .c(#FFF);
+        .cur-p();
+    }
+    & .popup-btn {
+        .pr(12px); .mg(0 10px);
+        .bp(right -16px);
+        &:hover {
+            .bp(right -46px);
+            & .popup-btn-text {
+                .bp(left -46px);
+            }
+        }
+        &:active {
+            .bp(right -76px);
+            outline: 0;
+            & .popup-btn-text {
+                .bp(left -76px);
+            }
+        }
+        &-disabled {
+            .bp(right -106px);
+            & .popup-btn-text {
+                .bp(left -106px);
+            }
+            &:hover {
+                .bp(right -106px);
+                & .popup-btn-text {
+                    .bp(left -106px);
+                }
+            }
+            &:active {
+                .bp(right -106px);
+                outline: 0;
+                & .popup-btn-text {
+                    .bp(left -106px);
+                }
+            }
+        }
+    }
+    & .popup-btn-text {
+        .pl(14px); .ml(-3px);
+        .bp(left -16px);
+        .vt();
+    }
+    & .popup-tips-error {
+        .mg(20px 0 0);
+    }
+    & .popup-tips {
+        .pd(10px); .mg(20px);
     }
 }
-.module-popup .popup-wrap .btn-wrap {
-  text-align: center;
-  padding-bottom: 10px;
-}
-.module-popup .popup-wrap .btn-wrap .popup-btn {
-  margin: 0 10px;
-}
-.module-popup .popup-wrap .btn-wrap .input-btn {
-  width: 85px;
-  height: 28px;
-  line-height: 28px;
-  font-size: 14px;
-  font-weight: bold;
-  color: #fff;
-  padding: 0 10px;
-  border: none;
-  cursor: pointer;
-  background: url("../images/lib/") repeat-x left top;
-}
-.module-popup .popup-wrap .text-input {
-  background: #FFFFFF;
-  height: 18px;
-  line-height: 18px;
-  padding: 3px;
-  margin-right: 110px;
-  border: 1px solid #cccccc;
-  box-shadow: 2px 2px 2px #E6E6E6 inset;
-  color: #999;
-}
-.module-popup .popup-wrap .focusColor {
-  background: #ebfee9;
-}
-.module-popup .popup-wrap .btn-new {
-  display: inline-block;
-  *display: inline;
-  *zoom: 1;
-  height: 27px;
-  margin-left: 10px;
-  padding-right: 10px;
-  background: url("../images/lib/") right -46px;
-  line-height: 26px;
-  text-decoration: none;
-  vertical-align: top;
-  color: #000000;
-  cursor: pointer;
-}
-.module-popup .popup-wrap .btn-new span {
-  display: inline-block;
-  *display: inline;
-  *zoom: 1;
-  height: 17px;
-  padding: 6px 0 4px 10px;
-  background: url("../images/lib/") 0 -46px;
-  line-height: 17px;
-  cursor: pointer;
-}
-.module-popup .popup-wrap .result-tips-error {
-  margin: 20px 0 0;
-}
-.module-popup .popup-wrap .result-tips {
-  padding: 10px;
-  margin: 20px;
-}
 
-/*  login popup  */
-.login-popup {
-    display: none;
-    position: fixed; _position: absolute; left: 50%; top: 30%; z-index: 10101;
-    width: 450px; height: 300px;
-    background: #FFF;
-    border: 1px solid #F70; border-radius: 5px;
-    box-shadow: 0 0 6px #CACACA;
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform:translateY(-80px);
+    }
+    100% {
+        opacity: 1;
+        transform:translateY(0);
+    }
 }
-.login-popup a.popup-close {
-  position: absolute;
-  right: -16px;
-  top: -16px;
-  width: 32px;
-  height: 32px;
-  background: url(../images/login-close.png) no-repeat;
+@-webkit-keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        -webkit-transform:translateY(-80px);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform:translateY(0px);
+    }
 }
-.login-popup .popup-tit {
-    width: 410px; height: 50px;
-    margin: 0 auto;
-    border-bottom: 1px solid #F70;
-    font: 500 18px/50px "Microsoft YaHei";
-    color: #F70;
+@-moz-keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        -moz-transform:translateY(-80px);
+    }
+    100% {
+        opacity: 1;
+        -moz-transform:translateY(0);
+    }
 }
-.login-popup .popup-tit {
-    width: 410px; height: 50px;
-    margin: 0 auto;
-    border-bottom: 1px solid #F70;
-    font: 500 18px/50px "Microsoft YaHei";
-    color: #F70;
+@-o-keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        -o-transform:translateY(-80px);
+    }
+    100% {
+        opacity: 1;
+        -o-transform:translateY(0);
+    }
 }
-.login-popup .error-tips {
-    width: 300px; height: 30px;
-    color: #F70;
+.fadeInDown {  
+    -webkit-animation-name: fadeInDown;
+    -webkit-animation-duration: 0.8s;
+    -webkit-animation-iteration-count: 1;
+    -moz-animation-name: fadeInDown;
+    -moz-animation-duration: 0.8s;
+    -moz-animation-iteration-count: 1;
+    -o-animation-name: fadeInDown;
+    -o-animation-duration: 0.8s;
+    -o-animation-iteration-count: 1;
+    animation-name: fadeInDown;
+    animation-duration: 0.8s;
+    animation-iteration-count: 1;
 }
-.login-popup .popup-con {
-    width: 320px;
-    margin: 0 auto;
+@keyframes fadeOutUp {
+    0% {
+        opacity: 1;
+        transform:translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform:translateY(-80px);
+    }
 }
-.login-popup .text {
-    position: relative; z-index: 10;
-    width: 300px; height: 34px;
-    margin: 0 auto 25px;
-    border: 1px solid #CCC;
-    transition : 300ms;
+@-webkit-keyframes fadeOutUp {
+    0% {
+        opacity: 1;
+        -webkit-transform:translateY(0px);
+    }
+    100% {
+        opacity: 0;
+        -webkit-transform:translateY(-80px);
+    }
 }
-.login-popup .text-error {
-    border: 1px solid #F70;
-    box-shadow: 0 0 3px #F70;
+@-moz-keyframes fadeOutUp {
+    0% {
+        opacity: 1;
+        -moz-transform:translateY(0);
+    }
+    100% {
+        opacity: 0;
+        -moz-transform:translateY(-80px);
+    }
 }
-.login-popup .text input {
-    width: 290px; height: 18px;
-    margin: 8px 5px;
-    background: transparent;
-    border: 0;
+@-o-keyframes fadeOutUp {
+    0% {
+        opacity: 1;
+        -o-transform:translateY(0);
+    }
+    100% {
+        opacity: 0;
+        -o-transform:translateY(-80px);
+    }
 }
-.login-popup .text .error {
-    display: none;
-    position: absolute; left: -1px; top: 34px;
-    width: 300px; height: 20px;
-    background: #FFF2F2 url(../images/login-error-tips.gif) no-repeat 3px center;
-    border: 1px solid #FF8080;
-    text-indent: 25px;
-    color: #F00;
+.fadeOutUp {  
+    animation-name: fadeOutUp;
+    animation-duration: 0.8s;
+    animation-iteration-count: 1;
+    -webkit-animation-name: fadeOutUp;
+    -webkit-animation-duration: 0.8s;
+    -webkit-animation-iteration-count: 1;
+    -moz-animation-name: fadeOutUp;
+    -moz-animation-duration: 0.8s;
+    -moz-animation-iteration-count: 1;
+    -o-animation-name: fadeOutUp;
+    -o-animation-duration: 0.8s;
+    -o-animation-iteration-count: 1;
 }
-.login-popup .remember {
-    position: relative; top: -20px;
-    width: 300px; height: 14px;
-    padding: 10px 0; margin: 0 auto;
-    line-height: 14px;
-    vertical-align: middle;
+@keyframes rock {
+    0% {
+        transform:translateX(-20px);
+    }
+    20% {
+        transform:translateX(20px);
+    }
+    40% {
+        transform:translateX(-20px);
+    }
+    60% {
+        transform:translateX(20px);
+    }
+    80% {
+        transform:translateX(-20px);
+    }
+    100% {
+        transform:translateX(0);
+    }
 }
-.login-popup .remember input {
-    position: relative; top: 3px;
-    margin-right: 4px;
+@-webkit-keyframes rock {
+    0% {
+        -webkit-transform:translateX(-20px);
+    }
+    20% {
+        -webkit-transform:translateX(20px);
+    }
+    40% {
+        -webkit-transform:translateX(-20px);
+    }
+    60% {
+        -webkit-transform:translateX(20px);
+    }
+    80% {
+        -webkit-transform:translateX(-20px);
+    }
+    100% {
+        -webkit-transform:translateX(0);
+    }
 }
-.login-popup .btn-wrap {
-    position: relative; top: -12px;
-    width: 314px; height: 32px;
-    margin: 0 auto;
+@-moz-keyframes rock {
+    0% {
+        -moz-transform:translateX(-20px);
+    }
+    20% {
+        -moz-transform:translateX(20px);
+    }
+    40% {
+        -moz-transform:translateX(-20px);
+    }
+    60% {
+        -moz-transform:translateX(20px);
+    }
+    80% {
+        -moz-transform:translateX(-20px);
+    }
+    100% {
+        -moz-transform:translateX(0);
+    }
 }
-.login-popup .popup-btn {
-    float: left; display: inline;
-    width: 135px; height: 32px;
-    padding-left: 10px; margin: 0 5px;
-    background: #F1F1F1;
-    border: 1px solid #CCC; border-radius: 3px;
-    font: 500 16px/32px "Microsoft YaHei";
-    letter-spacing: 10px;
-    text-align: center;
-    color: #666;
+@-o-keyframes rock {
+    0% {
+        -o-transform:translateX(-20px);
+    }
+    20% {
+        -o-transform:translateX(20px);
+    }
+    40% {
+        -o-transform:translateX(-20px);
+    }
+    60% {
+        -o-transform:translateX(20px);
+    }
+    80% {
+        -o-transform:translateX(-20px);
+    }
+    100% {
+        -o-transform:translateX(0);
+    }
 }
-.login-popup .done {
-    background: #F70;
-    border: 1px solid #F70; border-radius: 3px;
-    color: #FFF;
+.rock {  
+    animation-name: rock;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+    -webkit-animation-name: rock;
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-iteration-count: 1;
+    -moz-animation-name: rock;
+    -moz-animation-duration: 0.5s;
+    -moz-animation-iteration-count: 1;
+    -o-animation-name: rock;
+    -o-animation-duration: 0.5s;
+    -o-animation-iteration-count: 1;
 }
-
 
 
 

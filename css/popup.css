@@ -1,260 +1,396 @@
 /* line 2, popup.less */
 .module-popup {
   display: none;
-  position: fixed;
-  left: 50%;
-  top: 30%;
   z-index: 10101;
   width: auto;
   min-width: 200px;
   background: url("../images/popup-tit.png") repeat-x #ffffff;
-  border-right: 1px solid #eae8e8;
-  border-bottom: 1px solid #eae8e8;
+  border: 1px solid #dedede;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -moz-box-shadow: 0 0 10px rgba(189, 189, 189, 0.4);
+  -webkit-box-shadow: 0 0 10px rgba(189, 189, 189, 0.4);
+  box-shadow: 0 0 10px rgba(189, 189, 189, 0.4);
 }
 /* line 3, popup.less */
 .module-popup-layer {
+  display: none;
   position: fixed;
   left: 0;
   top: 0;
   z-index: 10100;
+  width: 100%;
+  height: 100%;
   background-color: #000000;
-  opacity: 0.5;
-  filter: alpha(opacity= 50 );
+  opacity: 0.6;
+  filter: alpha(opacity= 60 );
 }
-/* line 13, popup.less */
+/* line 16, popup.less */
 .module-popup a.popup-close {
   position: absolute;
   right: 8px;
   top: 8px;
   width: 16px;
   height: 16px;
-  background: url("../../images/tpls/popup-close") no-repeat 0 0;
-}
-/* line 17, popup.less */
-.module-popup a.popup-close:hover {
-  background-position: 0 -16px;
+  background: url("../images/popup-bg.png") no-repeat 0 0;
+  -webkit-transition: background-position 0.1s linear;
+  -moz-transition: background-position 0.1s linear;
+  -o-transition: background-position 0.1s linear;
+  transition: background-position 0.1s linear;
 }
 /* line 21, popup.less */
-.module-popup .popup-title {
-  height: 30px;
-  padding: 0 10px;
-  line-height: 30px;
+.module-popup a.popup-close:hover {
+  background-position: -16px 0;
+}
+/* line 25, popup.less */
+.module-popup .popup-tit {
+  height: 18px;
+  padding: 9px;
+  background-color: #f5f5f5;
+  background: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.1) 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(100%, rgba(0, 0, 0, 0.1)));
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.1) 100%);
+  background: -o-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.1) 100%);
+  background: -ms-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.1) 100%);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ffffff', endColorstr='#1a000000', GradientType=0);
+  -moz-box-shadow: 0 1px 1px inset rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow: 0 1px 1px inset rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 1px inset rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid #dedede;
+  line-height: 18px;
   font-weight: bold;
   font-size: 14px;
 }
-/* line 28, popup.less */
+/* line 42, popup.less */
 .module-popup .popup-con {
   min-width: 200px;
   padding: 20px;
-  border-top: 1px solid #cccccc;
 }
-/* line 34, popup.less */
-.module-popup .popup-wrap .btn-wrap {
-  text-align: center;
+/* line 46, popup.less */
+.module-popup .popup-btn-wrap {
   padding-bottom: 10px;
+  text-align: center;
 }
-/* line 38, popup.less */
-.module-popup .popup-wrap .btn-wrap .popup-btn {
-  margin: 0 10px;
-}
-/* line 41, popup.less */
-.module-popup .popup-wrap .btn-wrap .input-btn {
-  width: 85px;
-  height: 28px;
-  line-height: 28px;
-  font-size: 14px;
-  font-weight: bold;
-  color: #fff;
-  padding: 0 10px;
-  border: none;
+/* line 50, popup.less */
+.module-popup .popup-btn,
+.module-popup .popup-btn-text {
+  display: inline-block;
+  height: 30px;
+  background: url("../images/popup-bg.png") no-repeat;
+  line-height: 30px;
+  text-decoration: none;
+  font-size: 12px;
+  color: #ffffff;
   cursor: pointer;
-  background: url("../images/lib/") repeat-x left top;
 }
-/* line 53, popup.less */
-.module-popup .popup-wrap .text-input {
-  background: #FFFFFF;
-  height: 18px;
-  line-height: 18px;
-  padding: 3px;
-  margin-right: 110px;
-  border: 1px solid #cccccc;
-  box-shadow: 2px 2px 2px #E6E6E6 inset;
-  color: #999;
+/* line 61, popup.less */
+.module-popup .popup-btn {
+  padding-right: 12px;
+  margin: 0 10px;
+  background-position: right -16px;
 }
-/* line 63, popup.less */
-.module-popup .popup-wrap .focusColor {
-  background: #ebfee9;
+/* line 64, popup.less */
+.module-popup .popup-btn:hover {
+  background-position: right -46px;
 }
 /* line 66, popup.less */
-.module-popup .popup-wrap .btn-new {
-  display: inline-block;
-  *display: inline;
-  *zoom: 1;
-  height: 27px;
-  margin-left: 10px;
-  padding-right: 10px;
-  background: url("../images/lib/") right -46px;
-  line-height: 26px;
-  text-decoration: none;
+.module-popup .popup-btn:hover .popup-btn-text {
+  background-position: left -46px;
+}
+/* line 70, popup.less */
+.module-popup .popup-btn:active {
+  background-position: right -76px;
+  outline: 0;
+}
+/* line 73, popup.less */
+.module-popup .popup-btn:active .popup-btn-text {
+  background-position: left -76px;
+}
+/* line 77, popup.less */
+.module-popup .popup-btn-disabled {
+  background-position: right -106px;
+}
+/* line 79, popup.less */
+.module-popup .popup-btn-disabled .popup-btn-text {
+  background-position: left -106px;
+}
+/* line 82, popup.less */
+.module-popup .popup-btn-disabled:hover {
+  background-position: right -106px;
+}
+/* line 84, popup.less */
+.module-popup .popup-btn-disabled:hover .popup-btn-text {
+  background-position: left -106px;
+}
+/* line 88, popup.less */
+.module-popup .popup-btn-disabled:active {
+  background-position: right -106px;
+  outline: 0;
+}
+/* line 91, popup.less */
+.module-popup .popup-btn-disabled:active .popup-btn-text {
+  background-position: left -106px;
+}
+/* line 97, popup.less */
+.module-popup .popup-btn-text {
+  padding-left: 14px;
+  margin-left: -3px;
+  background-position: left -16px;
   vertical-align: top;
-  color: #000000;
-  cursor: pointer;
 }
-/* line 80, popup.less */
-.module-popup .popup-wrap .btn-new span {
-  display: inline-block;
-  *display: inline;
-  *zoom: 1;
-  height: 17px;
-  padding: 6px 0 4px 10px;
-  background: url("../images/lib/") 0 -46px;
-  line-height: 17px;
-  cursor: pointer;
-}
-/* line 90, popup.less */
-.module-popup .popup-wrap .result-tips-error {
+/* line 102, popup.less */
+.module-popup .popup-tips-error {
   margin: 20px 0 0;
 }
-/* line 93, popup.less */
-.module-popup .popup-wrap .result-tips {
+/* line 105, popup.less */
+.module-popup .popup-tips {
   padding: 10px;
   margin: 20px;
 }
-/*  login popup  */
-/* line 99, popup.less */
-.login-popup {
-  display: none;
-  position: fixed;
-  _position: absolute;
-  left: 50%;
-  top: 30%;
-  z-index: 10101;
-  width: 450px;
-  height: 300px;
-  background: #FFF;
-  border: 1px solid #F70;
-  border-radius: 5px;
-  box-shadow: 0 0 6px #CACACA;
+@keyframes fadeInDown {
+  /* line 111, popup.less */
+  0% {
+    opacity: 0;
+    transform: translateY(-80px);
+  }
+  /* line 115, popup.less */
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
-/* line 107, popup.less */
-.login-popup a.popup-close {
-  position: absolute;
-  right: -16px;
-  top: -16px;
-  width: 32px;
-  height: 32px;
-  background: url(../images/login-close.png) no-repeat;
+@-webkit-keyframes fadeInDown {
+  /* line 121, popup.less */
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-80px);
+  }
+  /* line 125, popup.less */
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+  }
 }
-/* line 115, popup.less */
-.login-popup .popup-tit {
-  width: 410px;
-  height: 50px;
-  margin: 0 auto;
-  border-bottom: 1px solid #F70;
-  font: 500 18px/50px "Microsoft YaHei";
-  color: #F70;
+@-moz-keyframes fadeInDown {
+  /* line 131, popup.less */
+  0% {
+    opacity: 0;
+    -moz-transform: translateY(-80px);
+  }
+  /* line 135, popup.less */
+  100% {
+    opacity: 1;
+    -moz-transform: translateY(0);
+  }
 }
-/* line 122, popup.less */
-.login-popup .popup-tit {
-  width: 410px;
-  height: 50px;
-  margin: 0 auto;
-  border-bottom: 1px solid #F70;
-  font: 500 18px/50px "Microsoft YaHei";
-  color: #F70;
+@-o-keyframes fadeInDown {
+  /* line 141, popup.less */
+  0% {
+    opacity: 0;
+    -o-transform: translateY(-80px);
+  }
+  /* line 145, popup.less */
+  100% {
+    opacity: 1;
+    -o-transform: translateY(0);
+  }
 }
-/* line 129, popup.less */
-.login-popup .error-tips {
-  width: 300px;
-  height: 30px;
-  color: #F70;
+/* line 150, popup.less */
+.fadeInDown {
+  -webkit-animation-name: fadeInDown;
+  -webkit-animation-duration: 0.8s;
+  -webkit-animation-iteration-count: 1;
+  -moz-animation-name: fadeInDown;
+  -moz-animation-duration: 0.8s;
+  -moz-animation-iteration-count: 1;
+  -o-animation-name: fadeInDown;
+  -o-animation-duration: 0.8s;
+  -o-animation-iteration-count: 1;
+  animation-name: fadeInDown;
+  animation-duration: 0.8s;
+  animation-iteration-count: 1;
 }
-/* line 133, popup.less */
-.login-popup .popup-con {
-  width: 320px;
-  margin: 0 auto;
+@keyframes fadeOutUp {
+  /* line 165, popup.less */
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  /* line 169, popup.less */
+  100% {
+    opacity: 0;
+    transform: translateY(-80px);
+  }
 }
-/* line 137, popup.less */
-.login-popup .text {
-  position: relative;
-  z-index: 10;
-  width: 300px;
-  height: 34px;
-  margin: 0 auto 25px;
-  border: 1px solid #CCC;
-  transition: 300ms;
+@-webkit-keyframes fadeOutUp {
+  /* line 175, popup.less */
+  0% {
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+  }
+  /* line 179, popup.less */
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(-80px);
+  }
 }
-/* line 144, popup.less */
-.login-popup .text-error {
-  border: 1px solid #F70;
-  box-shadow: 0 0 3px #F70;
+@-moz-keyframes fadeOutUp {
+  /* line 185, popup.less */
+  0% {
+    opacity: 1;
+    -moz-transform: translateY(0);
+  }
+  /* line 189, popup.less */
+  100% {
+    opacity: 0;
+    -moz-transform: translateY(-80px);
+  }
 }
-/* line 148, popup.less */
-.login-popup .text input {
-  width: 290px;
-  height: 18px;
-  margin: 8px 5px;
-  background: transparent;
-  border: 0;
+@-o-keyframes fadeOutUp {
+  /* line 195, popup.less */
+  0% {
+    opacity: 1;
+    -o-transform: translateY(0);
+  }
+  /* line 199, popup.less */
+  100% {
+    opacity: 0;
+    -o-transform: translateY(-80px);
+  }
 }
-/* line 154, popup.less */
-.login-popup .text .error {
-  display: none;
-  position: absolute;
-  left: -1px;
-  top: 34px;
-  width: 300px;
-  height: 20px;
-  background: #fff2f2 url(../images/login-error-tips.gif) no-repeat 3px center;
-  border: 1px solid #FF8080;
-  text-indent: 25px;
-  color: #F00;
+/* line 204, popup.less */
+.fadeOutUp {
+  animation-name: fadeOutUp;
+  animation-duration: 0.8s;
+  animation-iteration-count: 1;
+  -webkit-animation-name: fadeOutUp;
+  -webkit-animation-duration: 0.8s;
+  -webkit-animation-iteration-count: 1;
+  -moz-animation-name: fadeOutUp;
+  -moz-animation-duration: 0.8s;
+  -moz-animation-iteration-count: 1;
+  -o-animation-name: fadeOutUp;
+  -o-animation-duration: 0.8s;
+  -o-animation-iteration-count: 1;
 }
-/* line 163, popup.less */
-.login-popup .remember {
-  position: relative;
-  top: -20px;
-  width: 300px;
-  height: 14px;
-  padding: 10px 0;
-  margin: 0 auto;
-  line-height: 14px;
-  vertical-align: middle;
+@keyframes rock {
+  /* line 219, popup.less */
+  0% {
+    transform: translateX(-20px);
+  }
+  /* line 222, popup.less */
+  20% {
+    transform: translateX(20px);
+  }
+  /* line 225, popup.less */
+  40% {
+    transform: translateX(-20px);
+  }
+  /* line 228, popup.less */
+  60% {
+    transform: translateX(20px);
+  }
+  /* line 231, popup.less */
+  80% {
+    transform: translateX(-20px);
+  }
+  /* line 234, popup.less */
+  100% {
+    transform: translateX(0);
+  }
 }
-/* line 170, popup.less */
-.login-popup .remember input {
-  position: relative;
-  top: 3px;
-  margin-right: 4px;
+@-webkit-keyframes rock {
+  /* line 239, popup.less */
+  0% {
+    -webkit-transform: translateX(-20px);
+  }
+  /* line 242, popup.less */
+  20% {
+    -webkit-transform: translateX(20px);
+  }
+  /* line 245, popup.less */
+  40% {
+    -webkit-transform: translateX(-20px);
+  }
+  /* line 248, popup.less */
+  60% {
+    -webkit-transform: translateX(20px);
+  }
+  /* line 251, popup.less */
+  80% {
+    -webkit-transform: translateX(-20px);
+  }
+  /* line 254, popup.less */
+  100% {
+    -webkit-transform: translateX(0);
+  }
 }
-/* line 174, popup.less */
-.login-popup .btn-wrap {
-  position: relative;
-  top: -12px;
-  width: 314px;
-  height: 32px;
-  margin: 0 auto;
+@-moz-keyframes rock {
+  /* line 259, popup.less */
+  0% {
+    -moz-transform: translateX(-20px);
+  }
+  /* line 262, popup.less */
+  20% {
+    -moz-transform: translateX(20px);
+  }
+  /* line 265, popup.less */
+  40% {
+    -moz-transform: translateX(-20px);
+  }
+  /* line 268, popup.less */
+  60% {
+    -moz-transform: translateX(20px);
+  }
+  /* line 271, popup.less */
+  80% {
+    -moz-transform: translateX(-20px);
+  }
+  /* line 274, popup.less */
+  100% {
+    -moz-transform: translateX(0);
+  }
 }
-/* line 179, popup.less */
-.login-popup .popup-btn {
-  float: left;
-  display: inline;
-  width: 135px;
-  height: 32px;
-  padding-left: 10px;
-  margin: 0 5px;
-  background: #F1F1F1;
-  border: 1px solid #CCC;
-  border-radius: 3px;
-  font: 500 16px/32px "Microsoft YaHei";
-  letter-spacing: 10px;
-  text-align: center;
-  color: #666;
+@-o-keyframes rock {
+  /* line 279, popup.less */
+  0% {
+    -o-transform: translateX(-20px);
+  }
+  /* line 282, popup.less */
+  20% {
+    -o-transform: translateX(20px);
+  }
+  /* line 285, popup.less */
+  40% {
+    -o-transform: translateX(-20px);
+  }
+  /* line 288, popup.less */
+  60% {
+    -o-transform: translateX(20px);
+  }
+  /* line 291, popup.less */
+  80% {
+    -o-transform: translateX(-20px);
+  }
+  /* line 294, popup.less */
+  100% {
+    -o-transform: translateX(0);
+  }
 }
-/* line 190, popup.less */
-.login-popup .done {
-  background: #F70;
-  border: 1px solid #F70;
-  border-radius: 3px;
-  color: #FFF;
+/* line 298, popup.less */
+.rock {
+  animation-name: rock;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+  -webkit-animation-name: rock;
+  -webkit-animation-duration: 0.5s;
+  -webkit-animation-iteration-count: 1;
+  -moz-animation-name: rock;
+  -moz-animation-duration: 0.5s;
+  -moz-animation-iteration-count: 1;
+  -o-animation-name: rock;
+  -o-animation-duration: 0.5s;
+  -o-animation-iteration-count: 1;
 }

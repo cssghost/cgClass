@@ -149,19 +149,19 @@ cgClass.AddClass = function(className){
 	 */
     _Class.prototype.applyMethods = function(_this, methods){
     	var self = this,
-    		_methods = methods;
-    	if ( !!_methods && typeof _methods == "object" ) {
-		    for( var key in _methods ){
-		    	if ( typeof _methods[key] == "function" ) {
-		    		self.outParam[key] = function(){
-		    			_methods[key].apply(_this, arguments);
-		    		};
-		    	}else{
-		    		self.outParam[key] = _methods[key];
-		    	}
-		    }	
-	    }
-	    return self.outParam;
+    		_methods = methods,
+    		newMethods = {};
+    	$.each(_methods, function(key, item) {
+    		_thisMethod = item;
+	    	if ( typeof item == "function" ) {
+	    		newMethods[key] = function(){
+	    			item.apply(_this, arguments);
+	    		};
+	    	}else{
+	    		newMethods[key] = item;
+	    	}
+    	});
+	    return newMethods;
     }
 
 	cgClass[className] = _Class;
