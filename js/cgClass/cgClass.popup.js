@@ -1,3 +1,41 @@
+/**
+ * @author 徐晨 
+ * @name Popup
+ * @class 弹出框
+ * @constructor
+ * @extends cgClass
+ * @extends Modernizr
+ * @extends jQuery
+ * @since version 0.1 
+ * @param {String} title 弹出框的标题
+ * @param {jQuery Object} popupTemp 弹出框的jQuery对象
+ * @param {html} template 内容区的html代码片段
+ * @param {css class} addClass 附加弹出框样式
+ * @param {Boolean} isLayer 是否需要遮罩层
+ * @example var newInstance = new cgClass.Create(
+	"className",
+	{
+		arg : "value",
+		method : function(){}
+	}
+); 
+ * @example cgClass.Create(
+	"className",
+	{
+		arg : "value",
+		method : function(){}
+	}
+); 
+ * @example cgClass.Create(
+	"className",
+	{
+		arg : "value"
+	},
+	function(self){
+		self.doMethods();
+	}
+); 
+ */
 cgClass.AddClass(
 	"Popup",
 	{
@@ -103,6 +141,7 @@ cgClass.AddClass(
 		    	}
 		    }).on("click", ".Js-popup-done", function() {
 		    	if ( option.hasBtn && !$(this).hasClass("popup-btn-disabled") && typeof(option.done) == "function" ) {
+		    		self.disableBtn();
 		            option.done(self.outParam);
 		    	}
 		    	return false;
@@ -146,6 +185,9 @@ cgClass.AddClass(
 		show : function(callback){
 			var self = this;
 			self.positionCenter();
+			if ( self.option.isLayer ) {
+                self.layer.show();
+            }
 			self.popup.show();
 			if (Modernizr.csstransitions) {
 				self.popup.addClass("fadeInDown").delay(800).show(0, function(){$(this).removeClass("fadeInDown");});
@@ -185,15 +227,24 @@ cgClass.AddClass(
 			}
 		},
 		showTip : function(str){
+			var self = this;
 			self.con.append(self.error);
 		    self.error.html(str);
 		},
 		removeTip : function(){
-			self.error.hide();
+			this.error.hide();
 		},
 		reset : function(){
+			var self = this;
 			self.con.html(self.template);
 		},
-		disableBtn : function(){}
+		disableBtn : function(isReset){
+			var self = this;
+			if ( isReset ) {
+				self.btnDone.removeClass("popup-btn-disabled");
+			} else{
+				self.btnDone.addClass("popup-btn-disabled");
+			}
+		}
 	}
 );

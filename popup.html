@@ -23,12 +23,11 @@ var vv = cgClass.Create(
 	{
 		title : "test popup01",
 		template : "template",
-		isLayer : false,
 		content : function (opt) {
 			// console.log(opt.close);
 		},
-		cancel : function(opt){
-			opt.hide();
+		done : function(opt){
+			// opt.close();
 		}
 	}
 );
