@@ -8,7 +8,7 @@
   display: inline-block;
   width: 20px;
   height: 20px;
-  background: url("../../images/lib/icon.png") no-repeat;
+  background: url("../images/lib/icon.png") no-repeat;
 }
 /* line 19, icon.less */
 .i-search-a {
@@ -47,7 +47,7 @@
   display: inline-block;
   width: 7px;
   height: 8px;
-  background: url("../../images/lib/sort-icon.gif") no-repeat;
+  background: url("../images/lib/sort-icon.gif") no-repeat;
 }
 /* line 65, icon.less */
 .i-sort-down-a {

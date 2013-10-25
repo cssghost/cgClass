@@ -4,7 +4,7 @@
   z-index: 10101;
   width: auto;
   min-width: 200px;
-  background: url("../images/popup-tit.png") repeat-x #ffffff;
+  background-color: #ffffff;
   border: 1px solid #dedede;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
@@ -33,7 +33,7 @@
   top: 8px;
   width: 16px;
   height: 16px;
-  background: url("../images/popup-bg.png") no-repeat 0 0;
+  background: url("../images/tpls/popup-bg.png") no-repeat 0 0;
   -webkit-transition: background-position 0.1s linear;
   -moz-transition: background-position 0.1s linear;
   -o-transition: background-position 0.1s linear;
@@ -78,7 +78,7 @@
 .module-popup .popup-btn-text {
   display: inline-block;
   height: 30px;
-  background: url("../images/popup-bg.png") no-repeat;
+  background: url("../images/tpls/popup-bg.png") no-repeat;
   line-height: 30px;
   text-decoration: none;
   font-size: 12px;

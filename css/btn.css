@@ -44,14 +44,14 @@
 }
 /* normal btn  (white) *//* line 40, btn.less */
 .btn-normal {
-  background: url("../../images/lib/btn-white.png") no-repeat left 0px;
+  background: url("../images/lib/btn-white.png") no-repeat left 0px;
 }
 /* line 42, btn.less */
 .btn-normal .btn-text {
   height: 30px;
   line-height: 30px;
   color: #000;
-  background: url("../../images/lib/btn-white.png") no-repeat right 0px;
+  background: url("../images/lib/btn-white.png") no-repeat right 0px;
 }
 /* line 47, btn.less */
 .btn-normal .btn-text .caret {
@@ -83,7 +83,7 @@
   font-size: 12px;
   line-height: 15px;
   padding-left: 5px;
-  background: url("../../images/lib/small-btn-white.png") no-repeat left 0px;
+  background: url("../images/lib/small-btn-white.png") no-repeat left 0px;
 }
 /* line 76, btn.less */
 .btn-small .btn-text {
@@ -91,7 +91,7 @@
   line-height: 24px;
   color: #000;
   padding-right: 5px;
-  background: url("../../images/lib/small-btn-white.png") no-repeat right 0px;
+  background: url("../images/lib/small-btn-white.png") no-repeat right 0px;
 }
 /* line 82, btn.less */
 .btn-small .btn-text .caret {
@@ -122,14 +122,14 @@
 .btn-big {
   font-size: 16px;
   line-height: 25px;
-  background: url("../../images/lib/big-btn-white.png") no-repeat left 0px;
+  background: url("../images/lib/big-btn-white.png") no-repeat left 0px;
 }
 /* line 110, btn.less */
 .btn-big .btn-text {
   height: 35px;
   line-height: 35px;
   color: #000;
-  background: url("../../images/lib/big-btn-white.png") no-repeat right 0px;
+  background: url("../images/lib/big-btn-white.png") no-repeat right 0px;
 }
 /* line 115, btn.less */
 .btn-big .btn-text .caret {

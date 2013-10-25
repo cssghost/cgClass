@@ -10,13 +10,13 @@
     .dis-n();
     z-index: 10101;
     .w(auto); min-width: 200px;
-    .bg("popup-tit.png", repeat-x #FFF);
+    .bc(#FFF);
     .bd(#DEDEDE,); .border-radius(3px);
     .box-shadow( rgba(189, 189, 189, 0.4), 0 0 10px);
     & a.popup-close {
         .pos-a(); right: 8px; top: 8px;
         .w(16px); .h(16px);
-        .bg("popup-bg.png", no-repeat 0 0);
+        .bg-tpls("popup-bg.png", no-repeat 0 0);
         .transition(background-position 0.1s linear);
         &:hover {
             .bp(-16px 0);
@@ -51,7 +51,7 @@
     & .popup-btn-text {
         .dis-ib();
         .h(30px);
-        .bg("popup-bg.png", no-repeat);
+        .bg-tpls("popup-bg.png", no-repeat);
         .lh(30px);
         .td-none();
         .fz(12px);
