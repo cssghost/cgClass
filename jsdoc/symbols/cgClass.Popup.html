@@ -537,6 +537,106 @@ dl.data .dd{
                             
                             <!-- events START -->
                             
+                                
+                                
+                                <div class="box events-box">
+                                    <div class="box-hd">
+                                        <h3>Events</h3>
+                                    </div>
+                                    <div class="box-bd">
+                                        <ul class="list summary-list">
+                                            
+                                            <li class="li">
+                                                
+                                                <b class="name"><a href="../symbols/cgClass.Popup.html#event:close">close</a></b>
+                                                <span class="param">(callback)</span>
+                                                
+                                                
+                                                
+                                                <span class="desc">关闭弹出框</span>
+                                            </li>
+                                            
+                                            <li class="li">
+                                                
+                                                <b class="name"><a href="../symbols/cgClass.Popup.html#event:disableBtn">disableBtn</a></b>
+                                                <span class="param">(isReset)</span>
+                                                
+                                                
+                                                
+                                                <span class="desc">改变确定按钮状态</span>
+                                            </li>
+                                            
+                                            <li class="li">
+                                                
+                                                <b class="name"><a href="../symbols/cgClass.Popup.html#event:hide">hide</a></b>
+                                                <span class="param">(callback)</span>
+                                                
+                                                
+                                                
+                                                <span class="desc">隐藏弹出框</span>
+                                            </li>
+                                            
+                                            <li class="li">
+                                                
+                                                <b class="name"><a href="../symbols/cgClass.Popup.html#event:positionCenter">positionCenter</a></b>
+                                                <span class="param">()</span>
+                                                
+                                                
+                                                
+                                                <span class="desc">使弹出框居中</span>
+                                            </li>
+                                            
+                                            <li class="li">
+                                                
+                                                <b class="name"><a href="../symbols/cgClass.Popup.html#event:removeTip">removeTip</a></b>
+                                                <span class="param">()</span>
+                                                
+                                                
+                                                
+                                                <span class="desc">隐藏错误信息</span>
+                                            </li>
+                                            
+                                            <li class="li">
+                                                
+                                                <b class="name"><a href="../symbols/cgClass.Popup.html#event:reset">reset</a></b>
+                                                <span class="param">(newHtml)</span>
+                                                
+                                                
+                                                
+                                                <span class="desc">重置内容区内容</span>
+                                            </li>
+                                            
+                                            <li class="li">
+                                                
+                                                <b class="name"><a href="../symbols/cgClass.Popup.html#event:show">show</a></b>
+                                                <span class="param">(callback)</span>
+                                                
+                                                
+                                                
+                                                <span class="desc">显示弹出框</span>
+                                            </li>
+                                            
+                                            <li class="li">
+                                                
+                                                <b class="name"><a href="../symbols/cgClass.Popup.html#event:showTip">showTip</a></b>
+                                                <span class="param">(str)</span>
+                                                
+                                                
+                                                
+                                                <span class="desc">显示错误信息</span>
+                                            </li>
+                                            
+                                        </ul>
+                                        
+                                        <hr/>
+                                        <ul class="list summary-list">
+                                        
+                                        </ul>
+                                        
+                                    </div>
+                                </div>
+                                
+                            
                             <!-- events END -->
 
                             <!-- constructor details START-->
@@ -736,29 +836,66 @@ dl.data .dd{
                                                 <dt>示例：</dt>
                                                 <dd>
                                                     
-                                                    <pre class='brush: js;'>var newInstance = new cgClass.Create(
-	"className",
+                                                    <pre class='brush: js;'>var oPopup = cgClass.Create(
+	"Popup",
 	{
-		arg : "value",
-		method : function(){}
+		title : "弹出框",
+		popupTemp : null || $('<div class="module-popup fn-clear Js-popup-wrap">'+
+				  	'<a href="javascript:void(0)" class="popup-close Js-popup-close"></a> '+
+				    '<h6 class="fn-clear popup-tit Js-popup-title">' + option.title + '</h6>'+
+				    '<div class="popup-con Js-popup-con"></div>'+
+				    '<div class="popup-btn-wrap Js-popup-btn-wrap">'+
+				    	'<a class="popup-btn Js-popup-done" href="javascript:;;"><span class="popup-btn-text">确认</span></a>'+
+            			'<a class="popup-btn Js-popup-cancel" href="javascript:;;"><span class="popup-btn-text">取消</span></a>'+
+				    '</div>'+
+				'</div>'),
+		template : "<div></div>",
+		addClass : "popupClass",
+		isLayer : true,
+		isCenter : true,
+		isOnly : false,
+		autoShow : true,
+		append : {
+			isAppend : false,
+			dom : $(".dom")
+		},
+		hasBtn : true,
+		hasCancel : true,
+		content : null || function(opt){},
+		done : null || function(opt){},
+		cancel : null || function(opt){}
 	}
-);</pre>
+); 
+oPopup.Events();</pre>
                                                     
                                                     <pre class='brush: js;'>cgClass.Create(
-	"className",
+	"Popup",
 	{
-		arg : "value",
-		method : function(){}
-	}
-);</pre>
-                                                    
-                                                    <pre class='brush: js;'>cgClass.Create(
-	"className",
-	{
-		arg : "value"
-	},
-	function(self){
-		self.doMethods();
+		title : "弹出框",
+		popupTemp : null || $('<div class="module-popup fn-clear Js-popup-wrap">'+
+				  	'<a href="javascript:void(0)" class="popup-close Js-popup-close"></a> '+
+				    '<h6 class="fn-clear popup-tit Js-popup-title">' + option.title + '</h6>'+
+				    '<div class="popup-con Js-popup-con"></div>'+
+				    '<div class="popup-btn-wrap Js-popup-btn-wrap">'+
+				    	'<a class="popup-btn Js-popup-done" href="javascript:;;"><span class="popup-btn-text">确认</span></a>'+
+            			'<a class="popup-btn Js-popup-cancel" href="javascript:;;"><span class="popup-btn-text">取消</span></a>'+
+				    '</div>'+
+				'</div>'),
+		template : "<div></div>",
+		addClass : "popupClass",
+		isLayer : true,
+		isCenter : true,
+		isOnly : false,
+		autoShow : true,
+		append : {
+			isAppend : false,
+			dom : $(".dom")
+		},
+		hasBtn : true,
+		hasCancel : true,
+		content : null || function(opt){},
+		done : null || function(opt){},
+		cancel : null || function(opt){}
 	}
 );</pre>
                                                     
@@ -1156,6 +1293,409 @@ dl.data .dd{
                             <!-- methods detail END -->
 
                             <!-- events detail START -->
+                            
+                            <div class="box">
+                                <div class="box-hd">
+                                    <h3>Events Detail</h3>
+                                </div>
+                                <div class="box-bd">
+                                <ul class="detail-list">
+                                    
+                                    <li>
+                                        <div class="title">
+                                            
+                                            
+                                            <b class="name">close</b>
+                                            <span class="param">(callback)</span>
+                                            
+                                            
+                                            
+                                        </div>
+                                        
+                                        <div class="desc">
+                                            关闭弹出框
+                                            
+                                            
+                                        </div>
+                                        
+                                        <dl>
+                                            
+                                            <dt>参数：</dt>
+                                            <dd>
+                                                <ul class="list param-list">
+                                                
+                                                    <li class="li">
+                                                        &nbsp;
+                                                        <b class="name">callback</b>
+                                                        
+                                                        
+                                                        <span class="type">{Function}</span> 
+                                                        <span class="desc">回调函数</span>
+                                                    </li>
+                                                
+                                                </ul>
+                                            </dd>
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            <dt>
+
+                                            
+                                            
+                                        </dl>
+                                    </li>
+                                    
+                                    <li>
+                                        <div class="title">
+                                            
+                                            
+                                            <b class="name">disableBtn</b>
+                                            <span class="param">(isReset)</span>
+                                            
+                                            
+                                            
+                                        </div>
+                                        
+                                        <div class="desc">
+                                            改变确定按钮状态
+                                            
+                                            
+                                        </div>
+                                        
+                                        <dl>
+                                            
+                                            <dt>参数：</dt>
+                                            <dd>
+                                                <ul class="list param-list">
+                                                
+                                                    <li class="li">
+                                                        &nbsp;
+                                                        <b class="name">isReset</b>
+                                                        
+                                                        
+                                                        <span class="type">{Boolean}</span> 
+                                                        <span class="desc">为true时确定按钮可用，反之不可用</span>
+                                                    </li>
+                                                
+                                                </ul>
+                                            </dd>
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            <dt>
+
+                                            
+                                            
+                                        </dl>
+                                    </li>
+                                    
+                                    <li>
+                                        <div class="title">
+                                            
+                                            
+                                            <b class="name">hide</b>
+                                            <span class="param">(callback)</span>
+                                            
+                                            
+                                            
+                                        </div>
+                                        
+                                        <div class="desc">
+                                            隐藏弹出框
+                                            
+                                            
+                                        </div>
+                                        
+                                        <dl>
+                                            
+                                            <dt>参数：</dt>
+                                            <dd>
+                                                <ul class="list param-list">
+                                                
+                                                    <li class="li">
+                                                        &nbsp;
+                                                        <b class="name">callback</b>
+                                                        
+                                                        
+                                                        <span class="type">{Function}</span> 
+                                                        <span class="desc">回调函数</span>
+                                                    </li>
+                                                
+                                                </ul>
+                                            </dd>
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            <dt>
+
+                                            
+                                            
+                                        </dl>
+                                    </li>
+                                    
+                                    <li>
+                                        <div class="title">
+                                            
+                                            
+                                            <b class="name">positionCenter</b>
+                                            <span class="param">()</span>
+                                            
+                                            
+                                            
+                                        </div>
+                                        
+                                        <div class="desc">
+                                            使弹出框居中
+                                            
+                                            
+                                        </div>
+                                        
+                                        <dl>
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            <dt>
+
+                                            
+                                            
+                                        </dl>
+                                    </li>
+                                    
+                                    <li>
+                                        <div class="title">
+                                            
+                                            
+                                            <b class="name">removeTip</b>
+                                            <span class="param">()</span>
+                                            
+                                            
+                                            
+                                        </div>
+                                        
+                                        <div class="desc">
+                                            隐藏错误信息
+                                            
+                                            
+                                        </div>
+                                        
+                                        <dl>
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            <dt>
+
+                                            
+                                            
+                                        </dl>
+                                    </li>
+                                    
+                                    <li>
+                                        <div class="title">
+                                            
+                                            
+                                            <b class="name">reset</b>
+                                            <span class="param">(newHtml)</span>
+                                            
+                                            
+                                            
+                                        </div>
+                                        
+                                        <div class="desc">
+                                            重置内容区内容
+                                            
+                                            
+                                        </div>
+                                        
+                                        <dl>
+                                            
+                                            <dt>参数：</dt>
+                                            <dd>
+                                                <ul class="list param-list">
+                                                
+                                                    <li class="li">
+                                                        &nbsp;
+                                                        <b class="name">newHtml</b>
+                                                        
+                                                        
+                                                        <span class="type">{html String}</span> 
+                                                        <span class="desc">重置内容区的html，但是事件不会重置</span>
+                                                    </li>
+                                                
+                                                </ul>
+                                            </dd>
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            <dt>
+
+                                            
+                                            
+                                        </dl>
+                                    </li>
+                                    
+                                    <li>
+                                        <div class="title">
+                                            
+                                            
+                                            <b class="name">show</b>
+                                            <span class="param">(callback)</span>
+                                            
+                                            
+                                            
+                                        </div>
+                                        
+                                        <div class="desc">
+                                            显示弹出框
+                                            
+                                            
+                                        </div>
+                                        
+                                        <dl>
+                                            
+                                            <dt>参数：</dt>
+                                            <dd>
+                                                <ul class="list param-list">
+                                                
+                                                    <li class="li">
+                                                        &nbsp;
+                                                        <b class="name">callback</b>
+                                                        
+                                                        
+                                                        <span class="type">{Function}</span> 
+                                                        <span class="desc">回调函数</span>
+                                                    </li>
+                                                
+                                                </ul>
+                                            </dd>
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            <dt>
+
+                                            
+                                            
+                                        </dl>
+                                    </li>
+                                    
+                                    <li>
+                                        <div class="title">
+                                            
+                                            
+                                            <b class="name">showTip</b>
+                                            <span class="param">(str)</span>
+                                            
+                                            
+                                            
+                                        </div>
+                                        
+                                        <div class="desc">
+                                            显示错误信息
+                                            
+                                            
+                                        </div>
+                                        
+                                        <dl>
+                                            
+                                            <dt>参数：</dt>
+                                            <dd>
+                                                <ul class="list param-list">
+                                                
+                                                    <li class="li">
+                                                        &nbsp;
+                                                        <b class="name">str</b>
+                                                        
+                                                        
+                                                        <span class="type">{String}</span> 
+                                                        <span class="desc">错误信息的字符串</span>
+                                                    </li>
+                                                
+                                                </ul>
+                                            </dd>
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            <dt>
+
+                                            
+                                            
+                                        </dl>
+                                    </li>
+                                    
+                                </ul>
+                                </div>
+                            </div>
                             
                             <!-- events detail START -->
 

@@ -24,27 +24,65 @@
  * @param {Function} options.content 内容区的附加函数
  * @param {Function} options.done 确定按钮的附加函数
  * @param {Function} options.cancel 取消按钮的附加函数
- * @example var newInstance = new cgClass.Create(
-	"className",
+ * @example var oPopup = cgClass.Create(
+	"Popup",
 	{
-		arg : "value",
-		method : function(){}
+		title : "弹出框",
+		popupTemp : null || $('<div class="module-popup fn-clear Js-popup-wrap">'+
+				  	'<a href="javascript:void(0)" class="popup-close Js-popup-close"></a> '+
+				    '<h6 class="fn-clear popup-tit Js-popup-title">' + option.title + '</h6>'+
+				    '<div class="popup-con Js-popup-con"></div>'+
+				    '<div class="popup-btn-wrap Js-popup-btn-wrap">'+
+				    	'<a class="popup-btn Js-popup-done" href="javascript:;;"><span class="popup-btn-text">确认</span></a>'+
+            			'<a class="popup-btn Js-popup-cancel" href="javascript:;;"><span class="popup-btn-text">取消</span></a>'+
+				    '</div>'+
+				'</div>'),
+		template : "<div></div>",
+		addClass : "popupClass",
+		isLayer : true,
+		isCenter : true,
+		isOnly : false,
+		autoShow : true,
+		append : {
+			isAppend : false,
+			dom : $(".dom")
+		},
+		hasBtn : true,
+		hasCancel : true,
+		content : null || function(opt){},
+		done : null || function(opt){},
+		cancel : null || function(opt){}
 	}
 ); 
+oPopup.Events();
  * @example cgClass.Create(
-	"className",
+	"Popup",
 	{
-		arg : "value",
-		method : function(){}
-	}
-); 
- * @example cgClass.Create(
-	"className",
-	{
-		arg : "value"
-	},
-	function(self){
-		self.doMethods();
+		title : "弹出框",
+		popupTemp : null || $('<div class="module-popup fn-clear Js-popup-wrap">'+
+				  	'<a href="javascript:void(0)" class="popup-close Js-popup-close"></a> '+
+				    '<h6 class="fn-clear popup-tit Js-popup-title">' + option.title + '</h6>'+
+				    '<div class="popup-con Js-popup-con"></div>'+
+				    '<div class="popup-btn-wrap Js-popup-btn-wrap">'+
+				    	'<a class="popup-btn Js-popup-done" href="javascript:;;"><span class="popup-btn-text">确认</span></a>'+
+            			'<a class="popup-btn Js-popup-cancel" href="javascript:;;"><span class="popup-btn-text">取消</span></a>'+
+				    '</div>'+
+				'</div>'),
+		template : "<div></div>",
+		addClass : "popupClass",
+		isLayer : true,
+		isCenter : true,
+		isOnly : false,
+		autoShow : true,
+		append : {
+			isAppend : false,
+			dom : $(".dom")
+		},
+		hasBtn : true,
+		hasCancel : true,
+		content : null || function(opt){},
+		done : null || function(opt){},
+		cancel : null || function(opt){}
 	}
 ); 
  */
@@ -259,7 +297,7 @@ cgClass.AddClass(
 		    }
 		},
 		/**
-		 * @name cgClass.popup#positionCenter
+		 * @name cgClass.Popup#positionCenter
 		 * @desc  使弹出框居中
 		 * @event
 		 */
@@ -275,7 +313,7 @@ cgClass.AddClass(
         	});
 		},
 		/**
-		 * @name cgClass.popup#show
+		 * @name cgClass.Popup#show
 		 * @desc  显示弹出框
 		 * @event
 		 * @param {Function} callback 回调函数
@@ -295,7 +333,7 @@ cgClass.AddClass(
 			}
 		},
 		/**
-		 * @name cgClass.popup#hide
+		 * @name cgClass.Popup#hide
 		 * @desc  隐藏弹出框
 		 * @event
 		 * @param {Function} callback 回调函数
@@ -315,7 +353,7 @@ cgClass.AddClass(
 			}
 		},
 		/**
-		 * @name cgClass.popup#close
+		 * @name cgClass.Popup#close
 		 * @desc  关闭弹出框
 		 * @event
 		 * @param {Function} callback 回调函数
@@ -337,7 +375,7 @@ cgClass.AddClass(
 			}
 		},
 		/**
-		 * @name cgClass.popup#showTip
+		 * @name cgClass.Popup#showTip
 		 * @desc  显示错误信息
 		 * @event
 		 * @param {String} str 错误信息的字符串
@@ -348,7 +386,7 @@ cgClass.AddClass(
 		    self.error.html(str);
 		},
 		/**
-		 * @name cgClass.popup#removeTip
+		 * @name cgClass.Popup#removeTip
 		 * @desc  隐藏错误信息
 		 * @event
 		 */
@@ -356,16 +394,21 @@ cgClass.AddClass(
 			this.error.hide();
 		},
 		/**
-		 * @name cgClass.popup#reset
+		 * @name cgClass.Popup#reset
 		 * @desc  重置内容区内容
 		 * @event
+		 * @param {html String} newHtml 重置内容区的html，但是事件不会重置
 		 */
-		reset : function(){
+		reset : function(newHtml){
 			var self = this;
-			self.con.html(self.template);
+			if ( !!newHtml ) {
+				self.con.html(newHtml);
+			} else{
+				self.con.html(self.template);
+			}
 		},
 		/**
-		 * @name cgClass.popup#disableBtn
+		 * @name cgClass.Popup#disableBtn
 		 * @desc  改变确定按钮状态
 		 * @event
 		 * @param {Boolean} isReset 为true时确定按钮可用，反之不可用
