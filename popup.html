@@ -22,7 +22,6 @@ var vv = cgClass.Create(
 	"Popup",
 	{
 		title : "test popup01",
-		template : "template",
 		content : function (opt) {
 			opt.showTip("test error test error test error test error test error test error test error test error test error test error test error test error");
 			// console.log(opt.close);
@@ -32,16 +31,17 @@ var vv = cgClass.Create(
 		}
 	}
 );
-$(".tt").on('click', function() {
-	vv.hide(function(opt){
-		console.log(opt);
-	});
-});
-$(".hh").on('click', function() {
-	vv.show(function(opt){
-		console.log(opt);
-	});
-});
+// console.log(vv.init());
+// $(".tt").on('click', function() {
+// 	vv.hide(function(opt){
+// 		console.log(opt);
+// 	});
+// });
+// $(".hh").on('click', function() {
+// 	vv.show(function(opt){
+// 		console.log(opt);
+// 	});
+// });
 // cgClass.Ajax({
 // 	url : "api/area.txt",
 // 	dataType : "textJson",

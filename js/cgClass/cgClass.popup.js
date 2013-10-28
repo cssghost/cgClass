@@ -281,10 +281,9 @@ cgClass.AddClass(
 		    	return false;
 		    // bind btn cancel method
 		    }).on("click", ".Js-popup-cancel", function() {
+                self.close();
 		    	if ( typeof(option.cancel) == "function" ) {
                     option.cancel(self.outParam);
-                }else{
-                	self.close();
                 }
 		    });
 
