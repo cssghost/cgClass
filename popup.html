@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<title>cgClass popup</title>
 	<link href="css/base.css" rel="stylesheet" type="text/css">
-	<link href="css/common.css" rel="stylesheet" type="text/css">
+	<link href="css/layout.css" rel="stylesheet" type="text/css">
 	<link href="css/popup.css" rel="stylesheet" type="text/css">
 
 	<script src="js/modernizr.js"></script>
@@ -15,52 +15,52 @@
 	<script src="js/cgClass/cgClass.test.js"></script>
 </head>
 <body>
-	<div class="tt">tt</div>
-	<div class="hh">123</div>
+	<ul class="layout-nav">
+		<li><a href="javascript:void(0)" class="Js-show-type-popup">[default] type:popup</a></li>
+		<li><a href="javascript:void(0)" class="Js-show-type-confirm">type:confirm</a></li>
+		<li><a href="javascript:void(0)" class="Js-show-type-result">type:result</a></li>
+	</ul>
 <script>
-var vv = cgClass.Create(
-	"Popup",
-	{
-		title : "test popup01",
-		content : function (opt) {
-			opt.showTip("test error test error test error test error test error test error test error test error test error test error test error test error");
-			// console.log(opt.close);
-		},
-		done : function(opt){
-			// opt.close();
-		}
-	}
-);
-// console.log(vv.init());
-// $(".tt").on('click', function() {
-// 	vv.hide(function(opt){
-// 		console.log(opt);
-// 	});
-// });
-// $(".hh").on('click', function() {
-// 	vv.show(function(opt){
-// 		console.log(opt);
-// 	});
-// });
-// cgClass.Ajax({
-// 	url : "api/area.txt",
-// 	dataType : "textJson",
-// 	queue : "test",
-// 	success : function(result){
-// 		console.log(0);
-// 	}
-// });
-// cgClass.Ajax({
-// 	url : "api/area.txt",
-// 	dataType : "textJson",
-// 	queue : "test",
-// 	success : function(result){
-// 		console.log(1);
-// 	}
-// });
-// cgClass.ajaxQueueCallback.test = function(){
-// 	console.log("fuck");
-// };
+
+$(function() {
+	// type:popup
+	$(".Js-show-type-popup").on("click", function(){
+		cgClass.Create(
+			"Popup",
+			{
+				title : "test popup01",
+				content : function (opt) {
+				},
+				done : function(opt){
+				}
+			}
+		);
+	});
+	// type:confirm
+	$(".Js-show-type-confirm").on("click", function(){
+		cgClass.Create(
+			"Popup",
+			{
+				title: "confirm",
+				type: "confirm",
+				message : "测试弹出框"
+			}
+		);
+	});
+	// type:result
+	$(".Js-show-type-result").on("click", function(){
+		cgClass.Create(
+			"Popup",
+			{
+				title : "test popup01",
+				content : function (opt) {
+				},
+				done : function(opt){
+				}
+			}
+		);
+	});
+});
 </script>
 </body>
 </html>

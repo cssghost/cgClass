@@ -8,9 +8,11 @@
  * @extends jQuery
  * @since version 0.1 
  * @param {Object} options 参数对象数据
+ * @param {String} options.type 弹出框的种类
  * @param {String} options.title 弹出框的标题
  * @param {jQuery Object} options.popupTemp 弹出框html的jQuery对象
  * @param {html} options.template 内容区的html代码片段
+ * @param {String} options.message type为confirm时显示的消息提示文本
  * @param {css class} options.addClass 附加弹出框样式
  * @param {Boolean} options.isLayer 是否需要遮罩层
  * @param {Boolean} options.isCenter 是否居中
@@ -28,6 +30,7 @@
  * @example var oPopup = cgClass.Create(
 	"Popup",
 	{
+		type : "popup",
 		title : "弹出框",
 		popupTemp : null || $('<div class="module-popup fn-clear Js-popup-wrap">'+
 				  	'<a href="javascript:void(0)" class="popup-close Js-popup-close"></a> '+
@@ -60,6 +63,7 @@ oPopup.Events();
  * @example cgClass.Create(
 	"Popup",
 	{
+		type : "popup",
 		title : "弹出框",
 		popupTemp : null || $('<div class="module-popup fn-clear Js-popup-wrap">'+
 				  	'<a href="javascript:void(0)" class="popup-close Js-popup-close"></a> '+
@@ -97,11 +101,17 @@ cgClass.AddClass(
 				$layer, $popup, $close, $title, $con, $error, $btnWrap, $done, $cancel,
 				option = $.extend(/** @lends cgClass.Popup.prototype*/{
 					/**
+			         * 弹出框的种类
+			         * @type String
+			         * @default "popup"
+			         */
+			        type : "popup",
+					/**
 			         * 弹出框的标题
 			         * @type String
-			         * @default "提示"
+			         * @default ""
 			         */
-					title: "提示",
+					title: "",
 					/**
 			         * 弹出框html的jQuery对象
 			         * @type jQuery Dom
@@ -114,6 +124,12 @@ cgClass.AddClass(
 			         * @default ""
 			         */
 			        template : "",
+			        /**
+			         * type为confirm时显示的消息提示文本
+			         * @type str
+			         * @default ""
+			         */
+			        message : "",
 			        /**
 			         * 附加弹出框样式
 			         * @type css class
@@ -193,9 +209,9 @@ cgClass.AddClass(
 			         */
 			        cancel :null
 				}, options);
-			if ( option.template == "" ) {
-		        return false;
-		    }
+			// if ( option.template == "" ) {
+		 //        return false;
+		 //    }
 		    self.option = option;
 
 		    self.popup = $popup = option.popupTemp || $('<div class="module-popup fn-clear Js-popup-wrap">'+
@@ -210,30 +226,52 @@ cgClass.AddClass(
 
 		    self.error = $error = $('<ul class="popup-tips"></ul>');
 
-		    if ( option.isLayer ) {
-		        self.layer = $layer = $("<div class='module-popup-layer'></div>");
-		        $("body").append($layer);
-		    }
-		    if ( option.isOnly ) {
-		        $(".module-popup-layer").remove();
-		        $(".Js-popup-wrap").remove();
-		    }
-		    if ( option.append.isAppend ) {
-		        option.append.dom.append( $popup );
-		    } else{
-		        $("body").append( $popup );
-		    }
-		    // add new class
-		    if ( option.addClass ) {
-		        $popup.addClass(option.addClass);
-		    }
 		    self.template = option.template;
-	        self.title = $close = $popup.find(".Js-popup-title");
+	        self.title = $title = $popup.find(".Js-popup-title");
 	        self.btnClose = $close = $popup.find(".Js-popup-close");
 	        self.con = $con = $popup.find(".Js-popup-con");
 		    self.btnWrap = $btnWrap = $popup.find(".Js-popup-btn-wrap");
 	        self.btnDone = $done = $btnWrap.find(".Js-popup-done");
 	        self.btnCancel = $cancel = $btnWrap.find(".Js-popup-cancel");
+
+	        // 派生多种类型
+	        switch(option.type){
+	        	case "popup":
+	        	break;
+	        	case "confirm":
+	        		self.template = '<p class="confirm-msg Js-popup-msg">' + option.message + '</p>';
+	        	break;
+	        	case "result":
+	        	break;
+	        	default:
+	        	break;
+	        }
+
+		    if ( !option.title ) {
+		    	$title.hide();
+		    }
+
+		    if ( option.isLayer ) {
+		        self.layer = $layer = $("<div class='module-popup-layer'></div>");
+		        $("body").append($layer);
+		    }
+
+		    if ( option.isOnly ) {
+		        $(".module-popup-layer").remove();
+		        $(".Js-popup-wrap").remove();
+		    }
+
+		    if ( option.append.isAppend ) {
+		        option.append.dom.append( $popup );
+		    } else{
+		        $("body").append( $popup );
+		    }
+
+		    // add new class
+		    if ( option.addClass ) {
+		        $popup.addClass(option.addClass);
+		    }
+
 		    // out param
 		    self.outParam = self.applyMethods(self, {
 				oPopup : $popup,
@@ -251,7 +289,7 @@ cgClass.AddClass(
 			});
 
 		    // append content template
-		    $con.append(option.template);
+		    $con.append(self.template);
 
 		    // bind popup init function
 		    if ( typeof(option.content) == "function" ) {
@@ -259,32 +297,30 @@ cgClass.AddClass(
 		    }
 		    // bind btn close method
 		    $popup.on("click", ".Js-popup-close", function() {
-		    	if ( option.hasBtn ) {
-		    		if ( option.hasCancel && typeof(option.cancel) == "function" ) {
-		                option.cancel(self.outParam);
-		    		} else{
-		    			self.close();
-		    		}
+		    	if ( option.hasCancel && typeof(option.cancel) == "function" ) {
+		    		option.cancel(self.outParam);
 		    	} else{
 		    		if ( typeof(option.done) == "function" ) {
 		                option.done(self.outParam);
-		            } else{
-		    			self.close();
-		    		}
+		            }
 		    	}
+		    	self.close();
 		    // bind btn done method
 		    }).on("click", ".Js-popup-done", function() {
 		    	if ( option.hasBtn && !$(this).hasClass("popup-btn-disabled") && typeof(option.done) == "function" ) {
 		    		self.disableBtn();
 		            option.done(self.outParam);
 		    	}
+		    	if ( typeof(option.done) != "function" ) {
+		            self.close();
+		    	}
 		    	return false;
 		    // bind btn cancel method
 		    }).on("click", ".Js-popup-cancel", function() {
-                self.close();
 		    	if ( typeof(option.cancel) == "function" ) {
                     option.cancel(self.outParam);
                 }
+                self.close();
 		    });
 
 		    // bind drag and drop
