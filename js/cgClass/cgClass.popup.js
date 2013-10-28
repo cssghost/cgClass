@@ -288,6 +288,12 @@ cgClass.AddClass(
                 }
 		    });
 
+		    // bind drag and drop
+		    if ( option.isDrag ) {
+		    	self.bindDrag();
+		    }
+
+		    // change button
 		    if ( option.hasBtn ) {
 		        if ( !option.hasCancel ) {
 		            $cancel.remove();
@@ -302,6 +308,8 @@ cgClass.AddClass(
 		            self.positionCenter();
 		        });
 		    }
+
+		    // change auto show
 		    if ( option.autoShow ) {
 		    	self.show();
 		    }
@@ -313,39 +321,31 @@ cgClass.AddClass(
 		 */
 		bindDrag : function(){
 			var self = this,
-				width = self.popup.width(),
-                height = self.popup.height();
+				_drag = {};
             // bind drag
-		    if ( self.option.isDrag ) {
-		        self.title.css("cursor", "move");
-		        var _drag = {},
-		            objWidhtHalf = $popup.width() / 2,
-		            objHeightHalf = $popup.height() / 2;
-		        self.title.on("mousedown", function(event){
-		            event.preventDefault();
-		            var _position = $popup.position();
-		            _drag.posLeft = _position.left;
-		            _drag.posTop = _position.top;
-		            _drag.dl = event.pageX;
-		            _drag.dt = event.pageY;
-		            $(document).on("mousemove", function(e){
-		                e.preventDefault();
-		                _drag.ml = e.pageX;
-		                _drag.mt = e.pageY;
-		                _drag.ol = _drag.posLeft + _drag.ml - _drag.dl;
-		                _drag.ot = _drag.posTop + _drag.mt - _drag.dt;
-		                // _drag.ol = _drag.ol - objWidhtHalf >= 0 ? ( _drag.ol ) : objWidhtHalf;
-		                // _drag.ot = _drag.ot - objHeightHalf >= 0 ? _drag.ot : objHeightHalf;
-		                $popup.css({
-		                    left : _drag.ol + "px",
-		                    top : _drag.ot + "px"
-		                });
-		            });
-		            $(document).one("mouseup", function(){
-		                $(document).off("mousemove");
-		            });
-		        });
-		    }
+	        self.title.css("cursor", "move");
+	        self.popup.on("mousedown", ".Js-popup-title", function(event) {
+	            event.preventDefault();
+	            var _position = self.popup.position();
+	            _drag.posLeft = _position.left;
+	            _drag.posTop = _position.top;
+	            _drag.dl = event.pageX;
+	            _drag.dt = event.pageY;
+	            $(document).on("mousemove", function(e){
+	                e.preventDefault();
+	                _drag.ml = e.pageX;
+	                _drag.mt = e.pageY;
+	                _drag.ol = _drag.posLeft + _drag.ml - _drag.dl;
+	                _drag.ot = _drag.posTop + _drag.mt - _drag.dt;
+	                self.popup.css({
+	                    left : _drag.ol + "px",
+	                    top : _drag.ot + "px"
+	                });
+	            });
+	            $(document).one("mouseup", function(){
+	                $(document).off("mousemove");
+	            });
+	        });
 		},
 		/**
 		 * @name cgClass.Popup#positionCenter
