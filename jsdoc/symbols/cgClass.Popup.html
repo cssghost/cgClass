@@ -957,12 +957,12 @@ dl.data .dd{
                                                 <dt>示例：</dt>
                                                 <dd>
                                                     
-                                                    <pre class='brush: js;'>var oPopup = cgClass.Create(
+                                                    <pre class='brush: js;'>cgClass.Create(
 	"Popup",
 	{
 		type : "popup",
-		title : "弹出框",
-		popupTemp : null || $('<div class="module-popup fn-clear Js-popup-wrap">'+
+  [可选]title : "弹出框",
+  [可选]popupTemp : null || $('<div class="module-popup fn-clear Js-popup-wrap">'+
 				  	'<a href="javascript:void(0)" class="popup-close Js-popup-close"></a> '+
 				    '<h6 class="fn-clear popup-tit Js-popup-title">' + option.title + '</h6>'+
 				    '<div class="popup-con Js-popup-con"></div>'+
@@ -972,21 +972,21 @@ dl.data .dd{
 				    '</div>'+
 				'</div>'),
 		template : "<div></div>",
-		addClass : "popupClass",
-		isLayer : true,
-		isCenter : true,
-		isDrag : true,
-		isOnly : false,
-		autoShow : true,
-		append : {
+  [可选]addClass : "popupClass",
+  [可选]isLayer : true,
+  [可选]isCenter : true,
+  [可选]isDrag : true,
+  [可选]isOnly : false,
+  [可选]autoShow : true,
+  [可选]append : {
 			isAppend : false,
 			dom : $(".dom")
 		},
-		hasBtn : true,
-		hasCancel : true,
-		content : null || function(opt){},
-		done : null || function(opt){},
-		cancel : null || function(opt){}
+  [可选]hasBtn : true,
+  [可选]hasCancel : true,
+  [可选]content : null || function(opt){},
+  [可选]done : null || function(opt){},
+  [可选]cancel : null || function(opt){}
 	}
 ); 
 oPopup.Events();</pre>
@@ -994,33 +994,26 @@ oPopup.Events();</pre>
                                                     <pre class='brush: js;'>cgClass.Create(
 	"Popup",
 	{
-		type : "popup",
-		title : "弹出框",
-		popupTemp : null || $('<div class="module-popup fn-clear Js-popup-wrap">'+
-				  	'<a href="javascript:void(0)" class="popup-close Js-popup-close"></a> '+
-				    '<h6 class="fn-clear popup-tit Js-popup-title">' + option.title + '</h6>'+
-				    '<div class="popup-con Js-popup-con"></div>'+
-				    '<div class="popup-btn-wrap Js-popup-btn-wrap">'+
-				    	'<a class="popup-btn Js-popup-done" href="javascript:;;"><span class="popup-btn-text">确认</span></a>'+
-            			'<a class="popup-btn Js-popup-cancel" href="javascript:;;"><span class="popup-btn-text">取消</span></a>'+
-				    '</div>'+
-				'</div>'),
-		template : "<div></div>",
-		addClass : "popupClass",
-		isLayer : true,
-		isCenter : true,
-		isDrag : true,
-		isOnly : false,
-		autoShow : true,
-		append : {
-			isAppend : false,
-			dom : $(".dom")
-		},
-		hasBtn : true,
-		hasCancel : true,
-		content : null || function(opt){},
-		done : null || function(opt){},
-		cancel : null || function(opt){}
+		type: "confirm",
+  [可选]title: "提示",
+  [可选]doneText : "确定按钮",
+  [可选]cancelText : "确定按钮",
+		message : "测试弹出框",
+  [可选]done : function(opt){},
+  [可选]cancel : function(opt){}
+	}
+);</pre>
+                                                    
+                                                    <pre class='brush: js;'>cgClass.Create(
+	"Popup",
+	{
+		type: "result",
+  [可选]title: "提示",
+  [可选]doneText : "确定按钮",
+		message : "测试弹出框",
+  [可选]time : 2000,
+  [可选]content : function(opt){},
+  [可选]done : function(opt){}
 	}
 );</pre>
                                                     

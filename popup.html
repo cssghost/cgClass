@@ -41,9 +41,9 @@ $(function() {
 		cgClass.Create(
 			"Popup",
 			{
+				type: "confirm",
 				title: "confirm",
 				doneText : "确定按钮",
-				type: "confirm",
 				message : "测试弹出框",
 				done : function(opt){
 					console.log(opt);
@@ -56,8 +56,9 @@ $(function() {
 		cgClass.Create(
 			"Popup",
 			{
-				title: "result",
 				type: "result",
+				title: "result",
+				doneText : "确定按钮",
 				message : "测试弹出框",
 				time : 3000
 			}
