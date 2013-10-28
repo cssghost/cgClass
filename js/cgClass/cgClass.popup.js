@@ -14,6 +14,7 @@
  * @param {css class} options.addClass 附加弹出框样式
  * @param {Boolean} options.isLayer 是否需要遮罩层
  * @param {Boolean} options.isCenter 是否居中
+ * @param {Boolean} options.isDrag 是否可拖拽
  * @param {Boolean} options.isOnly 是否为唯一
  * @param {Boolean} options.autoShow 是否在初始化时自动显示弹出框
  * @param {Object} options.append 是否在目标对象中加载
@@ -41,6 +42,7 @@
 		addClass : "popupClass",
 		isLayer : true,
 		isCenter : true,
+		isDrag : true,
 		isOnly : false,
 		autoShow : true,
 		append : {
@@ -72,6 +74,7 @@ oPopup.Events();
 		addClass : "popupClass",
 		isLayer : true,
 		isCenter : true,
+		isDrag : true,
 		isOnly : false,
 		autoShow : true,
 		append : {
@@ -91,7 +94,7 @@ cgClass.AddClass(
 	{
 		init : function (options) {
 			var self = this,
-				$layer, $popup, $close, $con, $error, $btnWrap, $done, $cancel,
+				$layer, $popup, $close, $title, $con, $error, $btnWrap, $done, $cancel,
 				option = $.extend(/** @lends cgClass.Popup.prototype*/{
 					/**
 			         * 弹出框的标题
@@ -129,6 +132,12 @@ cgClass.AddClass(
 			         * @default true
 			         */
 			        isCenter : true,
+			        /**
+			         * 是否唯一
+			         * @type Boolean
+			         * @default true
+			         */
+			        isDrag : true,
 			        /**
 			         * 是否唯一
 			         * @type Boolean
@@ -219,11 +228,12 @@ cgClass.AddClass(
 		        $popup.addClass(option.addClass);
 		    }
 		    self.template = option.template;
+	        self.title = $close = $popup.find(".Js-popup-title");
+	        self.btnClose = $close = $popup.find(".Js-popup-close");
+	        self.con = $con = $popup.find(".Js-popup-con");
 		    self.btnWrap = $btnWrap = $popup.find(".Js-popup-btn-wrap");
 	        self.btnDone = $done = $btnWrap.find(".Js-popup-done");
 	        self.btnCancel = $cancel = $btnWrap.find(".Js-popup-cancel");
-	        self.btnClose = $close = $popup.find(".Js-popup-close");
-	        self.con = $con = $popup.find(".Js-popup-con");
 		    // out param
 		    self.outParam = self.applyMethods(self, {
 				oPopup : $popup,
@@ -294,6 +304,47 @@ cgClass.AddClass(
 		    }
 		    if ( option.autoShow ) {
 		    	self.show();
+		    }
+		},
+		/**
+		 * @name cgClass.Popup#bindDrag
+		 * @desc  绑定拖拽事件
+		 * @event
+		 */
+		bindDrag : function(){
+			var self = this,
+				width = self.popup.width(),
+                height = self.popup.height();
+            // bind drag
+		    if ( self.option.isDrag ) {
+		        self.title.css("cursor", "move");
+		        var _drag = {},
+		            objWidhtHalf = $popup.width() / 2,
+		            objHeightHalf = $popup.height() / 2;
+		        self.title.on("mousedown", function(event){
+		            event.preventDefault();
+		            var _position = $popup.position();
+		            _drag.posLeft = _position.left;
+		            _drag.posTop = _position.top;
+		            _drag.dl = event.pageX;
+		            _drag.dt = event.pageY;
+		            $(document).on("mousemove", function(e){
+		                e.preventDefault();
+		                _drag.ml = e.pageX;
+		                _drag.mt = e.pageY;
+		                _drag.ol = _drag.posLeft + _drag.ml - _drag.dl;
+		                _drag.ot = _drag.posTop + _drag.mt - _drag.dt;
+		                // _drag.ol = _drag.ol - objWidhtHalf >= 0 ? ( _drag.ol ) : objWidhtHalf;
+		                // _drag.ot = _drag.ot - objHeightHalf >= 0 ? _drag.ot : objHeightHalf;
+		                $popup.css({
+		                    left : _drag.ol + "px",
+		                    top : _drag.ot + "px"
+		                });
+		            });
+		            $(document).one("mouseup", function(){
+		                $(document).off("mousemove");
+		            });
+		        });
 		    }
 		},
 		/**
