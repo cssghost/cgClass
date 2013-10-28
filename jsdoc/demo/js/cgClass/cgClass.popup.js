@@ -1,7 +1,7 @@
 /**
  * @author 徐晨 
  * @name cgClass.Popup
- * @class 弹出框 <a href="../demo/popup.html" target="_blank">demo</a>
+ * @class 弹出框 <a href="../popup.htm" target="_blank">demo</a>
  * @constructor
  * @extends cgClass
  * @extends Modernizr
