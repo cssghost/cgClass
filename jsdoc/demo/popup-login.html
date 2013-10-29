@@ -7,12 +7,14 @@
 	<link href="css/base.css" rel="stylesheet" type="text/css">
 	<link href="css/layout.css" rel="stylesheet" type="text/css">
 	<link href="css/popup.css" rel="stylesheet" type="text/css">
+	<link href="css/popup-login.css" rel="stylesheet" type="text/css">
 
 	<script src="js/modernizr.js"></script>
 	<script src="js/jquery-1.8.2.js"></script>
 	<script src="js/jquery.plugin.js"></script>
 	<script src="js/cgClass/cgClass.js"></script>
 	<script src="js/cgClass/cgClass.popup.js"></script>
+	<script src="js/cgClass/module-popup-login.js"></script>
 	/dev -->
 
 	 
@@ -29,53 +31,26 @@
 </head>
 <body>
 	<ul class="layout-nav">
-		<li><a href="javascript:void(0)" class="Js-show-type-popup">[default] type:popup</a></li>
-		<li><a href="javascript:void(0)" class="Js-show-type-confirm">type:confirm</a></li>
-		<li><a href="javascript:void(0)" class="Js-show-type-result">type:result</a></li>
+		<li><a href="javascript:void(0)" class="Js-show-type-popup">[default]</a></li>
 	</ul>
 <script>
-
 $(function() {
 	// type:popup
-	$(".Js-show-type-popup").on("click", function(){
-		cgClass.Create(
-			"Popup",
+	var oLogin = cgClass.Create(
+			"ModulePopupLogin",
 			{
-				title : "test popup01",
-				content : function (opt) {
-				},
-				done : function(opt){
-				}
-			}
-		);
-	});
-	// type:confirm
-	$(".Js-show-type-confirm").on("click", function(){
-		cgClass.Create(
-			"Popup",
-			{
-				type: "confirm",
-				title: "confirm",
-				doneText : "确定按钮",
-				message : "测试弹出框",
-				done : function(opt){
+				url : "api/area.txt",
+				dataType : "text",
+				autoShow : false,
+				callback : function(result, opt){
+					console.log(result);
 					console.log(opt);
+					opt.showTip("明户名或者密码错误");
 				}
 			}
 		);
-	});
-	// type:result
-	$(".Js-show-type-result").on("click", function(){
-		cgClass.Create(
-			"Popup",
-			{
-				type: "result",
-				title: "result",
-				doneText : "确定按钮",
-				message : "测试弹出框",
-				time : 3000
-			}
-		);
+	$(".Js-show-type-popup").on("click", function(){
+		oLogin.show();
 	});
 });
 </script>

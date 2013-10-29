@@ -9,6 +9,7 @@
  * @since version 0.1 
  * @param {Object} options 参数对象数据
  * @param {String} options.type 弹出框的种类
+ * @param {Object} options.param 附加参数
  * @param {String} options.title 弹出框的标题
  * @param {jQuery Object} options.popupTemp 弹出框html的jQuery对象
  * @param {html} options.template 内容区的html代码片段
@@ -31,6 +32,7 @@
 	"Popup",
 	{
 		type : "popup",
+  [可选]param : {},
   [可选]title : "弹出框",
   [可选]popupTemp : null || $('<div class="module-popup fn-clear Js-popup-wrap">'+
 				  	'<a href="javascript:void(0)" class="popup-close Js-popup-close"></a> '+
@@ -64,6 +66,7 @@ oPopup.Events();
 	"Popup",
 	{
 		type: "confirm",
+  [可选]param : {},
   [可选]title: "提示",
   [可选]doneText : "确定按钮",
   [可选]cancelText : "确定按钮",
@@ -76,6 +79,7 @@ oPopup.Events();
 	"Popup",
 	{
 		type: "result",
+  [可选]param : {},
   [可选]title: "提示",
   [可选]doneText : "确定按钮",
 		message : "测试弹出框",
@@ -98,6 +102,12 @@ cgClass.AddClass(
 			         * @default "popup"
 			         */
 			        type : "popup",
+			        /**
+			         * 附加参数
+			         * @type Object
+			         * @default {}
+			         */
+			        param : {},
 					/**
 			         * 弹出框的标题
 			         * @type String
@@ -233,12 +243,12 @@ cgClass.AddClass(
 				    '<h6 class="fn-clear popup-tit Js-popup-title">' + option.title + '</h6>'+
 				    '<div class="popup-con Js-popup-con"></div>'+
 				    '<div class="popup-btn-wrap Js-popup-btn-wrap">'+
-				    	'<a class="popup-btn Js-popup-done" href="javascript:;;"><span class="popup-btn-text">' + option.doneText + '</span></a>'+
-            			'<a class="popup-btn Js-popup-cancel" href="javascript:;;"><span class="popup-btn-text">' + option.cancelText + '</span></a>'+
+				    	'<a class="popup-btn done Js-popup-done" href="javascript:;;"><span class="popup-btn-text">' + option.doneText + '</span></a>'+
+            			'<a class="popup-btn cancel Js-popup-cancel" href="javascript:;;"><span class="popup-btn-text">' + option.cancelText + '</span></a>'+
 				    '</div>'+
 				'</div>');
 
-		    self.error = $error = $('<ul class="popup-tips"></ul>');
+		    self.error = $error = $('<p class="confirm-msg"></p>');
 
 		    self.template = option.template;
 	        self.title = $title = $popup.find(".Js-popup-title");
@@ -250,7 +260,9 @@ cgClass.AddClass(
 
 	        // out param
 		    self.outParam = self.applyMethods(self, {
+		    	param : option.param,
 				oPopup : $popup,
+				oCon : $con,
 		        oBtnWrap : $btnWrap,
 		        oBtnDone : $done,
 		        oBtnCancel : $cancel,
@@ -261,7 +273,8 @@ cgClass.AddClass(
 				close : self.close,
 				reset : self.reset,
 				showTip : self.showTip,
-				removeTip : self.removeTip
+				removeTip : self.removeTip,
+				disableBtn : self.disableBtn
 			});
 
 	        // 派生多种类型
@@ -273,7 +286,7 @@ cgClass.AddClass(
 	        			return false;
 	        		}
 	        		option.title = option.title || "提示";
-	        		self.template = '<p class="confirm-msg Js-popup-msg">' + option.message + '</p>';
+	        		self.template = '<p class="confirm-msg">' + option.message + '</p>';
 	        		if ( boolDone ) {
 		        		option.done = function(){
 		        			targetDone(self.outParam);
@@ -287,12 +300,12 @@ cgClass.AddClass(
 	        		}
 	        		option.title = option.title || "提示";
 	        		if ( typeof option.message == "string" ) {
-	        			self.template = '<p class="confirm-msg Js-popup-msg">' + option.message + '</p>';
+	        			self.template = '<p class="confirm-msg">' + option.message + '</p>';
 	        		}
 	        		if ( option.message.constructor == Array && option.message.length ) {
 	        			var _str = "";
 	        			for( var i = 0; i < option.message.length; i++ ){
-		                    _str += '<p class="confirm-error-msg Js-popup-msg">' + option.message[i] + '</p>';
+		                    _str += '<p class="confirm-error-msg">' + option.message[i] + '</p>';
 		                }
 	        			self.template = _str;
 	        		}
@@ -349,11 +362,11 @@ cgClass.AddClass(
 		    	if ( option.hasCancel && boolCancel ) {
 		    		option.cancel(self.outParam);
 		    	} else{
-		    		if ( boolDone ) {
+		    		if ( !option.hasCancel && boolDone ) {
 		                option.done(self.outParam);
 		            }
+		    		self.close();
 		    	}
-		    	self.close();
 		    // bind btn done method
 		    }).on("click", ".Js-popup-done", function() {
 		    	if ( option.hasBtn && !$(this).hasClass("popup-btn-disabled") && boolDone ) {
@@ -368,8 +381,9 @@ cgClass.AddClass(
 		    }).on("click", ".Js-popup-cancel", function() {
 		    	if ( boolCancel ) {
                     option.cancel(self.outParam);
+                }else{
+                	self.close();
                 }
-                self.close();
 		    });
 
 		    // bind drag and drop
@@ -517,8 +531,10 @@ cgClass.AddClass(
 		 */
 		showTip : function(str){
 			var self = this;
-			self.con.append(self.error);
-		    self.error.html(str);
+			if ( !self.con.find(self.error).length ) {
+				self.con.append(self.error);
+			}
+		    self.error.show().html(str);
 		},
 		/**
 		 * @name cgClass.Popup#removeTip
