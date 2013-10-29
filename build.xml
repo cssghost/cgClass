@@ -4,11 +4,12 @@
     <!--jsdoc-toolkit所在目录-->
     <property name="jsdoc.dir" location="E:/jsTools/jsdoc-toolkit/" />
     <!--源代码目录-->
-    <property name="cssFolder" location="css/" />
-    <property name="jsFolder" location="js/cgClass/" />
+    <property name="cssFolder" location="css" />
+    <property name="libJs" location="js" />
+    <property name="jsFolder" location="js/cgClass" />
     <!--文档输出目录-->
-    <property name="output.dir" location="jsdoc/" />
-    <property name="demo.dir" location="${output.dir}/demo/" />
+    <property name="output.dir" location="jsdoc" />
+    <property name="demo.dir" location="${output.dir}/demo" />
     <!--js源代码目录-->
     <property name="jsFolder.jquery" value="jquery-1.8.2.js" />
     <property name="jsFolder.modernizr" value="modernizr.js" />
@@ -48,19 +49,63 @@
 
     <!-- copy js -->
     <target name="copy">
+        <copy todir="${demo.dir}/api">
+            <fileset dir="api" />
+        </copy>
+        <copy todir="${demo.dir}/images">
+            <fileset dir="images" />
+        </copy>
         <copy todir="${demo.dir}/js/">
-            <fileset dir="${jsFolder}"/>
+            <fileset dir="${libJs}" excludes="cgClass/*.js" />
+        </copy>
+        <copy todir="${demo.dir}/">
+            <fileset dir="" includes="*.html" />
         </copy>
     </target>
 
     <!-- delete old jsdoc -->
-    <target name="clear">
-        <delete dir="${demo.dir}/js/cgClass/"></delete>
+    <target name="reset_output">
+        <delete dir="${demo.dir}"></delete>
         <delete dir="${output.dir}/symbols/"></delete>
         <delete file="${output.dir}/index.html"></delete>
+        <mkdir dir="${output.dir}/demo/js/cgClass"/>
+        <mkdir dir="${output.dir}/demo/css"/>
     </target>
 
-    <target name="render" depends="clear, css.compress">
+    <target name="buildtime">
+        <tstamp>
+            <format property="timestamp" pattern="yyyyMMddHHmmss"/>
+        </tstamp> 
+        <echo message="DSTAMP is ${DSTAMP}"/>
+        <echo message="TSTAMP is ${TSTAMP}"/>
+        <echo message="TODAY is ${TODAY}"/>
+        <echo message="buildtime is ${timestamp}"/>
+    </target>
+
+    <!-- replace location and time -->
+    <target name="replace" depends="buildtime">
+        <replace dir="${demo.dir}" includes="*.html" encoding="UTF-8">
+            <replacefilter>
+                <replacetoken><![CDATA[<!-- dev -->]]></replacetoken>
+                <replacevalue><![CDATA[<!-- dev]]></replacevalue>
+            </replacefilter>
+            <replacefilter>
+                <replacetoken><![CDATA[<!-- /dev -->]]></replacetoken>
+                <replacevalue><![CDATA[/dev -->]]></replacevalue>
+            </replacefilter>
+            <replacefilter>
+                <replacetoken><![CDATA[<!-- publish]]></replacetoken>
+                <replacevalue><![CDATA[]]></replacevalue>
+            </replacefilter>
+            <replacefilter>
+                <replacetoken><![CDATA[/publish -->]]></replacetoken>
+                <replacevalue><![CDATA[]]></replacevalue>
+            </replacefilter>
+            <replacefilter token="t=timestamp" value="t=${timestamp}" />
+        </replace>
+    </target>
+
+    <target name="render" depends="reset_output, copy, css.compress, js.compress, replace">
         <taskdef name="jsdoctoolkit" classname="uk.co.darrenhurley.ant.tasks.JsDocToolkit" classpath="jsdoc-toolkit-ant-task-1.1.2.jar;${jsdoc.dir}/java/classes/js.jar"></taskdef>
         <jsdoctoolkit template="jsdoc" jsdochome="${jsdoc.dir}/" outputdir="${output.dir}/" inputdir="${jsFolder}" encoding="utf-8">
  

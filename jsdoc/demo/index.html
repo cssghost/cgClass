@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>百应科技</title>
+
+<link href="css/base.css" rel="stylesheet" type="text/css">
+<link href="css/common.css" rel="stylesheet" type="text/css">
+<link href="css/popup.css" rel="stylesheet" type="text/css">
+<script>
+    var loginUrl = "";
+    var baseArea = [{"id":"31102", "area":"北京","query":"BEIJINGSHI"}, {"id":"31886", "area":"怀柔","query":"HUAIROUQU"}, {"id":"31910", "area":"密云","query":"MIYUNXIAN"}, {"id":"31911", "area":"延庆","query":"YANQINGXIAN"}, {"id":"31936", "area":"昌平","query":"CHANGPINGQU"}, {"id":"31938", "area":"平谷","query":"PINGGUQU"}, {"id":"31943", "area":"顺义","query":"SHUNYIQU"}, {"id":"31956", "area":"门头沟","query":"MENTOUGOUQU"}, {"id":"31958", "area":"海淀","query":"HAIDIANQU"}, {"id":"31962", "area":"朝阳","query":"CHAOYANGQU"}, {"id":"31967", "area":"通州","query":"TONGZHOUQU"}, {"id":"31969", "area":"石景山","query":"SHIJINGSHANQU"}, {"id":"31976", "area":"东城","query":"DONGCHENGQU"}, {"id":"31977", "area":"西城","query":"XICHENGQU"}, {"id":"31982", "area":"房山","query":"FANGSHANQU"}, {"id":"31984", "area":"丰台","query":"FENGTAIQU"}, {"id":"31991", "area":"大兴","query":"DAXINGQU"} ]; 
+</script>
+<script src="js/jquery-1.8.2.js"></script>
+<script src="js/jquery.plugin.js"></script>
+<script src="js/cgClass/cgClass.js"></script>
+<script src="js/cgClass/cgClass.test.js"></script>
+<script src="js/cgClass/cgClass.chooseArea.js"></script>
+<script src="js/cgClass/cgClass.popup.js"></script>
+<!-- <script src="js/cgClass/cgMVC.js"></script> -->
+</head>
+
+<body>
+    <div></div>
+<script>
+cgClass.Create(
+    "Popup",
+    {
+        callback : function(opt){
+            // console.log(opt.option);
+            
+        },
+        init : function(opt){
+            opt.close();
+            // opt.option.callback(opt);
+        }
+    }
+);
+
+
+// cgClass.Create(
+// 	"ChooseArea",
+// 	{
+// 		wrap : $(".Js-frame-area-auto-complete"),
+// 		text : ".Js-frame-area-text",
+// 		autoList : ".Js-frame-area-list",
+// 		autoItem : ".Js-auto-item",
+// 		focusWrap : ".area-choose-wrap",
+// 		focusWrapItem : ".Js-area-item",
+// 		hoverClass : "selected",
+// 		init : function(self){
+// 			console.log(self);
+// 			// self.createList();
+// 		},
+// 		createSearchList : function(){},
+// 		action : function(opt, val){
+// 			console.log( opt, val );
+//             opt.createList();
+// 		}
+// 	}
+// );
+
+
+// cgClass.Create(
+// 	"Tag",
+// 	{
+// 		wrap : $("body"),
+// 		tagList : ".nav",
+// 		tagItem : ".nav-item",
+// 		conList : ".con",
+// 		conItem : ".con-item",
+// 		selectClass : "selected"
+// 	}
+// );
+// cgClass.Create(
+//     "Tag",
+//     {
+
+//     }
+// );
+
+
+
+// var vv = cgClass.Create("test", {
+//     init : function(){}
+// });
+// console.log(cgClass);
+// var _test = cgClass.Create("test", { view : "view" });
+// var _test02 = cgClass.Create("test", { view : "view01" });
+// _test.setView("set view");
+// _test.editView("new view");
+// _test.showView();
+// _test.set("view", "new view");
+// _test.showView();
+// jQuery(document).ready(function($) {
+//     console.log(cgClass);
+// });
+</script>
+</body>
+</html>

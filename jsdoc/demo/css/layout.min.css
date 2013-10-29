@@ -1,0 +1,1 @@
+.layout-nav{position:fixed;left:0;top:100px;width:200px;border-top:1px solid #fff;border-right:1px solid #fff}.layout-nav li{width:200px;height:30px;background-color:#000;border-bottom:1px solid #fff;line-height:30px;text-align:center;cursor:pointer}.layout-nav li a{display:block;width:200px;height:30px;color:#fff}.layout-nav li a:hover{background-color:#ccc;color:#000}
