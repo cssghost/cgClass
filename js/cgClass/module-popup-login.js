@@ -80,11 +80,15 @@ cgClass.AddClass(
 				loginPopupCon = '<div class="text Js-name"><input type="text" placeholder="请输入用户名" /><p class="error">请输入用户名</p></div>'+
 						'<div class="text Js-password"><input type="password" placeholder="请输入密码" /><p class="error">请输入密码</p></div>'+
 						'<div class="remember"><label><input type="checkbox" /> 记住密码</label></div>',
+				targetContent = option.content,
 				popupOption = $.extend(option, {
 					type: "popup",
 					title: "用户登录",
 					template : loginPopupCon,
 					content : function(opt){
+						if ( typeof targetContent == "function" ) {
+							targetContent(opt);
+						}
 						opt.oCon.on("blur", ".text input", function(){
 							self.testLoginNull($(this));
 						});
@@ -119,7 +123,6 @@ cgClass.AddClass(
 									// }
 								},
 								error : function(){
-									opt.disableBtn(true);
 									opt.showTip("登录失败，请重新尝试");
 								}
 							});
@@ -148,9 +151,9 @@ cgClass.AddClass(
 		 * @desc  显示弹出框
 		 * @event
 		 */
-		show : function(){
+		show : function(callback){
 			this.popup.reset();
-			this.popup.show();
+			this.popup.show(callback);
 		}
 	}
 );

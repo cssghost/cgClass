@@ -531,6 +531,10 @@ cgClass.AddClass(
 		 */
 		showTip : function(str){
 			var self = this;
+			self.popup.addClass("rock").delay(500).show("0", function(){
+				$(this).removeClass("rock");
+				self.disableBtn(true);
+			});
 			if ( !self.con.find(self.error).length ) {
 				self.con.append(self.error);
 			}
