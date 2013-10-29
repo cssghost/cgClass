@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>cgClass Verification</title>
+	<!-- dev -->
+	<link href="css/base.css" rel="stylesheet" type="text/css">
+	<link href="css/layout.css" rel="stylesheet" type="text/css">
+
+	<script src="js/jquery-1.8.2.js"></script>
+	<script src="js/jquery.plugin.js"></script>
+	<script src="js/cgClass/cgClass.js"></script>
+	<script src="js/cgClass/cgClass.verification.js"></script>
+	<!-- /dev -->
+
+	<!-- publish 
+	<link href="css/base.min.css?t=timestamp" rel="stylesheet" type="text/css">
+	<link href="css/layout.min.css?t=timestamp" rel="stylesheet" type="text/css">
+
+	<script src="js/jquery-1.8.2.js?t=timestamp"></script>
+	<script src="js/jquery.plugin.js?t=timestamp"></script>
+	<script src="js/cgClass/cgClass.min.js?t=timestamp"></script>
+	<script src="js/cgClass/cgClass.verification.min.js?t=timestamp"></script>
+	/publish -->
+</head>
+<body>
+	<ul class="layout-nav">
+		<li><a href="javascript:void(0)" class="Js-show-type-popup">[default]</a></li>
+	</ul>
+<script>
+$(function() {
+
+	var oLogin = cgClass.Create(
+			"ModulePopupLogin",
+			{
+				url : "api/area.txt",
+				dataType : "text",
+				autoShow : false,
+				callback : function(result, opt){
+					opt.showTip("用户名或者密码错误");
+				}
+			}
+		);
+	$(".Js-show-type-popup").on("click", function(){
+		oLogin.show();
+	});
+});
+</script>
+</body>
+</html>
