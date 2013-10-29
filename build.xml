@@ -31,6 +31,7 @@
             <mapper type="glob" from="*.js" to="${demo.dir}/js/cgClass/*.min.js" />  
             <targetfile />  
         </apply>
+        <echo message="js compress is finished"/>
     </target>
 
     <!-- build css -->
@@ -45,6 +46,7 @@
             <mapper type="glob" from="*.css" to="${demo.dir}/css/*.min.css" />  
             <targetfile />  
         </apply>  
+        <echo message="css compress is finished"/>
     </target> 
 
     <!-- copy js -->
