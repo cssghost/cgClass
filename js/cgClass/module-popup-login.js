@@ -79,15 +79,11 @@ cgClass.AddClass(
 				}, options),
 				loginPopupCon = '<div class="text Js-name"><input type="text" placeholder="请输入用户名" /><p class="error">请输入用户名</p></div>'+
 						'<div class="text Js-password"><input type="password" placeholder="请输入密码" /><p class="error">请输入密码</p></div>'+
-						'<div class="remember"><label><input type="checkbox" /> 记住密码</label></div>';
-			self.popup = cgClass.Create(
-				"Popup",
-				{
+						'<div class="remember"><label><input type="checkbox" /> 记住密码</label></div>',
+				popupOption = $.extend(option, {
 					type: "popup",
 					title: "用户登录",
-					addClass: option.addClass,
 					template : loginPopupCon,
-					autoShow : option.autoShow,
 					content : function(opt){
 						opt.oCon.on("blur", ".text input", function(){
 							self.testLoginNull($(this));
@@ -132,8 +128,8 @@ cgClass.AddClass(
 					cancel : function(opt){
 						opt.hide();
 					}
-				}
-			);
+				});
+			self.popup = cgClass.Create("Popup", popupOption);
 		},
 		/**
 		 * @name cgClass.ModulePopupLogin#testLoginNull
