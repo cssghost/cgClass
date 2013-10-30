@@ -6,6 +6,8 @@
 	<!-- dev -->
 	<link href="css/base.css" rel="stylesheet" type="text/css">
 	<link href="css/layout.css" rel="stylesheet" type="text/css">
+	<link href="css/module.css" rel="stylesheet" type="text/css">
+	<link href="css/verification-register.css" rel="stylesheet" type="text/css">
 
 	<script src="js/jquery-1.8.2.js"></script>
 	<script src="js/jquery.plugin.js"></script>
@@ -16,6 +18,8 @@
 	<!-- publish 
 	<link href="css/base.min.css?t=timestamp" rel="stylesheet" type="text/css">
 	<link href="css/layout.min.css?t=timestamp" rel="stylesheet" type="text/css">
+	<link href="css/module.min.css?t=timestamp" rel="stylesheet" type="text/css">
+	<link href="css/register.min.css?t=timestamp" rel="stylesheet" type="text/css">
 
 	<script src="js/jquery-1.8.2.js?t=timestamp"></script>
 	<script src="js/jquery.plugin.js?t=timestamp"></script>
@@ -24,9 +28,32 @@
 	/publish -->
 </head>
 <body>
-	<ul class="layout-nav">
-		<li><a href="javascript:void(0)" class="Js-show-type-popup">[default]</a></li>
-	</ul>
+	<div class="register-wrap">
+		<div class="label-wrap fn-clear">
+			<div class="span-name">用户名：</div>
+			<div class="input-wrap">
+				<input type="text" class="input-text" />
+			</div>
+		</div>
+		<div class="label-wrap fn-clear">
+			<div class="span-name">密码：</div>
+			<div class="input-wrap">
+				<input type="password" class="input-text" />
+			</div>
+		</div>
+		<div class="label-wrap fn-clear">
+			<div class="span-name">重复密码：</div>
+			<div class="input-wrap">
+				<input type="password" class="input-text" />
+			</div>
+		</div>
+		<div class="label-wrap fn-clear">
+			<div class="span-name">邮箱：</div>
+			<div class="input-wrap">
+				<input type="text" class="input-text" />
+			</div>
+		</div>
+	</div>
 <script>
 $(function() {
 

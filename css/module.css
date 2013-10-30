@@ -1,0 +1,160 @@
+/*input*/
+/* line 4, module.less */
+.label-wrap {
+  margin-bottom: 10px;
+}
+/* line 6, module.less */
+.label-wrap .span-name {
+  float: left;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  width: 100px;
+  height: 24px;
+  line-height: 24px;
+  text-align: right;
+}
+/* line 13, module.less */
+.label-wrap .required {
+  text-align: center;
+  vertical-align: middle;
+  color: red;
+  margin: 0 3px;
+}
+/* line 19, module.less */
+.label-wrap .ver-wrap,
+.label-wrap .input-wrap {
+  position: relative;
+  float: left;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  margin-right: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 3px;
+  padding: 3px 5px;
+  background: #fff;
+}
+/* line 30, module.less */
+.label-wrap .ver-wrap input,
+.label-wrap .input-wrap input {
+  position: relative;
+  top: 0px;
+  border: none;
+  border-width: 0;
+  outline: none;
+}
+/* line 37, module.less */
+.label-wrap .ver-wrap input[type="text"],
+.label-wrap .input-wrap input[type="text"] {
+  height: 18px;
+}
+/* line 40, module.less */
+.label-wrap .ver-wrap .input-text,
+.label-wrap .input-wrap .input-text {
+  width: 200px;
+}
+/* line 43, module.less */
+.label-wrap .ver-wrap textarea,
+.label-wrap .input-wrap textarea {
+  width: 500px;
+  height: 150px;
+  border: none;
+  border-width: 0;
+  overflow-y: auto;
+  resize: none;
+  outline: none;
+}
+/* line 52, module.less */
+.label-wrap .ver-wrap select,
+.label-wrap .input-wrap select {
+  position: relative;
+  top: -1px;
+  margin: 0;
+  border: none;
+  border-width: 0;
+  outline: none;
+}
+/* line 60, module.less */
+.label-wrap .ver-wrap input[type="radio"],
+.label-wrap .input-wrap input[type="radio"] {
+  position: relative;
+  top: 2px;
+}
+/* line 64, module.less */
+.label-wrap .ver-wrap .state,
+.label-wrap .input-wrap .state {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  position: absolute;
+  top: 3px;
+  left: 101%;
+  height: 18px;
+  padding-left: 25px;
+  white-space: nowrap;
+  color: red;
+  font-family: '微软雅黑';
+  background: url("../images/state-ico.png") no-repeat;
+}
+/* line 76, module.less */
+.label-wrap .ver-wrap .error,
+.label-wrap .input-wrap .error {
+  background-position: 2px -18px;
+}
+/* line 79, module.less */
+.label-wrap .ver-wrap .right,
+.label-wrap .input-wrap .right {
+  background-position: 2px 2px;
+}
+/* line 83, module.less */
+.label-wrap .readonly {
+  background-color: #f5f5f5;
+}
+/* line 85, module.less */
+.label-wrap .readonly input {
+  background-color: #f5f5f5;
+}
+/* line 89, module.less */
+.label-wrap .ver-wrap {
+  display: block;
+  border: none;
+  border-radius: none;
+}
+/* line 93, module.less */
+.label-wrap .checkbox-wrap {
+  width: 400px;
+  padding: 5px;
+  border-color: #50b6d4;
+}
+/* line 97, module.less */
+.label-wrap .checkbox-wrap .btn-small {
+  margin-right: 20px;
+  margin-bottom: 3px;
+}
+/* line 102, module.less */
+.label-wrap .radiobox-wrap {
+  float: left;
+  line-height: 24px;
+  height: 24px;
+}
+/* line 106, module.less */
+.label-wrap .radiobox-wrap label {
+  margin-right: 5px;
+}
+/* line 108, module.less */
+.label-wrap .radiobox-wrap label input {
+  margin-right: 3px;
+}
+/* line 113, module.less */
+.label-wrap .no-bd {
+  border: none;
+}
+/* line 115, module.less */
+.label-wrap .no-bd input[type="text"] {
+  border: 1px solid #cccccc;
+}
+/* line 118, module.less */
+.label-wrap .no-bd select {
+  border: 1px solid #cccccc;
+}
