@@ -32,45 +32,105 @@
 		<div class="label-wrap fn-clear">
 			<div class="span-name">用户名：</div>
 			<div class="input-wrap">
-				<input type="text" class="input-text" />
+				<input type="text" class="input-text Js-verification" data-ver="用户名:notNull/numLast,{1-2}" />
 			</div>
 		</div>
 		<div class="label-wrap fn-clear">
 			<div class="span-name">密码：</div>
 			<div class="input-wrap">
-				<input type="password" class="input-text" />
+				<input type="password" class="input-text Js-verification" />
 			</div>
 		</div>
 		<div class="label-wrap fn-clear">
 			<div class="span-name">重复密码：</div>
 			<div class="input-wrap">
-				<input type="password" class="input-text" />
+				<input type="password" class="input-text Js-verification" />
+			</div>
+		</div>
+		<div class="label-wrap fn-clear">
+			<div class="span-name">手机：</div>
+			<div class="input-wrap">
+				<input type="text" class="input-text Js-verification" data-ver="手机:mobile" />
 			</div>
 		</div>
 		<div class="label-wrap fn-clear">
 			<div class="span-name">邮箱：</div>
 			<div class="input-wrap">
-				<input type="text" class="input-text" />
+				<input type="text" class="input-text Js-verification" data-ver="邮箱:email" />
 			</div>
+		</div>
+		<div class="label-wrap fn-clear">
+			<div class="span-name">网址：</div>
+			<div class="input-wrap">
+				<input type="text" class="input-text Js-verification" data-ver="网址:url" />
+			</div>
+		</div>
+		<div class="label-wrap fn-clear">
+			<div class="span-name">单选：</div>
+			<div class="input-wrap">
+				<input type="radio" name="radio" value="radio01" class="Js-verification" />
+				<input type="radio" name="radio" value="radio02" class="Js-verification" />
+			</div>
+		</div>
+		<div class="label-wrap fn-clear">
+			<div class="span-name">多选：</div>
+			<div class="input-wrap">
+				<input type="checkbox" name="checkbox" value="checkbox01" class="Js-verification" data-ver="多选:notNull" />
+				<input type="checkbox" name="checkbox" value="checkbox02" class="Js-verification" data-ver="多选:notNull" />
+			</div>
+		</div>
+		<div class="label-wrap fn-clear">
+			<div class="span-name">多选：</div>
+			<div class="input-wrap">
+				<select class="Js-verification">
+					<option value="">choose</option>
+					<option value="option01">option01</option>
+				</select>
+			</div>
+		</div>
+		<div class="label-wrap fn-clear">
+			<div class="span-name">选框：</div>
+			<div class="input-wrap">
+				<select multiple="multiple" class="Js-verification">
+					<option value="">choose</option>
+					<option value="option01">option01</option>
+				</select>
+			</div>
+		</div>
+		<div class="label-wrap fn-clear">
+			<input type="button" value="radio" class="Js-radio" />
+			<input type="button" value="checkbox" class="Js-checkbox" />
+			<input type="button" value="select" class="Js-select" />
 		</div>
 	</div>
 <script>
 $(function() {
-
-	var oLogin = cgClass.Create(
-			"ModulePopupLogin",
-			{
-				url : "api/area.txt",
-				dataType : "text",
-				autoShow : false,
-				callback : function(result, opt){
-					opt.showTip("用户名或者密码错误");
-				}
-			}
-		);
-	$(".Js-show-type-popup").on("click", function(){
-		oLogin.show();
+	$(".Js-radio").click(function(){
+		console.log( $("input:radio:checked").val() );
 	});
+	$(".Js-checkbox").click(function(){
+		console.log( $("input:checkbox:checked").val() );
+	});
+	$(".Js-select").click(function(){
+		console.log( $("select").val() );
+	});
+	cgClass.Create(
+		"Verification",
+		{
+			wrap : $(".register-wrap"),
+	        hookDom: ".Js-verification",
+	        inputWrap : ".input-wrap",
+	        map : "",
+	        btn : $("Js-btn"),
+	        parseAjaxData : null,
+	        successTemp : null,
+	        errorTemp : null,
+	        init : function(){},
+	        error : function(){},
+	        success : function(){},
+	        otherInput : ".other"
+		}
+	);
 });
 </script>
 </body>

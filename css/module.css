@@ -158,3 +158,13 @@
 .label-wrap .no-bd select {
   border: 1px solid #cccccc;
 }
+/* line 123, module.less */
+.btn-blue,
+.btn-red {
+  width: 100%;
+}
+/* line 126, module.less */
+.btn-blue-hover,
+.btn-red-hover {
+  height: 100%;
+}
