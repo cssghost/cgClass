@@ -266,3 +266,6 @@ cgClass.AddClass(
 	    }
 	}
 );
+cgClass.ajaxQueueCallback.ver = function(){
+	console.log("finish");
+}

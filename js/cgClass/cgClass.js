@@ -14,7 +14,7 @@
  * @example var cgClass = {};
  */
 
-var cgClass = window.cgClass = { ajaxQueue : {}, ajaxQueueCallback : {} };
+var cgClass = window.cgClass = { ajaxQueue : {}, ajaxQueueComplete: {}, ajaxQueueCallback : {} };
 
 
 /**
@@ -318,16 +318,16 @@ cgClass.Ajax = function(config, defData){
 			if ( config.complete  ) {
 				targetComplete(request, statusText);
 			}
-			if(!self.ajaxQueueCallback[option.queue]){
-				self.ajaxQueueCallback[option.queue] = [];
+			if(!self.ajaxQueueComplete[option.queue]){
+				self.ajaxQueueComplete[option.queue] = [];
 			}
 			if ( typeof option.queueCallback == "function" ) {
-				self.ajaxQueueCallback[option.queue].push(option.queueCallback);
+				self.ajaxQueueComplete[option.queue].push(option.queueCallback);
 			}
 			if ( !self.ajaxQueue[option.queue] ) {
-				if ( self.ajaxQueueCallback[option.queue].length ) {
-					for( var i = 0; i < self.ajaxQueueCallback[option.queue].length; i++ ){
-						self.ajaxQueueCallback[option.queue][i]();
+				if ( self.ajaxQueueComplete[option.queue].length ) {
+					for( var i = 0; i < self.ajaxQueueComplete[option.queue].length; i++ ){
+						self.ajaxQueueComplete[option.queue][i]();
 					}
 				}
 				if ( !!self.ajaxQueueCallback[option.queue] && typeof self.ajaxQueueCallback[option.queue] == "function" ) {
