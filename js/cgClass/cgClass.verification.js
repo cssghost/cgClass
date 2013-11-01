@@ -1,3 +1,93 @@
+/**
+ * @author 徐晨 
+ * @name cgClass.Verification
+ * @class 验证插件 <a href="../demo/verification-register.html" target="_blank">demo</a>
+ * @constructor
+ * @extends cgClass
+ * @extends jQuery
+ * @since version 1.0 
+ * @param {Object} options 参数对象数据
+ * @param {String} options.type 弹出框的种类
+ * @param {Object} options.param 附加参数
+ * @param {String} options.title 弹出框的标题
+ * @param {jQuery Object} options.popupTemp 弹出框html的jQuery对象
+ * @param {html} options.template 内容区的html代码片段
+ * @param {String} options.message type为confirm时显示的消息提示文本
+ * @param {css class} options.addClass 附加弹出框样式
+ * @param {Boolean} options.isLayer 是否需要遮罩层
+ * @param {Boolean} options.isCenter 是否居中
+ * @param {Boolean} options.isDrag 是否可拖拽
+ * @param {Boolean} options.isOnly 是否为唯一
+ * @param {Boolean} options.autoShow 是否在初始化时自动显示弹出框
+ * @param {Object} options.append 是否在目标对象中加载
+ * @param {Boolean} options.append.isAppend 是否在目标对象中加载
+ * @param {jQuery Object} options.append.dom 目标对象的jquery dom
+ * @param {Boolean} options.hasBtn 是否需要按钮
+ * @param {Boolean} options.hasCancel 是否需要取消按钮
+ * @param {Function} options.content 内容区的附加函数
+ * @param {Function} options.done 确定按钮的附加函数
+ * @param {Function} options.cancel 取消按钮的附加函数
+ * @example cgClass.Create(
+	"Verification",
+	{
+		type : "popup",
+  [可选]param : {},
+  [可选]title : "弹出框",
+  [可选]popupTemp : null || $('<div class="module-popup fn-clear Js-popup-wrap">'+
+				  	'<a href="javascript:void(0)" class="popup-close Js-popup-close"></a> '+
+				    '<h6 class="fn-clear popup-tit Js-popup-title">' + option.title + '</h6>'+
+				    '<div class="popup-con Js-popup-con"></div>'+
+				    '<div class="popup-btn-wrap Js-popup-btn-wrap">'+
+				    	'<a class="popup-btn Js-popup-done" href="javascript:;;"><span class="popup-btn-text">确认</span></a>'+
+            			'<a class="popup-btn Js-popup-cancel" href="javascript:;;"><span class="popup-btn-text">取消</span></a>'+
+				    '</div>'+
+				'</div>'),
+		template : "<div></div>",
+  [可选]addClass : "popupClass",
+  [可选]isLayer : true,
+  [可选]isCenter : true,
+  [可选]isDrag : true,
+  [可选]isOnly : false,
+  [可选]autoShow : true,
+  [可选]append : {
+			isAppend : false,
+			dom : $(".dom")
+		},
+  [可选]hasBtn : true,
+  [可选]hasCancel : true,
+  [可选]content : null || function(opt){},
+  [可选]done : null || function(opt){},
+  [可选]cancel : null || function(opt){}
+	}
+); 
+oPopup.Events();
+ * @example cgClass.Create(
+	"Popup",
+	{
+		type: "confirm",
+  [可选]param : {},
+  [可选]title: "提示",
+  [可选]doneText : "确定按钮",
+  [可选]cancelText : "确定按钮",
+		message : "测试弹出框",
+  [可选]done : function(opt){},
+  [可选]cancel : function(opt){}
+	}
+); 
+ * @example cgClass.Create(
+	"Popup",
+	{
+		type: "result",
+  [可选]param : {},
+  [可选]title: "提示",
+  [可选]doneText : "确定按钮",
+		message : "测试弹出框",
+  [可选]time : 2000,
+  [可选]content : function(opt){},
+  [可选]done : function(opt){}
+	}
+); 
+ */
 cgClass.AddClass(
 	"Verification",
 	{
@@ -102,12 +192,14 @@ cgClass.AddClass(
 						case "radio":
 							var $radio = $wrap.find(":radio[name=" + $dom.attr("name") + "]");
 							val = $radio.filter(":checked").length;
+							val = !!val ? val : "";
 							// console.log("radio");
 						break;
 						case "checkbox":
 							var $checkbox = $wrap.find(":checkbox[name=" + $dom.attr("name") + "]");
 							val = $checkbox.filter(":checked").length;
-							// console.log("checkbox");
+							val = !!val ? val : "";
+							console.log("checkbox");
 						break;
 						default:
 							// console.log("text");
@@ -154,6 +246,7 @@ cgClass.AddClass(
 			if ( !!verData ) {
 				name = verData[1];
 				vers = verData[2].split("/");
+				console.log(val);
 				if ( $.trim(val) == "" ) {
 					if( $.inArray("notNull", vers) != -1 ){
 						self.flag = false;

@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <meta name="generator" content="JsDoc Toolkit" />
         
-        <title>Ajax</title>
+        <title>cgClass.Verification</title>
         <style>
             /*************************************************************************************
  * Reset
@@ -262,8 +262,8 @@ dl.data .dd{
                             <div class="box constructor-box">
                                 <div class="box-hd">
                                     
-                                    <h3><b class="name"><a href="../symbols/Ajax.html#constructor">Ajax</a></b>
-                                        <span class="param">(config, defData)</span>
+                                    <h3><b class="name"><a href="../symbols/cgClass.Verification.html#constructor">cgClass.Verification</a></b>
+                                        <span class="param">(options)</span>
                                         
                                         
                                         
@@ -272,7 +272,7 @@ dl.data .dd{
                                 </div>
                                 <div class="box-bd">
                                     
-                                        <p class="desc">描述：Ajax方法</p>
+                                        <p class="desc">描述：验证插件 <a href="../demo/verification-register.html" target="_blank">demo</a></p>
                                     
 
                                     
@@ -287,7 +287,7 @@ dl.data .dd{
 
                                     
                                         <p>源码：
-                                            <a href="../symbols/src/E__Git_cgClass_js_cgClass_cgClass.js.html">cgClass.js</a></p>
+                                            <a href="../symbols/src/E__Git_cgClass_js_cgClass_cgClass.verification.js.html">cgClass.verification.js</a></p>
 
                                     
 
@@ -320,11 +320,11 @@ dl.data .dd{
                                     <ul class="list detail-list">
                                         <li class="li">
                                             <div class="title">
-                                                <b class="name">Ajax</b>
-                                                <span class="param">(config, defData)</span>
+                                                <b class="name">cgClass.Verification</b>
+                                                <span class="param">(options)</span>
                                             </div>
                                             
-                                            <div class="desc">Ajax方法</div>
+                                            <div class="desc">验证插件 <a href="../demo/verification-register.html" target="_blank">demo</a></div>
                                             
                                             <dl>                                                
                                                 
@@ -336,164 +336,191 @@ dl.data .dd{
                                                         
                                                         <li class="li">
                                                             &nbsp;
-                                                                <b>config</b>
+                                                                <b>options</b>
                                                             
                                                             
                                                             <span class="type"><span class="light fixedFont">{Object}</span> </span>
-                                                            <span class="desc">配置对象</span>
+                                                            <span class="desc">参数对象数据</span>
                                                         </li>
                                                         
                                                         <li class="li">
                                                             &nbsp;
-                                                                <b>config.url</b>
+                                                                <b>options.type</b>
                                                             
                                                             
                                                             <span class="type"><span class="light fixedFont">{String}</span> </span>
-                                                            <span class="desc">发送请求的地址</span>
+                                                            <span class="desc">弹出框的种类</span>
                                                         </li>
                                                         
                                                         <li class="li">
                                                             &nbsp;
-                                                                <b>config.type</b>
-                                                            
-                                                            
-                                                            <span class="type"><span class="light fixedFont">{String}</span> </span>
-                                                            <span class="desc">["get" : "post"] 请求方式</span>
-                                                        </li>
-                                                        
-                                                        <li class="li">
-                                                            &nbsp;
-                                                                <b>config.dataType</b>
-                                                            
-                                                            
-                                                            <span class="type"><span class="light fixedFont">{String}</span> </span>
-                                                            <span class="desc">请求方式</span>
-                                                        </li>
-                                                        
-                                                        <li class="li">
-                                                            &nbsp;
-                                                                <b>config.dataType.xml</b>
-                                                            
-                                                            
-                                                            <span class="type"><span class="light fixedFont">{String}</span> </span>
-                                                            <span class="desc">返回 XML 文档，可用 jQuery 处理。</span>
-                                                        </li>
-                                                        
-                                                        <li class="li">
-                                                            &nbsp;
-                                                                <b>config.dataType.text</b>
-                                                            
-                                                            
-                                                            <span class="type"><span class="light fixedFont">{String}</span> </span>
-                                                            <span class="desc">返回 String 字符串，可用 jQuery 处理。</span>
-                                                        </li>
-                                                        
-                                                        <li class="li">
-                                                            &nbsp;
-                                                                <b>config.dataType.textJson</b>
-                                                            
-                                                            
-                                                            <span class="type"><span class="light fixedFont">{String}</span> </span>
-                                                            <span class="desc">type自动转为text，返回数据预处理为 JSON 数据。</span>
-                                                        </li>
-                                                        
-                                                        <li class="li">
-                                                            &nbsp;
-                                                                <b>config.dataType.html</b>
-                                                            
-                                                            
-                                                            <span class="type"><span class="light fixedFont">{String}</span> </span>
-                                                            <span class="desc">返回纯文本 HTML 信息；包含 script 元素。</span>
-                                                        </li>
-                                                        
-                                                        <li class="li">
-                                                            &nbsp;
-                                                                <b>config.dataType.script</b>
-                                                            
-                                                            
-                                                            <span class="type"><span class="light fixedFont">{String}</span> </span>
-                                                            <span class="desc">返回纯文本 JavaScript 代码。不会自动缓存结果。</span>
-                                                        </li>
-                                                        
-                                                        <li class="li">
-                                                            &nbsp;
-                                                                <b>config.dataType.json</b>
-                                                            
-                                                            
-                                                            <span class="type"><span class="light fixedFont">{String}</span> </span>
-                                                            <span class="desc">返回 JSON 数据 。</span>
-                                                        </li>
-                                                        
-                                                        <li class="li">
-                                                            &nbsp;
-                                                                <b>config.dataType.jsonp</b>
-                                                            
-                                                            
-                                                            <span class="type"><span class="light fixedFont">{String}</span> </span>
-                                                            <span class="desc">使用 JSONP 形式调用函数时，如 "myurl?callback=?" jQuery 将自动替换 ? 为正确的函数名，以执行回调函数。</span>
-                                                        </li>
-                                                        
-                                                        <li class="li">
-                                                            &nbsp;
-                                                                <b>config.queue</b>
-                                                            
-                                                            
-                                                            <span class="type"><span class="light fixedFont">{String}</span> </span>
-                                                            <span class="desc">ajax队列的名称</span>
-                                                        </li>
-                                                        
-                                                        <li class="li">
-                                                            &nbsp;
-                                                                <b>config.timeout</b>
-                                                            
-                                                            
-                                                            <span class="type"><span class="light fixedFont">{Number}</span> </span>
-                                                            <span class="desc">设置请求超时时间（毫秒）。此设置将覆盖全局设置。</span>
-                                                        </li>
-                                                        
-                                                        <li class="li">
-                                                            &nbsp;
-                                                                <b>config.beforeSend</b>
-                                                            
-                                                            
-                                                            <span class="type"><span class="light fixedFont">{Function}</span> </span>
-                                                            <span class="desc">在发送请求之前调用，并且传入一个 XMLHttpRequest 作为参数</span>
-                                                        </li>
-                                                        
-                                                        <li class="li">
-                                                            &nbsp;
-                                                                <b>config.success</b>
-                                                            
-                                                            
-                                                            <span class="type"><span class="light fixedFont">{Function}</span> </span>
-                                                            <span class="desc">当请求之后调用。传入返回后的数据，以及包含成功代码的字符串。</span>
-                                                        </li>
-                                                        
-                                                        <li class="li">
-                                                            &nbsp;
-                                                                <b>config.error</b>
-                                                            
-                                                            
-                                                            <span class="type"><span class="light fixedFont">{Function}</span> </span>
-                                                            <span class="desc">在请求出错时调用。传入 XMLHttpRequest 对象，描述错误类型的字符串以及一个异常对象（如果有的话）</span>
-                                                        </li>
-                                                        
-                                                        <li class="li">
-                                                            &nbsp;
-                                                                <b>config.complete</b>
-                                                            
-                                                            
-                                                            <span class="type"><span class="light fixedFont">{Function}</span> </span>
-                                                            <span class="desc">请求完成后回调函数 (请求成功或失败时均调用)</span>
-                                                        </li>
-                                                        
-                                                        <li class="li">
-                                                            &nbsp;
-                                                                <b>defData</b>
+                                                                <b>options.param</b>
                                                             
                                                             
                                                             <span class="type"><span class="light fixedFont">{Object}</span> </span>
-                                                            <span class="desc">默认参数</span>
+                                                            <span class="desc">附加参数</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>options.title</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{String}</span> </span>
+                                                            <span class="desc">弹出框的标题</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>options.popupTemp</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{jQuery Object}</span> </span>
+                                                            <span class="desc">弹出框html的jQuery对象</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>options.template</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{html}</span> </span>
+                                                            <span class="desc">内容区的html代码片段</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>options.message</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{String}</span> </span>
+                                                            <span class="desc">type为confirm时显示的消息提示文本</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>options.addClass</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{css class}</span> </span>
+                                                            <span class="desc">附加弹出框样式</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>options.isLayer</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{Boolean}</span> </span>
+                                                            <span class="desc">是否需要遮罩层</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>options.isCenter</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{Boolean}</span> </span>
+                                                            <span class="desc">是否居中</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>options.isDrag</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{Boolean}</span> </span>
+                                                            <span class="desc">是否可拖拽</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>options.isOnly</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{Boolean}</span> </span>
+                                                            <span class="desc">是否为唯一</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>options.autoShow</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{Boolean}</span> </span>
+                                                            <span class="desc">是否在初始化时自动显示弹出框</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>options.append</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{Object}</span> </span>
+                                                            <span class="desc">是否在目标对象中加载</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>options.append.isAppend</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{Boolean}</span> </span>
+                                                            <span class="desc">是否在目标对象中加载</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>options.append.dom</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{jQuery Object}</span> </span>
+                                                            <span class="desc">目标对象的jquery dom</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>options.hasBtn</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{Boolean}</span> </span>
+                                                            <span class="desc">是否需要按钮</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>options.hasCancel</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{Boolean}</span> </span>
+                                                            <span class="desc">是否需要取消按钮</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>options.content</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{Function}</span> </span>
+                                                            <span class="desc">内容区的附加函数</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>options.done</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{Function}</span> </span>
+                                                            <span class="desc">确定按钮的附加函数</span>
+                                                        </li>
+                                                        
+                                                        <li class="li">
+                                                            &nbsp;
+                                                                <b>options.cancel</b>
+                                                            
+                                                            
+                                                            <span class="type"><span class="light fixedFont">{Function}</span> </span>
+                                                            <span class="desc">取消按钮的附加函数</span>
                                                         </li>
                                                         
                                                     </ul>
@@ -504,7 +531,7 @@ dl.data .dd{
 
                                                 
                                                 <dt>Since</dt>
-                                                <dd>version 0.1</dd>
+                                                <dd>version 1.0</dd>
                                                 
                                                 
 
@@ -515,7 +542,68 @@ dl.data .dd{
                                                 <dt>示例：</dt>
                                                 <dd>
                                                     
-                                                    <pre class='brush: js;'>cgClass.Ajax({    url : "api/ajax.txt",	    data : {},	    dataType : "textJson",	    queue : "ajaxQueue",	    success : function(){},	    error : function(){}	}); cgClass.AjaxQueueCallback.ajaxQueue = function(){}</pre>
+                                                    <pre class='brush: js;'>cgClass.Create(
+	"Verification",
+	{
+		type : "popup",
+  [可选]param : {},
+  [可选]title : "弹出框",
+  [可选]popupTemp : null || $('<div class="module-popup fn-clear Js-popup-wrap">'+
+				  	'<a href="javascript:void(0)" class="popup-close Js-popup-close"></a> '+
+				    '<h6 class="fn-clear popup-tit Js-popup-title">' + option.title + '</h6>'+
+				    '<div class="popup-con Js-popup-con"></div>'+
+				    '<div class="popup-btn-wrap Js-popup-btn-wrap">'+
+				    	'<a class="popup-btn Js-popup-done" href="javascript:;;"><span class="popup-btn-text">确认</span></a>'+
+            			'<a class="popup-btn Js-popup-cancel" href="javascript:;;"><span class="popup-btn-text">取消</span></a>'+
+				    '</div>'+
+				'</div>'),
+		template : "<div></div>",
+  [可选]addClass : "popupClass",
+  [可选]isLayer : true,
+  [可选]isCenter : true,
+  [可选]isDrag : true,
+  [可选]isOnly : false,
+  [可选]autoShow : true,
+  [可选]append : {
+			isAppend : false,
+			dom : $(".dom")
+		},
+  [可选]hasBtn : true,
+  [可选]hasCancel : true,
+  [可选]content : null || function(opt){},
+  [可选]done : null || function(opt){},
+  [可选]cancel : null || function(opt){}
+	}
+); 
+oPopup.Events();</pre>
+                                                    
+                                                    <pre class='brush: js;'>cgClass.Create(
+	"Popup",
+	{
+		type: "confirm",
+  [可选]param : {},
+  [可选]title: "提示",
+  [可选]doneText : "确定按钮",
+  [可选]cancelText : "确定按钮",
+		message : "测试弹出框",
+  [可选]done : function(opt){},
+  [可选]cancel : function(opt){}
+	}
+);</pre>
+                                                    
+                                                    <pre class='brush: js;'>cgClass.Create(
+	"Popup",
+	{
+		type: "result",
+  [可选]param : {},
+  [可选]title: "提示",
+  [可选]doneText : "确定按钮",
+		message : "测试弹出框",
+  [可选]time : 2000,
+  [可选]content : function(opt){},
+  [可选]done : function(opt){}
+	}
+);</pre>
                                                     
                                                 </dd>                                                
                                                 

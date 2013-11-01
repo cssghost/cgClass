@@ -538,47 +538,51 @@
 <span class='line'>531</span> 		 */</span><span class="WHIT">
 <span class='line'>532</span> </span><span class="WHIT">		</span><span class="NAME">showTip</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">str</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'>533</span> </span><span class="WHIT">			</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">self</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>534</span> </span><span class="WHIT">			</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="WHIT"> </span><span class="PUNC">!</span><span class="NAME">self.con.find</span><span class="PUNC">(</span><span class="NAME">self.error</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">length</span><span class="WHIT"> </span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>535</span> </span><span class="WHIT">				</span><span class="NAME">self.con.append</span><span class="PUNC">(</span><span class="NAME">self.error</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>536</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>537</span> </span><span class="WHIT">		    </span><span class="NAME">self.error.show</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">html</span><span class="PUNC">(</span><span class="NAME">str</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>538</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>539</span> </span><span class="WHIT">		</span><span class="COMM">/**
-<span class='line'>540</span> 		 * @name cgClass.Popup#removeTip
-<span class='line'>541</span> 		 * @desc  隐藏错误信息
-<span class='line'>542</span> 		 * @event
-<span class='line'>543</span> 		 */</span><span class="WHIT">
-<span class='line'>544</span> </span><span class="WHIT">		</span><span class="NAME">removeTip</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>545</span> </span><span class="WHIT">			</span><span class="NAME">this.error.hide</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>546</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>547</span> </span><span class="WHIT">		</span><span class="COMM">/**
-<span class='line'>548</span> 		 * @name cgClass.Popup#reset
-<span class='line'>549</span> 		 * @desc  重置内容区内容
-<span class='line'>550</span> 		 * @event
-<span class='line'>551</span> 		 * @param {html String} newHtml 重置内容区的html，但是事件不会重置
-<span class='line'>552</span> 		 */</span><span class="WHIT">
-<span class='line'>553</span> </span><span class="WHIT">		</span><span class="NAME">reset</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">newHtml</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>554</span> </span><span class="WHIT">			</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">self</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>555</span> </span><span class="WHIT">			</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="WHIT"> </span><span class="PUNC">!</span><span class="PUNC">!</span><span class="NAME">newHtml</span><span class="WHIT"> </span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>556</span> </span><span class="WHIT">				</span><span class="NAME">self.con.html</span><span class="PUNC">(</span><span class="NAME">newHtml</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>557</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>558</span> </span><span class="WHIT">				</span><span class="NAME">self.con.html</span><span class="PUNC">(</span><span class="NAME">self.template</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>559</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>560</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>561</span> </span><span class="WHIT">		</span><span class="COMM">/**
-<span class='line'>562</span> 		 * @name cgClass.Popup#disableBtn
-<span class='line'>563</span> 		 * @desc  改变确定按钮状态
-<span class='line'>564</span> 		 * @event
-<span class='line'>565</span> 		 * @param {Boolean} isReset 为true时确定按钮可用，反之不可用
-<span class='line'>566</span> 		 */</span><span class="WHIT">
-<span class='line'>567</span> </span><span class="WHIT">		</span><span class="NAME">disableBtn</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">isReset</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>568</span> </span><span class="WHIT">			</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">self</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>569</span> </span><span class="WHIT">			</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="WHIT"> </span><span class="NAME">isReset</span><span class="WHIT"> </span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>570</span> </span><span class="WHIT">				</span><span class="NAME">self.btnDone.removeClass</span><span class="PUNC">(</span><span class="STRN">"popup-btn-disabled"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>571</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>572</span> </span><span class="WHIT">				</span><span class="NAME">self.btnDone.addClass</span><span class="PUNC">(</span><span class="STRN">"popup-btn-disabled"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>573</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>574</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>575</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>576</span> </span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>577</span> </span></pre></body></html>
+<span class='line'>534</span> </span><span class="WHIT">			</span><span class="NAME">self.popup.addClass</span><span class="PUNC">(</span><span class="STRN">"rock"</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">delay</span><span class="PUNC">(</span><span class="NUMB">500</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">show</span><span class="PUNC">(</span><span class="STRN">"0"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>535</span> </span><span class="WHIT">				</span><span class="NAME">$</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">removeClass</span><span class="PUNC">(</span><span class="STRN">"rock"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>536</span> </span><span class="WHIT">				</span><span class="NAME">self.disableBtn</span><span class="PUNC">(</span><span class="KEYW">true</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>537</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>538</span> </span><span class="WHIT">			</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="WHIT"> </span><span class="PUNC">!</span><span class="NAME">self.con.find</span><span class="PUNC">(</span><span class="NAME">self.error</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">length</span><span class="WHIT"> </span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>539</span> </span><span class="WHIT">				</span><span class="NAME">self.con.append</span><span class="PUNC">(</span><span class="NAME">self.error</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>540</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>541</span> </span><span class="WHIT">		    </span><span class="NAME">self.error.show</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">html</span><span class="PUNC">(</span><span class="NAME">str</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>542</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>543</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>544</span> 		 * @name cgClass.Popup#removeTip
+<span class='line'>545</span> 		 * @desc  隐藏错误信息
+<span class='line'>546</span> 		 * @event
+<span class='line'>547</span> 		 */</span><span class="WHIT">
+<span class='line'>548</span> </span><span class="WHIT">		</span><span class="NAME">removeTip</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>549</span> </span><span class="WHIT">			</span><span class="NAME">this.error.hide</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>550</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>551</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>552</span> 		 * @name cgClass.Popup#reset
+<span class='line'>553</span> 		 * @desc  重置内容区内容
+<span class='line'>554</span> 		 * @event
+<span class='line'>555</span> 		 * @param {html String} newHtml 重置内容区的html，但是事件不会重置
+<span class='line'>556</span> 		 */</span><span class="WHIT">
+<span class='line'>557</span> </span><span class="WHIT">		</span><span class="NAME">reset</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">newHtml</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>558</span> </span><span class="WHIT">			</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">self</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>559</span> </span><span class="WHIT">			</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="WHIT"> </span><span class="PUNC">!</span><span class="PUNC">!</span><span class="NAME">newHtml</span><span class="WHIT"> </span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>560</span> </span><span class="WHIT">				</span><span class="NAME">self.con.html</span><span class="PUNC">(</span><span class="NAME">newHtml</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>561</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>562</span> </span><span class="WHIT">				</span><span class="NAME">self.con.html</span><span class="PUNC">(</span><span class="NAME">self.template</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>563</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>564</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>565</span> </span><span class="WHIT">		</span><span class="COMM">/**
+<span class='line'>566</span> 		 * @name cgClass.Popup#disableBtn
+<span class='line'>567</span> 		 * @desc  改变确定按钮状态
+<span class='line'>568</span> 		 * @event
+<span class='line'>569</span> 		 * @param {Boolean} isReset 为true时确定按钮可用，反之不可用
+<span class='line'>570</span> 		 */</span><span class="WHIT">
+<span class='line'>571</span> </span><span class="WHIT">		</span><span class="NAME">disableBtn</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">isReset</span><span class="PUNC">)</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>572</span> </span><span class="WHIT">			</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">self</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">this</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>573</span> </span><span class="WHIT">			</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="WHIT"> </span><span class="NAME">isReset</span><span class="WHIT"> </span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>574</span> </span><span class="WHIT">				</span><span class="NAME">self.btnDone.removeClass</span><span class="PUNC">(</span><span class="STRN">"popup-btn-disabled"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>575</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>576</span> </span><span class="WHIT">				</span><span class="NAME">self.btnDone.addClass</span><span class="PUNC">(</span><span class="STRN">"popup-btn-disabled"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>577</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>578</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>579</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>580</span> </span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>581</span> </span></pre></body></html>
