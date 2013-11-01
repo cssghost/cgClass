@@ -153,9 +153,10 @@ cgClass.AddClass(
 						}
 					}
 				}
-			}else{
-				alert("验证信息配置有误，请检查代码");
 			}
+			// else{
+			// 	alert("验证信息配置有误，请检查代码");
+			// }
 		},
 		match : function(val, name, ver, dom){
 			var self = this,
@@ -168,7 +169,7 @@ cgClass.AddClass(
 				// 正则验证时
 				if ( !!term.reg ) {
 					if ( term.reg.test(val) ) {
-						self.verified(dom);
+						// self.verified(dom);
 						return true;
 					}else{
 						self.thrown(dom, msg);
@@ -177,7 +178,11 @@ cgClass.AddClass(
 				}
 				// 函数验证时
 				if ( !!term.fun ) {
-					doTest = term.fun(val, msg, dom, _ver[2]);
+					if ( !!_ver ) {
+						doTest = term.fun(val, msg, dom, _ver[2]);
+					}else{
+						doTest = term.fun(val, msg, dom, ver);
+					}
 					if ( !!doTest.result ) {
 						console.log("ver success");
 						doTest.result != "ajax" && self.verified(dom);
@@ -187,7 +192,8 @@ cgClass.AddClass(
 					}
 					return doTest.result;
 				}
-			} else{
+			}
+			else{
 				alert("验证信息配置有误，请检查代码");
 			}
 		},
@@ -235,15 +241,28 @@ cgClass.AddClass(
 	            return { result : false, msg : msg };
 	        }
 	    },
-	    numRange : function(dom, msg){
+	    numRange : function(val, msg, dom, range){
 
 	    },
-	    strRange : function(dom, msg){
+	    strRange : function(val, msg, dom, range){
 
 	    },
-	    isHave : function(dom, msg){
+	    isHave : function(val, msg, dom, range){
 	    	var self = this;
-	    	return "ajax";
+	    	cgClass.Ajax({
+	    		url : "api/area.txt",
+	    		type: "get",
+	    		dataType: "textJson",
+	    		queue : "ver",
+	    		queueCallback : function(){
+	    			console.log("fuck");
+	    		},
+	    		success: function( request, statusText ){
+	    			/* do something */
+	    		},
+	    		error: function( request, statusText, error ){}
+	    	});
+	    	return { result : "ajax", msg : msg };
 	    }
 	}
 );

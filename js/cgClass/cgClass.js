@@ -281,6 +281,7 @@ cgClass.Ajax = function(config, defData){
 				dataType: "json",
 				queue : "",
 				timeout: (30 * 1000),
+				queueCallback : function(){},
 				beforeSend : function(xhr, ajax){},
 				success: function( request, statusText ){},
 				error: function( request, statusText, error ){},
@@ -317,13 +318,21 @@ cgClass.Ajax = function(config, defData){
 			if ( config.complete  ) {
 				targetComplete(request, statusText);
 			}
-			if (
-				!self.ajaxQueue[option.queue]
-				&& !!self.ajaxQueueCallback[option.queue]
-				&& typeof self.ajaxQueueCallback[option.queue] == "function" 
-			   )
-			{
-				self.ajaxQueueCallback[option.queue]();
+			if(!self.ajaxQueueCallback[option.queue]){
+				self.ajaxQueueCallback[option.queue] = [];
+			}
+			if ( typeof option.queueCallback == "function" ) {
+				self.ajaxQueueCallback[option.queue].push(option.queueCallback);
+			}
+			if ( !self.ajaxQueue[option.queue] ) {
+				if ( self.ajaxQueueCallback[option.queue].length ) {
+					for( var i = 0; i < self.ajaxQueueCallback[option.queue].length; i++ ){
+						self.ajaxQueueCallback[option.queue][i]();
+					}
+				}
+				if ( !!self.ajaxQueueCallback[option.queue] && typeof self.ajaxQueueCallback[option.queue] == "function" ) {
+					self.ajaxQueueCallback[option.queue]();
+				}
 			}
 		};
 	}

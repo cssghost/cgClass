@@ -70,8 +70,8 @@
             .pl(25px);
             white-space: nowrap;
             color: red;
-            font-family: '微软雅黑';
-            .bg('state-ico.png', no-repeat)
+            font-family: "微软雅黑";
+            .bg-tpls("state-ico.png", no-repeat)
         }
         .error {
             .bp(2px -18px);
@@ -120,22 +120,4 @@
         }
     }
 }
-.btn-blue,
-.btn-red {
-    .w(100%);
-    &-hover {
-        .h(100%);
-    }
-}
 
-.btn(@bg){
-
-}
-.btn("basdasd");
-.btn-blue(@size, @hover){
-    .bp(right @size);
-    & .btn-text {
-        .bp(left @hover)
-    }
-}
-.btn-blue(-20px, -20px);

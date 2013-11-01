@@ -94,8 +94,8 @@
   padding-left: 25px;
   white-space: nowrap;
   color: red;
-  font-family: '微软雅黑';
-  background: url("../images/state-ico.png") no-repeat;
+  font-family: "微软雅黑";
+  background: url("../images/tpls/state-ico.png") no-repeat;
 }
 /* line 76, module.less */
 .label-wrap .ver-wrap .error,
@@ -157,14 +157,4 @@
 /* line 118, module.less */
 .label-wrap .no-bd select {
   border: 1px solid #cccccc;
-}
-/* line 123, module.less */
-.btn-blue,
-.btn-red {
-  width: 100%;
-}
-/* line 126, module.less */
-.btn-blue-hover,
-.btn-red-hover {
-  height: 100%;
 }
