@@ -60,23 +60,21 @@ cgClass.AddClass(
 	                reg : /^[\w\u4E00-\u9FA5]+$/
 	            },
 	            "numLast" : {
-	                msg : "{name}只能是数字,小数位为{range}", //numLast,{1-2}
-	                fun : self.numLast
+	                msg : "{name}只能是数字,小数位为{range}" //numLast,{1-2}
 	            },
 	            "numRange" : {
-	                msg : "{name}数值范围为{range}",  //numRange,{1-2}
-	                fun : self.numRange
+	                msg : "{name}数值范围为{range}"  //numRange,{1-2}
 	            },
 	            "strRange" : {
-	                msg : "{name}字数范围为{range}",  //strRange,{1-2}
-	                fun : self.strRange
+	                msg : "{name}字数范围为{range}"  //strRange,{1-2}
 	            },
 	            "isHave" : {
-	                msg : "{name}重复",
-	                fun : self.isHave
+	                msg : "{name}重复"
 	            }
 			};	
-			self.flag = false;
+	        self.flag = true;
+	        self.errorDom = null;
+			self.ajaxQueue = {};
 			self.option = option;
 			if ( !!option.map ) {
 				self.map = $.extend(self.map, option.map);
@@ -84,9 +82,13 @@ cgClass.AddClass(
 
 			var $wrap = option.wrap;
 
+			self.wrap = $wrap;
+			self.hookDom = option.hookDom;
+
 			/* do something */
 			self.outParam = self.applyMethods(self, {
-				option : options
+				option : options,
+				matchAll : self.matchAll
 			});
 
 			$wrap.on("blur", option.hookDom, function(){
@@ -130,6 +132,20 @@ cgClass.AddClass(
 				self.parseVer(dataVer, val, $dom);
 			});
 
+			option.btn.on("click", function(event){
+		        self.flag = true;
+		        self.matchAll();
+		        if ( self.flag ) {
+		            if ( typeof(option.success) == "function" ) {
+		                option.success(option.btn, event);
+		            }
+		        } else{
+		            if ( typeof(option.error) == "function" ) {
+		                option.error(self.errorDom);
+		            }
+		        }
+		    });
+
 		},
 		parseVer : function(data, val, dom){
 			var self = this,
@@ -161,14 +177,15 @@ cgClass.AddClass(
 		match : function(val, name, ver, dom){
 			var self = this,
 				_ver = ver.match(/^([^\,]+)\,\{?([^\}]+)\}?$/), // 匹配"ver,({)xxx(})" ==> [1]:ver, [2]:xxx
-				term = !!_ver ? self.map[_ver[1]] : self.map[ver],
+				term = !!_ver ? _ver[1] : ver,
+				mapTerm = self.map[term],
 				msg = "", doTest;
 			// 验证条件存在时
-			if ( !!term) {
-				msg = term.msg && term.msg.replace("{name}", name);
+			if ( !!mapTerm) {
+				msg = mapTerm.msg && mapTerm.msg.replace("{name}", name);
 				// 正则验证时
-				if ( !!term.reg ) {
-					if ( term.reg.test(val) ) {
+				if ( !!mapTerm.reg ) {
+					if ( mapTerm.reg.test(val) ) {
 						// self.verified(dom);
 						return true;
 					}else{
@@ -177,11 +194,11 @@ cgClass.AddClass(
 					}
 				}
 				// 函数验证时
-				if ( !!term.fun ) {
+				else if ( !!self[term] ) {
 					if ( !!_ver ) {
-						doTest = term.fun(val, msg, dom, _ver[2]);
+						doTest = self[term](val, msg, dom, _ver[2]);
 					}else{
-						doTest = term.fun(val, msg, dom, ver);
+						doTest = self[term](val, msg, dom, term);
 					}
 					if ( !!doTest.result ) {
 						console.log("ver success");
@@ -192,6 +209,9 @@ cgClass.AddClass(
 					}
 					return doTest.result;
 				}
+				// // 函数验证时
+				// if ( !!term.fun ) {
+				// }
 			}
 			else{
 				alert("验证信息配置有误，请检查代码");
@@ -216,6 +236,7 @@ cgClass.AddClass(
 	    thrown : function(dom, msg){
 	    	var self = this,
 	    		temp = "";
+	    	self.errorDom = dom;
 	        dom.nextAll(".Js-verification-state").remove();
 	        if ( self.option.errorTemp != null) {
 	            temp = self.option.errorTemp(msg);
@@ -229,40 +250,116 @@ cgClass.AddClass(
 	            dom.after(temp);
 	        }
 	    },
+	    waiting : function(dom){
+	    	var self = this,
+	    		temp = "";
+	        dom.nextAll(".Js-verification-state").remove();
+	        if ( self.option.errorTemp != null) {
+	            temp = self.option.errorTemp(msg);
+	        }else{
+	            temp = '<a href="javascript:void(0);" class="state right Js-verification-state">waiting...</a>';
+	        }
+	        var $nextAll = dom.nextAll();
+	        if ( $nextAll.length ) {
+	            $nextAll.last().after(temp);
+	        } else{
+	            dom.after(temp);
+	        }
+	    },
 	    numLast : function(val, msg, dom, range){
-	    	var self = this;
+	    	var self = this,
 	            valMin = range.split("-")[0],
 	            valMax = range.split("-")[1],
-	            _reg = new RegExp('^\\d+(\\.\\d{' + valMin + ',' + valMax + '})$');
-	        msg = msg.replace("{range}", range);
+	            _reg = new RegExp('^\\d+(\\.\\d{' + valMin + ',' + valMax + '})$'),
+	        	_msg = msg.replace("{range}", range);
 	        if(_reg.test(val)) {
-	            return { result : true, msg : msg };
+	            return { result : true, msg : _msg };
 	        } else {
-	            return { result : false, msg : msg };
+	            return { result : false, msg : _msg };
 	        }
 	    },
 	    numRange : function(val, msg, dom, range){
-
+	    	var self = this,
+	            strMin = range.split("-")[0],
+            	strMax = range.split("-")[1],
+	        	_val = parseFloat(val),
+	        	_msg = msg.replace("{range}", range);
+	        if(_val >= valMin && _val <= valMax) {
+	             return { result : true, msg : _msg };
+	        } else {
+	            return { result : false, msg : _msg };
+	        }
 	    },
 	    strRange : function(val, msg, dom, range){
-
+	    	var self = this,
+	            strMin = range.split("-")[0],
+            	strMax = range.split("-")[1],
+	            _reg = new RegExp('^[\\u4E00-\\u9FA5\\uf900-\\ufa2d\\w\\.\\s]{' + strMin + ',' + strMax + '}$'),
+	        	_msg = msg.replace("{range}", range);
+	        if( _reg.test(val) ) {
+	            return { result : true, msg : _msg };
+	        } else {
+	            return { result : false, msg : _msg };
+	        }
 	    },
 	    isHave : function(val, msg, dom, range){
-	    	var self = this;
-	    	cgClass.Ajax({
+	    	var self = this,
+	    		_ajax;
+	    	if ( !self.ajaxQueue.isHave ) {
+				self.ajaxQueue.isHave = {};
+				self.ajaxQueue.isHave.length = 0;
+			}
+			self.ajaxQueue.isHave.length++;
+			_ajax = self.ajaxQueue.isHave.length;
+	    	self.ajaxQueue.isHave[_ajax] = cgClass.Ajax({
 	    		url : "api/area.txt",
 	    		type: "get",
 	    		dataType: "textJson",
-	    		queue : "ver",
-	    		queueCallback : function(){
-	    			console.log("fuck");
+	    		queue : "isHave",
+	    		beforeSend : function(xhr, ajax){},
+	    		queueCallback : function(){},
+	    		success: function( result, statusText ){
+	    			self.ajaxQueue.isHave.length--;
+	    			self.ajaxQueue.isHave[_ajax] = null;
+	    			if ( result.success ) {
+	    				// self.verified(dom);
+	    			} else{
+	    				self.thrown(dom, msg);
+	    				self.abortAjax();
+	    				// console.log(self.ajaxQueue.isHave);
+	    			}
 	    		},
-	    		success: function( request, statusText ){
-	    			/* do something */
-	    		},
-	    		error: function( request, statusText, error ){}
+	    		error: function( result, statusText, error ){
+	    			self.ajaxQueue.isHave.length--;
+	    			self.ajaxQueue.isHave[_ajax] = null;
+	    		}
 	    	});
 	    	return { result : "ajax", msg : msg };
+	    },
+	    abortAjax : function(){
+	    	var self = this;
+	    	$.each(self.ajaxQueue, function(key, item){
+    			for(var i = 0; i < item.length; i++ ){
+    				if (!!item[i+1]) {
+    					item[i+1].abort();
+    				}
+    			}
+	    	});
+	    	self.flag = false;
+	    },
+	    matchAll : function(){
+	    	var self = this;
+	    	self.flag = true;
+	    	self.wrap.find(self.hookDom).each(function(){
+	    		$(this).blur();
+	    		if ( !self.flag ) {
+	    			self.doError();
+	    			return false;
+	    		}
+	    	});
+	    },
+	    doError : function(){
+	    	console.log("match add error");
 	    }
 	}
 );

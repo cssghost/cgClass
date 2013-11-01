@@ -32,7 +32,7 @@
 		<div class="label-wrap fn-clear">
 			<div class="span-name">用户名：</div>
 			<div class="input-wrap">
-				<input type="text" class="input-text Js-verification" data-ver="用户名:notNull/isHave" />
+				<input type="text" class="input-text Js-verification" data-ver="用户名:notNull/strRange,{2-5}" />
 			</div>
 		</div>
 		<div class="label-wrap fn-clear">
@@ -98,6 +98,7 @@
 			</div>
 		</div>
 		<div class="label-wrap fn-clear">
+			<input type="button" value="match all" class="Js-matchAll" />
 			<input type="button" value="radio" class="Js-radio" />
 			<input type="button" value="checkbox" class="Js-checkbox" />
 			<input type="button" value="select" class="Js-select" />
@@ -121,13 +122,17 @@ $(function() {
 	        hookDom: ".Js-verification",
 	        inputWrap : ".input-wrap",
 	        map : "",
-	        btn : $("Js-btn"),
+	        btn : $(".Js-matchAll"),
 	        parseAjaxData : null,
 	        successTemp : null,
 	        errorTemp : null,
 	        init : function(){},
-	        error : function(){},
-	        success : function(){},
+	        error : function($errorDom){
+	        	console.log($errorDom);
+	        },
+	        success : function($btn, event){
+	        	console.log($btn, event);
+	        },
 	        otherInput : ".other"
 		}
 	);

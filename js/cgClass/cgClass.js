@@ -118,6 +118,8 @@ cgClass.AddClass = function(className){
 	}
 	function _Class(arg){
 		this.outParam = {};
+		this.fn = this.prototype;
+		this._super = this.__proto__;
 		this.init(arg);
 		return this;
 	}
