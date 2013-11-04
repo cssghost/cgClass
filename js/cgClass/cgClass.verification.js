@@ -7,11 +7,11 @@
  * @extends jQuery
  * @since version 1.0 
  * @param {Object} options 参数对象数据
- * @param {String} options.type 弹出框的种类
- * @param {Object} options.param 附加参数
- * @param {String} options.title 弹出框的标题
- * @param {jQuery Object} options.popupTemp 弹出框html的jQuery对象
- * @param {html} options.template 内容区的html代码片段
+ * @param {jQuery Object} options.wrap 需要验证的表格包裹的jquery dom
+ * @param {css class} options.hookDom 被验证项的钩子名称
+ * @param {css class} options.inputWrap 被验证项的单行包裹，提示验证结果用
+ * @param {Object} options.map 附加验证条件
+ * @param {jQuery Object} options.btn 内容区的html代码片段
  * @param {String} options.message type为confirm时显示的消息提示文本
  * @param {css class} options.addClass 附加弹出框样式
  * @param {Boolean} options.isLayer 是否需要遮罩层
@@ -30,7 +30,6 @@
  * @example cgClass.Create(
 	"Verification",
 	{
-		type : "popup",
   [可选]param : {},
   [可选]title : "弹出框",
   [可选]popupTemp : null || $('<div class="module-popup fn-clear Js-popup-wrap">'+
@@ -58,33 +57,6 @@
   [可选]content : null || function(opt){},
   [可选]done : null || function(opt){},
   [可选]cancel : null || function(opt){}
-	}
-); 
-oPopup.Events();
- * @example cgClass.Create(
-	"Popup",
-	{
-		type: "confirm",
-  [可选]param : {},
-  [可选]title: "提示",
-  [可选]doneText : "确定按钮",
-  [可选]cancelText : "确定按钮",
-		message : "测试弹出框",
-  [可选]done : function(opt){},
-  [可选]cancel : function(opt){}
-	}
-); 
- * @example cgClass.Create(
-	"Popup",
-	{
-		type: "result",
-  [可选]param : {},
-  [可选]title: "提示",
-  [可选]doneText : "确定按钮",
-		message : "测试弹出框",
-  [可选]time : 2000,
-  [可选]content : function(opt){},
-  [可选]done : function(opt){}
 	}
 ); 
  */
