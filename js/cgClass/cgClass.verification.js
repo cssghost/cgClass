@@ -177,6 +177,7 @@ cgClass.AddClass(
 
 			self.wrap = $wrap;
 			self.hookDom = option.hookDom;
+			self.inputWrap = option.inputWrap;
 
 			/* do something */
 			self.outParam = self.applyMethods(self, {
@@ -291,7 +292,7 @@ cgClass.AddClass(
 				// 正则验证时
 				if ( !!mapTerm.reg ) {
 					if ( mapTerm.reg.test(val) ) {
-						// self.verified(dom);
+						self.verified(dom);
 						return true;
 					}else{
 						self.thrown(dom, msg);
@@ -311,10 +312,17 @@ cgClass.AddClass(
 						self.thrown(dom, doTest.msg);
 					}
 					return doTest.result;
+				}else{
+					// 附加函数验证
+					if ( !!term.fun ) {
+						doTest = term.fun(val, msg, dom, term);
+						if ( !!doTest.result ) {
+							doTest.result != "ajax" && self.verified(dom);
+						}else{
+							self.thrown(dom, doTest.msg);
+						}
+					}
 				}
-				// // 函数验证时
-				// if ( !!term.fun ) {
-				// }
 			}
 			else{
 				alert("验证信息配置有误，请检查代码");
@@ -322,8 +330,7 @@ cgClass.AddClass(
 		},
 		verified : function(dom){
 	        var self = this,
-	    		temp = "",
-	    		$nextAll = dom.nextAll();
+	    		temp = "";
 	    	self.verLength = self.verLength == 0 ? 0 : self.verLength-1;
 	        dom.nextAll(".Js-verification-state").remove();
 	        if ( self.option.errorTemp != null) {
@@ -331,11 +338,7 @@ cgClass.AddClass(
 	        }else{
 	            temp = '<a href="javascript:void(0);" class="state right Js-verification-state">&nbsp;</a>';
 	        }
-	        if ( $nextAll.length ) {
-	            $nextAll.last().after(temp);
-	        } else{
-	            dom.after(temp);
-	        }
+	        dom.closest(self.inputWrap).append(temp);
 	    },
 	    thrown : function(dom, msg){
 	    	var self = this,
@@ -350,12 +353,7 @@ cgClass.AddClass(
 	        }else{
 	            temp = '<a href="javascript:void(0);" class="state error Js-verification-state">' + msg + '</a>';
 	        }
-	        var $nextAll = dom.nextAll();
-	        if ( $nextAll.length ) {
-	            $nextAll.last().after(temp);
-	        } else{
-	            dom.after(temp);
-	        }
+	        dom.closest(self.inputWrap).append(temp);
 	    },
 	    waiting : function(dom){
 	    	var self = this,
@@ -366,12 +364,7 @@ cgClass.AddClass(
 	        }else{
 	            temp = '<a href="javascript:void(0);" class="state right Js-verification-state">waiting...</a>';
 	        }
-	        var $nextAll = dom.nextAll();
-	        if ( $nextAll.length ) {
-	            $nextAll.last().after(temp);
-	        } else{
-	            dom.after(temp);
-	        }
+	        dom.closest(self.inputWrap).append(temp);
 	    },
 	    numLast : function(val, msg, dom, range){
 	    	var self = this,
