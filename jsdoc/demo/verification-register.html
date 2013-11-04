@@ -16,15 +16,15 @@
 	/dev -->
 
 	 
-	<link href="css/base.min.css?t=20131101153646" rel="stylesheet" type="text/css">
-	<link href="css/layout.min.css?t=20131101153646" rel="stylesheet" type="text/css">
-	<link href="css/module.min.css?t=20131101153646" rel="stylesheet" type="text/css">
-	<link href="css/verification-register.min.css?t=20131101153646" rel="stylesheet" type="text/css">
+	<link href="css/base.min.css?t=20131104145415" rel="stylesheet" type="text/css">
+	<link href="css/layout.min.css?t=20131104145415" rel="stylesheet" type="text/css">
+	<link href="css/module.min.css?t=20131104145415" rel="stylesheet" type="text/css">
+	<link href="css/verification-register.min.css?t=20131104145415" rel="stylesheet" type="text/css">
 
-	<script src="js/jquery-1.8.2.js?t=20131101153646"></script>
-	<script src="js/jquery.plugin.js?t=20131101153646"></script>
-	<script src="js/cgClass/cgClass.min.js?t=20131101153646"></script>
-	<script src="js/cgClass/cgClass.verification.min.js?t=20131101153646"></script>
+	<script src="js/jquery-1.8.2.js?t=20131104145415"></script>
+	<script src="js/jquery.plugin.js?t=20131104145415"></script>
+	<script src="js/cgClass/cgClass.min.js?t=20131104145415"></script>
+	<script src="js/cgClass/cgClass.verification.min.js?t=20131104145415"></script>
 	
 </head>
 <body>
@@ -32,13 +32,13 @@
 		<div class="label-wrap fn-clear">
 			<div class="span-name">用户名：</div>
 			<div class="input-wrap">
-				<input type="text" class="input-text Js-verification" data-ver="用户名:notNull/strRange,{2-5}" />
+				<input type="text" class="input-text Js-verification" data-ver="用户名:notNull/strRange,{2-5}/isHave" />
 			</div>
 		</div>
 		<div class="label-wrap fn-clear">
 			<div class="span-name">密码：</div>
 			<div class="input-wrap">
-				<input type="password" class="input-text Js-verification" />
+				<input type="password" class="input-text Js-verification" data-ver="密码:isHave" />
 			</div>
 		</div>
 		<div class="label-wrap fn-clear">
@@ -68,8 +68,8 @@
 		<div class="label-wrap fn-clear">
 			<div class="span-name">单选：</div>
 			<div class="input-wrap">
-				<input type="radio" name="radio" value="radio01" class="Js-verification" />
-				<input type="radio" name="radio" value="radio02" class="Js-verification" />
+				<input type="radio" name="radio" value="radio01" class="Js-verification" data-ver="单选:notNull" />
+				<input type="radio" name="radio" value="radio02" class="Js-verification" data-ver="单选:notNull" />
 			</div>
 		</div>
 		<div class="label-wrap fn-clear">
@@ -82,7 +82,7 @@
 		<div class="label-wrap fn-clear">
 			<div class="span-name">多选：</div>
 			<div class="input-wrap">
-				<select class="Js-verification">
+				<select class="Js-verification" data-ver="多选:notNull">
 					<option value="">choose</option>
 					<option value="option01">option01</option>
 				</select>
@@ -91,7 +91,7 @@
 		<div class="label-wrap fn-clear">
 			<div class="span-name">选框：</div>
 			<div class="input-wrap">
-				<select multiple="multiple" class="Js-verification">
+				<select multiple="multiple" class="Js-verification" data-ver="选框:notNull">
 					<option value="">choose</option>
 					<option value="option01">option01</option>
 				</select>
