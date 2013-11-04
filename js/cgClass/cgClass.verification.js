@@ -163,6 +163,7 @@ cgClass.AddClass(
 	            }
 			};	
 			self.verLength = 0;
+			self.vering = false;
 	        self.flag = true;
 	        self.ajaxFinish = true;
 	        self.errorDom = null;
@@ -194,17 +195,14 @@ cgClass.AddClass(
 						case "radio":
 							var $radio = $wrap.find(":radio[name=" + $dom.attr("name") + "]");
 							val = $radio.filter(":checked").length;
-							val = !!val ? val : "";
-							// console.log("radio");
+							val = !val ? "" : val;
 						break;
 						case "checkbox":
 							var $checkbox = $wrap.find(":checkbox[name=" + $dom.attr("name") + "]");
 							val = $checkbox.filter(":checked").length;
-							val = !!val ? val : "";
-							// console.log("checkbox");
+							val = !val ? "" : val;
 						break;
 						default:
-							// console.log("text");
 							val = $dom.val();
 						break;
 					}
@@ -212,25 +210,23 @@ cgClass.AddClass(
 					switch(tagType){
 						case "select-one":
 							val = $dom.val();
-							// console.log("select-one");
 						break;
 						case "select-multiple":
-							val = $dom.children().length;
-							// console.log("select-multiple");
+							val = !$dom.children().length ? "" : "has";
 						break;
 						default:
 						break;
 					}
 				}
-				// console.log(val);
 				self.parseVer(dataVer, val, $dom);
 			});
 
 			option.btn.on("click", function(event){
 		        self.flag = true;
-		        self.matchAll();
+		        self.vering = true;
+		        self.matchAll(event);
 		        if ( !self.ajaxQueue.length ) {
-		        	self.doMatchResult()
+		        	self.doMatchResult(event)
 		        }
 		    });
 
@@ -289,10 +285,8 @@ cgClass.AddClass(
 						doTest = self[term](val, msg, dom, term);
 					}
 					if ( !!doTest.result ) {
-						// console.log("ver success");
 						doTest.result != "ajax" && self.verified(dom);
 					}else{
-						// console.log("ver error");
 						self.thrown(dom, doTest.msg);
 					}
 					return doTest.result;
@@ -420,7 +414,9 @@ cgClass.AddClass(
 	    			if ( self.ajaxQueue.isHave.length == 0 ) {
 	    				self.ajaxQueue.isHave = null;
 	    				self.ajaxQueue.length--;
-	    				self.doMatchResult();
+	    				if ( self.vering ) {
+	    					self.doMatchResult(dom.data("ev"));
+	    				}
 	    				return true;
 	    			}
 	    		},
@@ -432,7 +428,6 @@ cgClass.AddClass(
 	    			} else{
 	    				self.thrown(dom, msg);
 	    				self.abortAjax();
-	    				// console.log(self.ajaxQueue.isHave);
 	    			}
 	    		},
 	    		error: function( result, statusText, error ){
@@ -456,41 +451,30 @@ cgClass.AddClass(
 	        }
 	    	self.flag = false;
 	    },
-	    matchAll : function(){
+	    matchAll : function(event){
 	    	var self = this;
 	    	self.verLength = self.wrap.find(self.hookDom).length;
 	    	self.flag = true;
 	    	self.wrap.find(self.hookDom).each(function(){
+	    		$(this).data("ev", event);
 	    		$(this).blur();
-	    		if ( !self.flag ) {
-	    			self.doError();
-	    			return false;
-	    		}
 	    	});
 	    },
-	    doMatchResult : function(){
+	    doMatchResult : function(event){
 	    	var self = this;
+	    	self.vering = false;
 	    	if ( self.ajaxQueue.length == 0 ) {
-	    		console.log("ver result: all finish");
 	    		if ( self.flag && self.ajaxFinish ) {
-	    			console.log("ver result: all success");
 		            if ( typeof(self.option.success) == "function" ) {
 		                self.option.success(self.option.btn, event);
 		            }
 		        } else{
-		        	console.log("ver result: has error");
 		            if ( typeof(self.option.error) == "function" && !!self.errorDom ) {
 		                self.option.error(self.errorDom);
 		                self.errorDom = null;
 		            }
 		        }
 	    	}
-	    },
-	    doError : function(){
-	    	// console.log("match add error");
 	    }
 	}
 );
-cgClass.ajaxQueueCallback.ver = function(){
-	console.log("finish");
-}
