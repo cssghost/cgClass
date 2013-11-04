@@ -162,9 +162,11 @@ cgClass.AddClass(
 	                msg : "{name}重复"
 	            }
 			};	
+			self.verLength = 0;
 	        self.flag = true;
+	        self.ajaxFinish = true;
 	        self.errorDom = null;
-			self.ajaxQueue = {};
+			self.ajaxQueue = { length : 0};
 			self.option = option;
 			if ( !!option.map ) {
 				self.map = $.extend(self.map, option.map);
@@ -199,7 +201,7 @@ cgClass.AddClass(
 							var $checkbox = $wrap.find(":checkbox[name=" + $dom.attr("name") + "]");
 							val = $checkbox.filter(":checked").length;
 							val = !!val ? val : "";
-							console.log("checkbox");
+							// console.log("checkbox");
 						break;
 						default:
 							// console.log("text");
@@ -227,14 +229,8 @@ cgClass.AddClass(
 			option.btn.on("click", function(event){
 		        self.flag = true;
 		        self.matchAll();
-		        if ( self.flag ) {
-		            if ( typeof(option.success) == "function" ) {
-		                option.success(option.btn, event);
-		            }
-		        } else{
-		            if ( typeof(option.error) == "function" ) {
-		                option.error(self.errorDom);
-		            }
+		        if ( !self.ajaxQueue.length ) {
+		        	self.doMatchResult()
 		        }
 		    });
 
@@ -246,7 +242,6 @@ cgClass.AddClass(
 			if ( !!verData ) {
 				name = verData[1];
 				vers = verData[2].split("/");
-				console.log(val);
 				if ( $.trim(val) == "" ) {
 					if( $.inArray("notNull", vers) != -1 ){
 						self.flag = false;
@@ -294,10 +289,10 @@ cgClass.AddClass(
 						doTest = self[term](val, msg, dom, term);
 					}
 					if ( !!doTest.result ) {
-						console.log("ver success");
+						// console.log("ver success");
 						doTest.result != "ajax" && self.verified(dom);
 					}else{
-						console.log("ver error");
+						// console.log("ver error");
 						self.thrown(dom, doTest.msg);
 					}
 					return doTest.result;
@@ -314,6 +309,7 @@ cgClass.AddClass(
 	        var self = this,
 	    		temp = "",
 	    		$nextAll = dom.nextAll();
+	    	self.verLength = self.verLength == 0 ? 0 : self.verLength-1;
 	        dom.nextAll(".Js-verification-state").remove();
 	        if ( self.option.errorTemp != null) {
 	            temp = self.option.errorTemp(msg);
@@ -329,6 +325,7 @@ cgClass.AddClass(
 	    thrown : function(dom, msg){
 	    	var self = this,
 	    		temp = "";
+	    	self.verLength = self.verLength == 0 ? 0 : self.verLength-1;
 	    	self.errorDom = dom;
 	        dom.nextAll(".Js-verification-state").remove();
 	        if ( self.option.errorTemp != null) {
@@ -397,25 +394,41 @@ cgClass.AddClass(
 	    },
 	    isHave : function(val, msg, dom, range){
 	    	var self = this,
-	    		_ajax;
+	    		_ajax,
+	    		_ajaxUrl = dom.attr("data-same-url"),
+	    		_ajaxData = {
+                    label : val,
+                    id : dom.attr("data-same-id") == "" ? "" : dom.attr("data-same-id")
+                };
 	    	if ( !self.ajaxQueue.isHave ) {
+	    		self.ajaxQueue.length++;
 				self.ajaxQueue.isHave = {};
 				self.ajaxQueue.isHave.length = 0;
 			}
 			self.ajaxQueue.isHave.length++;
 			_ajax = self.ajaxQueue.isHave.length;
 	    	self.ajaxQueue.isHave[_ajax] = cgClass.Ajax({
-	    		url : "api/area.txt",
+	    		url : _ajaxUrl,
 	    		type: "get",
+	    		data : _ajaxData,
 	    		dataType: "textJson",
 	    		queue : "isHave",
-	    		beforeSend : function(xhr, ajax){},
-	    		queueCallback : function(){},
-	    		success: function( result, statusText ){
+	    		beforeSend : function(xhr, ajax){
+	    			self.waiting(dom);
+	    		},
+	    		queueCallback : function(){
+	    			if ( self.ajaxQueue.isHave.length == 0 ) {
+	    				self.ajaxQueue.isHave = null;
+	    				self.ajaxQueue.length--;
+	    				self.doMatchResult();
+	    				return true;
+	    			}
+	    		},
+	    		success: function (result, statusText) {
 	    			self.ajaxQueue.isHave.length--;
 	    			self.ajaxQueue.isHave[_ajax] = null;
 	    			if ( result.success ) {
-	    				// self.verified(dom);
+	    				self.verified(dom);
 	    			} else{
 	    				self.thrown(dom, msg);
 	    				self.abortAjax();
@@ -430,18 +443,22 @@ cgClass.AddClass(
 	    	return { result : "ajax", msg : msg };
 	    },
 	    abortAjax : function(){
-	    	var self = this;
-	    	$.each(self.ajaxQueue, function(key, item){
-    			for(var i = 0; i < item.length; i++ ){
-    				if (!!item[i+1]) {
-    					item[i+1].abort();
-    				}
-    			}
-	    	});
+	        var self = this,
+                thisQueue = self.ajaxQueue;
+	        for (var key in thisQueue) {
+	            if (key != "length") {
+	                for (var i = 0; i < thisQueue[key].length; i++) {
+	                    if (!!thisQueue[key][i + 1]) {
+	                        thisQueue[key][i + 1].abort();
+	                    }
+	                }
+	            }
+	        }
 	    	self.flag = false;
 	    },
 	    matchAll : function(){
 	    	var self = this;
+	    	self.verLength = self.wrap.find(self.hookDom).length;
 	    	self.flag = true;
 	    	self.wrap.find(self.hookDom).each(function(){
 	    		$(this).blur();
@@ -451,8 +468,26 @@ cgClass.AddClass(
 	    		}
 	    	});
 	    },
+	    doMatchResult : function(){
+	    	var self = this;
+	    	if ( self.ajaxQueue.length == 0 ) {
+	    		console.log("ver result: all finish");
+	    		if ( self.flag && self.ajaxFinish ) {
+	    			console.log("ver result: all success");
+		            if ( typeof(self.option.success) == "function" ) {
+		                self.option.success(self.option.btn, event);
+		            }
+		        } else{
+		        	console.log("ver result: has error");
+		            if ( typeof(self.option.error) == "function" && !!self.errorDom ) {
+		                self.option.error(self.errorDom);
+		                self.errorDom = null;
+		            }
+		        }
+	    	}
+	    },
 	    doError : function(){
-	    	console.log("match add error");
+	    	// console.log("match add error");
 	    }
 	}
 );

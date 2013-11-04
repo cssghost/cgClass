@@ -316,6 +316,7 @@ cgClass.Ajax = function(config, defData){
 		_ajaxQueue++;
 		self.ajaxQueue[option.queue] = _ajaxQueue;
 		option.complete = function(request, statusText){
+			var queueResult;
 			self.ajaxQueue[option.queue]--;
 			if ( config.complete  ) {
 				targetComplete(request, statusText);
@@ -329,7 +330,8 @@ cgClass.Ajax = function(config, defData){
 			if ( !self.ajaxQueue[option.queue] ) {
 				if ( self.ajaxQueueComplete[option.queue].length ) {
 					for( var i = 0; i < self.ajaxQueueComplete[option.queue].length; i++ ){
-						self.ajaxQueueComplete[option.queue][i]();
+						queueResult = self.ajaxQueueComplete[option.queue][i]();
+						if (queueResult) { break; }
 					}
 				}
 				if ( !!self.ajaxQueueCallback[option.queue] && typeof self.ajaxQueueCallback[option.queue] == "function" ) {
