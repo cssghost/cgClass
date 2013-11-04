@@ -8,7 +8,7 @@
     <property name="libJs" location="js" />
     <property name="jsFolder" location="js/cgClass" />
     <!--文档输出目录-->
-    <property name="output.dir" location="jsdoc" />
+    <property name="output.dir" location="../demo-cgClass/" />
     <property name="demo.dir" location="${output.dir}/demo" />
     <!--js源代码目录-->
     <property name="jsFolder.jquery" value="jquery-1.8.2.js" />
