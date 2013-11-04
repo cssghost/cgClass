@@ -195,18 +195,18 @@ cgClass.AddClass(
 						case "radio":
 							var $radio = $wrap.find(":radio[name=" + $dom.attr("name") + "]");
 							val = $radio.filter(":checked").length;
-							val = !val ? "" : val;
+							val = val ? val : "";
 						break;
 						case "checkbox":
 							var $checkbox = $wrap.find(":checkbox[name=" + $dom.attr("name") + "]");
 							val = $checkbox.filter(":checked").length;
-							val = !val ? "" : val;
+							val = val ? val : "";
 						break;
 						default:
 							val = $dom.val();
 						break;
 					}
-				}else{
+				}else if ( tagName == "SELECT" ) {
 					switch(tagType){
 						case "select-one":
 							val = $dom.val();
@@ -216,6 +216,28 @@ cgClass.AddClass(
 						break;
 						default:
 						break;
+					}
+				}else{
+					var testType = $dom.attr("data-type"),
+						testInputType = $dom.attr("data-input-type");
+					if ( testType == "notText" ) {
+						switch( testInputType ){
+		                    case "select" :
+		                    	var $select = $dom.find("select").first();
+		                        val = $select.val();
+		                        $dom = $select;
+		                    break;
+		                    case "other" :
+		                    	var $other = $dom.find(option.otherInput);
+		                        val = $other.val();
+		                        $dom = $other;
+		                    break;
+		                    default :
+		                    	var $other = $dom.find("input:checked");
+		                        val = $other.length ? $other.length : "";
+		                        $dom = $other.last();
+		                    break;
+		                };
 					}
 				}
 				self.parseVer(dataVer, val, $dom);
@@ -240,7 +262,6 @@ cgClass.AddClass(
 				vers = verData[2].split("/");
 				if ( $.trim(val) == "" ) {
 					if( $.inArray("notNull", vers) != -1 ){
-						self.flag = false;
 						self.thrown(dom, name + "不能为空");
 					}else{
 						self.verified(dom);
@@ -319,6 +340,8 @@ cgClass.AddClass(
 	    thrown : function(dom, msg){
 	    	var self = this,
 	    		temp = "";
+    		self.vering = false;
+    		self.flag = false;
 	    	self.verLength = self.verLength == 0 ? 0 : self.verLength-1;
 	    	self.errorDom = dom;
 	        dom.nextAll(".Js-verification-state").remove();
@@ -433,6 +456,8 @@ cgClass.AddClass(
 	    		error: function( result, statusText, error ){
 	    			self.ajaxQueue.isHave.length--;
 	    			self.ajaxQueue.isHave[_ajax] = null;
+	    			self.thrown(dom, "验证超时，请重新尝试");
+    				self.abortAjax();
 	    		}
 	    	});
 	    	return { result : "ajax", msg : msg };
@@ -457,7 +482,9 @@ cgClass.AddClass(
 	    	self.flag = true;
 	    	self.wrap.find(self.hookDom).each(function(){
 	    		$(this).data("ev", event);
-	    		$(this).blur();
+	    		if ( self.flag ) {
+	    			$(this).blur();
+	    		}
 	    	});
 	    },
 	    doMatchResult : function(event){
