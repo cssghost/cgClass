@@ -9,14 +9,14 @@
  * @since version 1.0 
  * @param {Object} options 参数对象数据
  * @param {jQuery Object} options.wrap 需要验证的表格包裹的jquery dom
- * @param {css class} options.hookDom 被验证项的钩子名称
- * @param {css class} options.inputWrap 被验证项的单行包裹，提示验证结果用
+ * @param {jQuery class} options.hookDom 被验证项的钩子名称
+ * @param {jQuery class} options.inputWrap 被验证项的单行包裹，提示验证结果用
  * @param {Object} options.map 附加验证条件
  * @param {jQuery Object} options.btn 触发提交事件的按钮
  * @param {Object} options.parseAjaxData 附加ajax data
  * @param {Function} options.successTemp 返回成功提示的html片段
  * @param {Function} options.errorTemp 返回错误提示的html片段
- * @param {css class} options.otherInput 特殊input的钩子名称
+ * @param {jQuery class} options.otherInput 特殊input的钩子名称
  * @param {Function} options.init 验证前的附加事件
  * @param {Function} options.error 验证错误时候的附加事件
  * @param {Function} options.success 验证成功时候的附加事件
@@ -34,13 +34,13 @@ cgClass.AddClass(
 			        wrap : $(".wrap"),
 			        /**
 			         * 被验证项的钩子名称
-			         * @type css class
+			         * @type jQuery class
 			         * @default ".Js-verification"
 			         */
 			        hookDom: ".Js-verification",
 			        /**
 			         * 被验证项的单行包裹，提示验证结果用
-			         * @type css class
+			         * @type jQuery class
 			         * @default ".input-wrap"
 			         */
 			        inputWrap : ".input-wrap",
@@ -81,7 +81,7 @@ cgClass.AddClass(
 			        otherInput : ".other",
 			        /**
 			         * 验证前的附加事件
-			         * @type css class
+			         * @type jQuery class
 			         * @default ".other"
 			         */
 			        init : null,

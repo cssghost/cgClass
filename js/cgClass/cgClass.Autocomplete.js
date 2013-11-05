@@ -1,26 +1,103 @@
+/**
+ * @author 徐晨 
+ * @name cgClass.Autocomplete
+ * @class 自动完成插件 <a href="../demo/autocomplete.html" target="_blank">demo</a>
+ * @constructor
+ * @extends cgClass
+ * @extends cgClass.Ajax
+ * @extends jQuery
+ * @extends jQuery.getFromTemplate
+ * @since version 1.0 
+ * @param {Object} options 参数对象数据
+ * @param {jQuery Object} options.wrap 包裹的jquery dom
+ * @param {String html} options.template 展示项的js模板
+ * @param {jQuery class} options.autoList 展示列表的钩子名称
+ * @param {jQuery class} options.autoItem 展示项的钩子名称
+ * @param {jQuery class} options.autoText 输入框的钩子名称
+ * @param {jQuery Object} options.autoBtn 提交按钮的jquery dom
+ * @param {Boolean} options.hasBtn 是否存在提交按钮
+ * @param {css class} options.hoverClass 悬停显示项时添加的样式名
+ * @param {Function} options.init 模块初始化时的附加事件
+ * @param {Function} options.createSearchList 生成显示列表的事件
+ * @param {Function} options.action 表单提交的事件
+ */
 cgClass.AddClass(
     "Autocomplete",
     {
         init : function(options){
             var self = this,
-                option = $.extend({
+                option = $.extend(/** @lends cgClass.Autocomplete.prototype*/{
+                    /**
+                     * 需要验证的表格包裹的jquery dom
+                     * @type jQuery Object
+                     */
                     wrap : $(".Js-auto-frame"),
+                    /**
+                     * 展示列表的钩子名称
+                     * @type String html
+                     * @default null 
+                     */
                     template : null,
+                    /**
+                     * 展示列表的钩子名称
+                     * @type jQuery class
+                     * @default ".Js-auto-list"
+                     */
                     autoList : ".Js-auto-list",
+                    /**
+                     * 展示项的钩子名称
+                     * @type jQuery class
+                     * @default ".Js-auto-item"
+                     */
                     autoItem : ".Js-auto-item",
+                    /**
+                     * 输入框的钩子名称
+                     * @type jQuery class
+                     * @default ".Js-auto-text"
+                     */
                     autoText : ".Js-auto-text",
+                    /**
+                     * 提交按钮的jquery dom
+                     * @type jQuery dom
+                     * @default $(".Js-auto-btn")
+                     */
                     autoBtn : $(".Js-auto-btn"),
+                    /**
+                     * 是否存在提交按钮
+                     * @type Boolean
+                     * @default true
+                     */
                     hasBtn : true,
+                    /**
+                     * 悬停显示项时添加的样式名
+                     * @type css class
+                     * @default "selected"
+                     */
                     hoverClass : "selected",
+                    /**
+                     * 模块初始化时的附加事件
+                     * @type Function
+                     * @default null || init : function(option){}
+                     */
                     init : function(option){},
-                    action : function(option, val){},
-                    createSearchList : function(option, val, addItem){}
+                    /**
+                     * 生成显示列表的事件
+                     * @type Function
+                     * @default function(option, val){}
+                     */
+                    createSearchList : function(option, val, addItem){},
+                    /**
+                     * 表单提交的事件
+                     * @type Function
+                     * @default function(option, val){}
+                     */
+                    action : function(option, val){}
                 }, options),
                 $wrap = option.wrap,
                 $list = $wrap.find(option.autoList),
                 $text = $wrap.find(option.autoText),
                 $btn = $wrap.find(option.autoBtn),
-                $temp = option.template || $('<div><li class="auto-item Js-auto-item hide-row"><a href="javascript:void(0)" title="#{title}">#{title}</a></li></div>'),
+                $temp = option.template || '<li class="auto-item Js-auto-item hide-row"><a href="javascript:void(0)" title="#{title}">#{title}</a></li>',
                 keys = {
                     back: 8,
                     enter:  13,
@@ -166,9 +243,21 @@ cgClass.AddClass(
                 option.init(self.outParam);
             }
         },
+        /**
+         * @name cgClass.Autocomplete#returnText
+         * @desc  替换输出框的值为带入参数
+         * @event
+         * @param {String} value 替换输入框的值
+         */
         returnText : function(value){
             this.text.val( $.trim(value) );
         },
+        /**
+         * @name cgClass.Autocomplete#addItem
+         * @desc  添加展示项
+         * @event
+         * @param {Array} data 展示项的数据 例:["abc", "efg"]
+         */
         addItem : function(data){
             var self = this;
             self.list.empty();
@@ -181,6 +270,11 @@ cgClass.AddClass(
                 self.closeList();
             }
         },
+        /**
+         * @name cgClass.Autocomplete#showList
+         * @desc  显示显示列表，并绑定隐藏列表功能
+         * @event
+         */
         showList : function(){
             var self = this;
             self.list.slideDown("fast", "linear", function(){
@@ -189,6 +283,11 @@ cgClass.AddClass(
                 });
             });
         },
+        /**
+         * @name cgClass.Autocomplete#closeList
+         * @desc  隐藏显示列表
+         * @event
+         */
         closeList : function(){
             this.list.hide();
         }
