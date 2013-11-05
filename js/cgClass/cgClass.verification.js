@@ -4,6 +4,7 @@
  * @class 验证插件 <a href="../demo/verification-register.html" target="_blank">demo</a>
  * @constructor
  * @extends cgClass
+ * @extends cgClass.Ajax
  * @extends jQuery
  * @since version 1.0 
  * @param {Object} options 参数对象数据
@@ -25,19 +26,77 @@ cgClass.AddClass(
 	{
 		init : function(options){
 			var self = this,
-				option = $.extend({
+				option = $.extend(/** @lends cgClass.Verification.prototype*/{
+					/**
+			         * 需要验证的表格包裹的jquery dom
+			         * @type jQuery Object
+			         */
 			        wrap : $(".wrap"),
+			        /**
+			         * 被验证项的钩子名称
+			         * @type css class
+			         * @default ".Js-verification"
+			         */
 			        hookDom: ".Js-verification",
+			        /**
+			         * 被验证项的单行包裹，提示验证结果用
+			         * @type css class
+			         * @default ".input-wrap"
+			         */
 			        inputWrap : ".input-wrap",
-			        map : "",
+			        /**
+			         * 弹出框的种类
+			         * @type Object
+			         * @default null
+			         */
+			        map : null,
+			        /**
+			         * 触发提交事件的按钮
+			         * @type jQuery Object
+			         */
 			        btn : $("Js-btn"),
+			        /**
+			         * 附加ajax data
+			         * @type Object
+			         * @default null
+			         */
 			        parseAjaxData : null,
+			        /**
+			         * 返回成功提示的html片段
+			         * @type String
+			         * @default null
+			         */
 			        successTemp : null,
+			        /**
+			         * 返回失败提示的html片段
+			         * @type Function
+			         * @default null
+			         */
 			        errorTemp : null,
+			        /**
+			         * 特殊input的钩子名称
+			         * @type Function
+			         * @default null
+			         */
 			        otherInput : ".other",
-			        init : function(){},
-			        error : function(){},
-			        success : function(){}
+			        /**
+			         * 验证前的附加事件
+			         * @type css class
+			         * @default ".other"
+			         */
+			        init : null,
+			        /**
+			         * 验证错误时候的附加事件
+			         * @type Function
+			         * @default null
+			         */
+			        error : null,
+			        /**
+			         * 验证成功时候的附加事件
+			         * @type Function
+			         * @default null
+			         */
+			        success : null
 	            }, options);
 	        // 默认匹配的正则表达式
 			self.map = {
@@ -97,7 +156,6 @@ cgClass.AddClass(
 			self.verLength = 0;
 			self.vering = false;
 	        self.flag = true;
-	        self.ajaxFinish = true;
 	        self.errorDom = null;
 			self.ajaxQueue = { length : 0};
 			self.option = option;
@@ -186,6 +244,14 @@ cgClass.AddClass(
 		    });
 
 		},
+		/**
+		 * @name cgClass.Verification#parseVer
+		 * @desc  拆分验证条件
+		 * @event
+		 * @param {String} data 全部验证信息 格式为xxx:xxx/xxx 注:/为条件分隔符
+		 * @param {String} val 被验证数据
+		 * @param {jQuery Object} dom 被验证jQuery Object
+		 */
 		parseVer : function(data, val, dom){
 			var self = this,
 				verData = data && data.match(/(^.*)\:(\S+)/),
@@ -208,10 +274,16 @@ cgClass.AddClass(
 					}
 				}
 			}
-			// else{
-			// 	alert("验证信息配置有误，请检查代码");
-			// }
 		},
+		/**
+		 * @name cgClass.Verification#match
+		 * @desc  验证单条条件
+		 * @event
+		 * @param {String} val 被验证数据
+		 * @param {String} name 验证信息名称
+		 * @param {String} ver 单条验证信息
+		 * @param {jQuery Object} dom 被验证jQuery Object
+		 */
 		match : function(val, name, ver, dom){
 			var self = this,
 				_ver = ver.match(/^([^\,]+)\,\{?([^\}]+)\}?$/), // 匹配"ver,({)xxx(})" ==> [1]:ver, [2]:xxx
@@ -260,6 +332,12 @@ cgClass.AddClass(
 				alert("验证信息配置有误，请检查代码");
 			}
 		},
+		/**
+		 * @name cgClass.Verification#verified
+		 * @desc  验证成功
+		 * @event
+		 * @param {jQuery Object} dom 被验证jQuery Object
+		 */
 		verified : function(dom){
 	        var self = this,
 	    		temp = "";
@@ -272,6 +350,13 @@ cgClass.AddClass(
 	        }
 	        dom.closest(self.inputWrap).append(temp);
 	    },
+	    /**
+		 * @name cgClass.Verification#thrown
+		 * @desc  验证失败
+		 * @event
+		 * @param {jQuery Object} dom 被验证jQuery Object
+		 * @param {String} msg 输出的错误提示
+		 */
 	    thrown : function(dom, msg){
 	    	var self = this,
 	    		temp = "";
@@ -287,6 +372,12 @@ cgClass.AddClass(
 	        }
 	        dom.closest(self.inputWrap).append(temp);
 	    },
+	    /**
+		 * @name cgClass.Verification#waiting
+		 * @desc  验证等待中，验证方式为ajax时应用
+		 * @event
+		 * @param {jQuery Object} dom 被验证jQuery Object
+		 */
 	    waiting : function(dom){
 	    	var self = this,
 	    		temp = "";
@@ -294,6 +385,16 @@ cgClass.AddClass(
 	        temp = '<a href="javascript:void(0);" class="state right Js-verification-state">waiting...</a>';
 	        dom.closest(self.inputWrap).append(temp);
 	    },
+	    /**
+		 * @name cgClass.Verification#numLast
+		 * @desc  验证条件：被验证数据为数字且小数点后为{n-m}位 例:numLast,{1-2}
+		 * @event
+		 * @param {String} val 被验证数据
+		 * @param {String} msg 错误信息
+		 * @param {jQuery Object} dom 被验证jQuery Object
+		 * @param {String} range 范围值
+		 * @return {Object} { result : true|false, msg : msg };
+		 */
 	    numLast : function(val, msg, dom, range){
 	    	var self = this,
 	            valMin = range.split("-")[0],
@@ -306,6 +407,16 @@ cgClass.AddClass(
 	            return { result : false, msg : _msg };
 	        }
 	    },
+	    /**
+		 * @name cgClass.Verification#numRange
+		 * @desc  验证条件：被验证数据为数字且在{n-m}范围中 例:numRange,{100-200}
+		 * @event
+		 * @param {String} val 被验证数据
+		 * @param {String} msg 错误信息
+		 * @param {jQuery Object} dom 被验证jQuery Object
+		 * @param {String} range 范围值
+		 * @return {Object} { result : true|false, msg : msg };
+		 */
 	    numRange : function(val, msg, dom, range){
 	    	var self = this,
 	            strMin = range.split("-")[0],
@@ -318,6 +429,16 @@ cgClass.AddClass(
 	            return { result : false, msg : _msg };
 	        }
 	    },
+	    /**
+		 * @name cgClass.Verification#numRange
+		 * @desc  验证条件：被验证数据为普通字符串且在{n-m}字数范围中 例:strRange,{100-200}
+		 * @event
+		 * @param {String} val 被验证数据
+		 * @param {String} msg 错误信息
+		 * @param {jQuery Object} dom 被验证jQuery Object
+		 * @param {String} range 范围值
+		 * @return {Object} { result : true|false, msg : msg };
+		 */
 	    strRange : function(val, msg, dom, range){
 	    	var self = this,
 	            strMin = range.split("-")[0],
@@ -330,7 +451,19 @@ cgClass.AddClass(
 	            return { result : false, msg : _msg };
 	        }
 	    },
-	    isHave : function(val, msg, dom, range){
+	    /**
+		 * @name cgClass.Verification#range
+		 * @desc  验证条件：是否存在 例:isHave
+		 * @event
+		 * @param {String} val 被验证数据
+		 * @param {String} msg 错误信息
+		 * @param {jQuery Object} dom 被验证jQuery Object
+		 * @param {String} url 隐藏参数 ajax url 为dom的data-same-url属性的值
+		 * @param {String} label 隐藏参数 ajax data.label 值为被验证数据,不可修改
+		 * @param {String} id 隐藏参数 ajax data.id 为dom的data-same-id
+		 * @return {Object} { result : "ajax", msg : msg };
+		 */
+	    isHave : function(val, msg, dom){
 	    	var self = this,
 	    		_ajax,
 	    		_ajaxUrl = dom.attr("data-same-url"),
@@ -358,9 +491,10 @@ cgClass.AddClass(
 	    			if ( self.ajaxQueue.isHave.length == 0 ) {
 	    				self.ajaxQueue.isHave = null;
 	    				self.ajaxQueue.length--;
-	    				if ( self.vering ) {
+	    				if ( !self.ajaxQueue && self.vering ) {
 	    					self.doMatchResult(dom.data("ev"));
 	    				}
+	    				// 返回true停止后续ajax队列
 	    				return true;
 	    			}
 	    		},
@@ -383,6 +517,11 @@ cgClass.AddClass(
 	    	});
 	    	return { result : "ajax", msg : msg };
 	    },
+	    /**
+		 * @name cgClass.Verification#abortAjax
+		 * @desc  停止当前验证控件中所有ajax事件
+		 * @event
+		 */
 	    abortAjax : function(){
 	        var self = this,
                 thisQueue = self.ajaxQueue;
@@ -397,6 +536,12 @@ cgClass.AddClass(
 	        }
 	    	self.flag = false;
 	    },
+	    /**
+		 * @name cgClass.Verification#matchAll
+		 * @desc  触发当前验证控件中所有验证事件
+		 * @event
+		 * @param {Object} event 如果为验证按钮触发，传入当前按钮的event对象
+		 */
 	    matchAll : function(event){
 	    	var self = this;
 	    	self.verLength = self.wrap.find(self.hookDom).length;
@@ -408,11 +553,17 @@ cgClass.AddClass(
 	    		}
 	    	});
 	    },
+	    /**
+		 * @name cgClass.Verification#doMatchResult
+		 * @desc  全局验证结束时的回调函数，成功触发附加成功事件，反之触发失败事件并传出错误的dom
+		 * @event
+		 * @param {Object} event 如果为验证按钮触发，传入当前按钮的event对象
+		 */
 	    doMatchResult : function(event){
 	    	var self = this;
 	    	self.vering = false;
 	    	if ( self.ajaxQueue.length == 0 ) {
-	    		if ( self.flag && self.ajaxFinish ) {
+	    		if ( self.flag ) {
 		            if ( typeof(self.option.success) == "function" ) {
 		                self.option.success(self.option.btn, event);
 		            }
