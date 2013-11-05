@@ -144,7 +144,7 @@ cgClass.AddClass = function(className){
 	 * @event
 	 * @param {Object} _this 当前作用于this
 	 * @param {Object} moethods 被复制对象
-	 * @example applyMethods({
+	 * @example applyMethods(this, {
 	 *     attrKey : value,
 	 *     methodKey : function(arguments){}
 	 * }); 
