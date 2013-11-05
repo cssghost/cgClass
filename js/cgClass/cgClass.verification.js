@@ -11,54 +11,14 @@
  * @param {css class} options.hookDom 被验证项的钩子名称
  * @param {css class} options.inputWrap 被验证项的单行包裹，提示验证结果用
  * @param {Object} options.map 附加验证条件
- * @param {jQuery Object} options.btn 内容区的html代码片段
- * @param {String} options.message type为confirm时显示的消息提示文本
- * @param {css class} options.addClass 附加弹出框样式
- * @param {Boolean} options.isLayer 是否需要遮罩层
- * @param {Boolean} options.isCenter 是否居中
- * @param {Boolean} options.isDrag 是否可拖拽
- * @param {Boolean} options.isOnly 是否为唯一
- * @param {Boolean} options.autoShow 是否在初始化时自动显示弹出框
- * @param {Object} options.append 是否在目标对象中加载
- * @param {Boolean} options.append.isAppend 是否在目标对象中加载
- * @param {jQuery Object} options.append.dom 目标对象的jquery dom
- * @param {Boolean} options.hasBtn 是否需要按钮
- * @param {Boolean} options.hasCancel 是否需要取消按钮
- * @param {Function} options.content 内容区的附加函数
- * @param {Function} options.done 确定按钮的附加函数
- * @param {Function} options.cancel 取消按钮的附加函数
- * @example cgClass.Create(
-	"Verification",
-	{
-  [可选]param : {},
-  [可选]title : "弹出框",
-  [可选]popupTemp : null || $('<div class="module-popup fn-clear Js-popup-wrap">'+
-				  	'<a href="javascript:void(0)" class="popup-close Js-popup-close"></a> '+
-				    '<h6 class="fn-clear popup-tit Js-popup-title">' + option.title + '</h6>'+
-				    '<div class="popup-con Js-popup-con"></div>'+
-				    '<div class="popup-btn-wrap Js-popup-btn-wrap">'+
-				    	'<a class="popup-btn Js-popup-done" href="javascript:;;"><span class="popup-btn-text">确认</span></a>'+
-            			'<a class="popup-btn Js-popup-cancel" href="javascript:;;"><span class="popup-btn-text">取消</span></a>'+
-				    '</div>'+
-				'</div>'),
-		template : "<div></div>",
-  [可选]addClass : "popupClass",
-  [可选]isLayer : true,
-  [可选]isCenter : true,
-  [可选]isDrag : true,
-  [可选]isOnly : false,
-  [可选]autoShow : true,
-  [可选]append : {
-			isAppend : false,
-			dom : $(".dom")
-		},
-  [可选]hasBtn : true,
-  [可选]hasCancel : true,
-  [可选]content : null || function(opt){},
-  [可选]done : null || function(opt){},
-  [可选]cancel : null || function(opt){}
-	}
-); 
+ * @param {jQuery Object} options.btn 触发提交事件的按钮
+ * @param {Object} options.parseAjaxData 附加ajax data
+ * @param {Function} options.successTemp 返回成功提示的html片段
+ * @param {Function} options.errorTemp 返回错误提示的html片段
+ * @param {css class} options.otherInput 特殊input的钩子名称
+ * @param {Function} options.init 验证前的附加事件
+ * @param {Function} options.error 验证错误时候的附加事件
+ * @param {Function} options.success 验证成功时候的附加事件
  */
 cgClass.AddClass(
 	"Verification",
@@ -74,10 +34,10 @@ cgClass.AddClass(
 			        parseAjaxData : null,
 			        successTemp : null,
 			        errorTemp : null,
+			        otherInput : ".other",
 			        init : function(){},
 			        error : function(){},
-			        success : function(){},
-			        otherInput : ".other"
+			        success : function(){}
 	            }, options);
 	        // 默认匹配的正则表达式
 			self.map = {
@@ -331,11 +291,7 @@ cgClass.AddClass(
 	    	var self = this,
 	    		temp = "";
 	        dom.nextAll(".Js-verification-state").remove();
-	        if ( self.option.errorTemp != null) {
-	            temp = self.option.errorTemp(msg);
-	        }else{
-	            temp = '<a href="javascript:void(0);" class="state right Js-verification-state">waiting...</a>';
-	        }
+	        temp = '<a href="javascript:void(0);" class="state right Js-verification-state">waiting...</a>';
 	        dom.closest(self.inputWrap).append(temp);
 	    },
 	    numLast : function(val, msg, dom, range){
