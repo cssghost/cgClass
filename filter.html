@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>cgClass Filter</title>
+    <!-- dev -->
+    <link href="css/base.css" rel="stylesheet" type="text/css">
+    <link href="css/layout.css" rel="stylesheet" type="text/css">
+    <link href="css/filter.css" rel="stylesheet" type="text/css">
+
+    <script src="js/modernizr.js"></script>
+    <script src="js/jquery-1.8.2.js"></script>
+    <script src="js/jquery.plugin.js"></script>
+    <script src="js/cgClass/cgClass.js"></script>
+    <script src="js/cgClass/cgClass.Filter.js"></script>
+    <!-- /dev -->
+
+    <!-- publish 
+    <link href="css/base.min.css?t=timestamp" rel="stylesheet" type="text/css">
+    <link href="css/layout.min.css?t=timestamp" rel="stylesheet" type="text/css">
+    <link href="css/filter.min.css?t=timestamp" rel="stylesheet" type="text/css">
+
+    <script src="js/modernizr.js?t=timestamp"></script>
+    <script src="js/jquery-1.8.2.js?t=timestamp"></script>
+    <script src="js/jquery.plugin.js?t=timestamp"></script>
+    <script src="js/cgClass/cgClass.min.js?t=timestamp"></script>
+    <script src="js/cgClass/cgClass.Filter.min.js?t=timestamp"></script>
+    /publish -->
+</head>
+<body>
+
+    <div class="module-filter-box Js-filter-wrap fn-clear" style="width:590px; margin: 50px auto;">
+        <div class="filter-tag-title fn-clear">
+            <span class="filter-name">套餐选择：</span>
+            <ul class="Js-pack-filter-title-checkbox fn-clear">
+                <li>
+                    <label>
+                        <input type="checkbox" name="filterTitle" value="宽带" data-group-key="net" data-member-key="broadband">
+                        <span>宽带</span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="checkbox" name="filterTitle" value="手机" data-group-key="mobile" data-member-key="phone">       
+                        <span>手机</span>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="checkbox" name="filterTitle" value="固话" data-group-key="tel" data-member-key="tel">
+                        <span>固话</span>
+                    </label>
+                </li>
+            </ul>
+        </div>
+        <div class="filter-wrap fn-clear">
+            <dl>
+                <dt>套餐资费:</dt>
+                <dd>
+                    <div class="filter-slider-frame Js-pay-slider-wrap"><div class="filter-slider-wrap" data-member-key="packPay"><div class="filter-slider-line"><span class="slider-bg" style="width: 330px;"></span><span class="slider-block" style="left: 322px;"></span></div><div class="filter-slider-scale"><span class="scale" style="left: 0px; margin-left: -3.5px;">0</span><span class="scale" style="left: 55px; margin-left: -10.5px;">200</span><span class="scale" style="left: 110px; margin-left: -10.5px;">400</span><span class="scale" style="left: 165px; margin-left: -10.5px;">600</span><span class="scale" style="left: 220px; margin-left: -10.5px;">800</span><span class="scale" style="left: 275px; margin-left: -14px;">1000</span><span class="scale" style="left: 330px; margin-left: -4.5px;">∞</span></div></div><div class="price-box Js-price-box"><input class="price-input" type="text"><span class="price-unit">元</span></div></div>
+                    <!-- <div class="price-box Js-price-box">
+                        <input class="price-input Js-filter-tariff-price-input" type="text"><span class="price-unit">元</span>
+                    </div> -->
+                    <!-- <ul class="filter-item-list Js-filter-radio-packPay">
+                        <li class="selected"><a href="javascript:void(0)" data-val="-200">0~200元</a></li>
+                        <li><a href="javascript:void(0)" data-val="200-400">200~400元</a></li>
+                        <li><a href="javascript:void(0)" data-val="400-600">400~600元</a></li>
+                        <li><a href="javascript:void(0)" data-val="600-800">600~800元</a></li>
+                        <li><a href="javascript:void(0)" data-val="800-">800元以上</a></li>
+                    </ul> -->
+                </dd>
+            </dl>
+        </div>
+        <div class="filter-wrap fn-clear Js-mobile-slider-wrap fn-hide">
+            <dl>
+                <dt>通话时长:</dt>
+                <dd>
+                    <div class="filter-slider-frame Js-pack-sider-time">
+                        <div class="filter-slider-wrap" data-member-key="runtime">
+                            <div class="filter-slider-line">
+                                <span class="slider-bg" style="width: 0px;"></span>
+                                <span class="slider-block" style="left: -8px;"></span>
+                            </div>
+                            <div class="filter-slider-scale">
+                                <span class="scale" style="left: 0px; margin-left: -3.5px;">0</span>
+                                <span class="scale" style="left: 66px; margin-left: -10.5px;">200</span>
+                                <span class="scale" style="left: 132px; margin-left: -10.5px;">400</span>
+                                <span class="scale" style="left: 198px; margin-left: -10.5px;">600</span>
+                                <span class="scale" style="left: 264px; margin-left: -10.5px;">800</span>
+                                <span class="scale" style="left: 330px; margin-left: -14px;">1000</span>
+                            </div>
+                        </div>
+                        <div class="price-box Js-price-box">
+                            <input class="price-input" type="text">                                     
+                            <span class="price-unit">分钟</span>
+                        </div>
+                    </div>
+                    <!-- <div class="Js-pack-filter-runtime-item">
+                        <label>
+                            <input type="radio" name="filterTake" data-val="全部" checked="checked" value="全部">                                           
+                            <span>全部</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="filterTake" data-val="市话" value="市话">                                         
+                            <span>市话</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="filterTake" data-val="长市合一" value="长市合一">                                         
+                            <span>长市合一</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="filterTake" data-val="长市漫合一" value="长市漫合一">                                           
+                            <span>长市漫合一</span>
+                        </label>
+                    </div> -->
+                </dd>
+            </dl>
+        </div>
+        <div class="filter-wrap toggle-more-wrap fn-clear">
+            <dl class="fn-clear">
+                <dt>热门品牌:</dt>
+                <dd>
+                    <ul class="filter-item-list Js-filter-radio-brand" data-member-key="brand">
+                        
+                            <li>
+                                <a href="javascript:void(0)" data-val="苹果">苹果</a>
+                            </li>
+                        
+                            <li>
+                                <a href="javascript:void(0)" data-val="HTC">HTC</a>
+                            </li>
+                        
+                            <li>
+                                <a href="javascript:void(0)" data-val="小米">小米</a>
+                            </li>
+                        
+                            <li>
+                                <a href="javascript:void(0)" data-val="摩托罗拉">摩托罗拉</a>
+                            </li>
+                        
+                            <li>
+                                <a href="javascript:void(0)" data-val="华为">华为</a>
+                            </li>
+                        
+                            <li>
+                                <a href="javascript:void(0)" data-val="联想">联想</a>
+                            </li>
+                        
+                            <li>
+                                <a href="javascript:void(0)" data-val="TCL">TCL</a>
+                            </li>
+                        
+                        
+                            <li>
+                                <a href="javascript:void(0)" data-val="中兴">中兴</a>
+                            </li>
+                        
+                            <li>
+                                <a href="javascript:void(0)" data-val="三星">三星</a>
+                            </li>
+                        
+                            <li>
+                                <a href="javascript:void(0)" data-val="酷派">酷派</a>
+                            </li>
+                        
+                            <li>
+                                <a href="javascript:void(0)" data-val="京瓷">京瓷</a>
+                            </li>
+                        
+                            <li>
+                                <a href="javascript:void(0)" data-val="海信">海信</a>
+                            </li>
+                        
+                            <li>
+                                <a href="javascript:void(0)" data-val="黑莓">黑莓</a>
+                            </li>
+                        
+                            <li>
+                                <a href="javascript:void(0)" data-val="金立">金立</a>
+                            </li>
+                        
+                            <li>
+                                <a href="javascript:void(0)" data-val="齐乐">齐乐</a>
+                            </li>
+                        
+                            <li>
+                                <a href="javascript:void(0)" data-val="天语">天语</a>
+                            </li>
+                        
+                            <li>
+                                <a href="javascript:void(0)" data-val="夏普">夏普</a>
+                            </li>
+                        
+                            <li>
+                                <a href="javascript:void(0)" data-val="诺基亚">诺基亚</a>
+                            </li>
+                        
+                            <li>
+                                <a href="javascript:void(0)" data-val="蓝天">蓝天</a>
+                            </li>
+                        
+                            <li>
+                                <a href="javascript:void(0)" data-val="波导">波导</a>
+                            </li>
+                        
+                            <li>
+                                <a href="javascript:void(0)" data-val="优派">优派</a>
+                            </li>
+                        
+                            <li>
+                                <a href="javascript:void(0)" data-val="海尔">海尔</a>
+                            </li>
+                        
+                            <li>
+                                <a href="javascript:void(0)" data-val="飞利浦">飞利浦</a>
+                            </li>
+                        
+                            <li>
+                                <a href="javascript:void(0)" data-val="易丰">易丰</a>
+                            </li>
+                        
+                            <li>
+                                <a href="javascript:void(0)" data-val="首信">首信</a>
+                            </li>
+                        
+                            <li>
+                                <a href="javascript:void(0)" data-val="索尼">索尼</a>
+                            </li>
+                        
+                            <li>
+                                <a href="javascript:void(0)" data-val="新邮通">新邮通</a>
+                            </li>
+                        
+                            <li>
+                                <a href="javascript:void(0)" data-val="语信">语信</a>
+                            </li>
+                        
+                            <li>
+                                <a href="javascript:void(0)" data-val="广信">广信</a>
+                            </li>
+                        
+                            <li>
+                                <a href="javascript:void(0)" data-val="MOTO">MOTO</a>
+                            </li>
+                        
+                    </ul>
+                </dd>
+            </dl>
+            <a href="javascript:void(0)" class="toggle-less">更多</a>
+        </div>
+        <div class="filter-wrap fn-clear Js-pack-filter-change-net fn-hide">
+            <dl>
+                <dt>宽带带宽:</dt>
+                <dd>
+                    <ul class="filter-item-list Js-filter-radio-net" data-member-key="net">
+                        <li><a href="javascript:void(0)" data-val="1-5">1~5M</a></li>
+                        <li><a href="javascript:void(0)" data-val="5-20">5~20M</a></li>
+                        <li><a href="javascript:void(0)" data-val="20-100">20~100M</a></li>
+                        <li><a href="javascript:void(0)" data-val="100-">100M以上</a></li>
+                    </ul>
+                </dd>
+            </dl>
+        </div>
+        <div class="filter-more-wrap Js-filter-more-btn-wrap fn-hide">
+            <div class="more Js-filter-more-btn">更多条件</div>
+        </div>
+        <div class="Js-filter-more-wrap fn-hide">
+            <div class="filter-hr-line"></div>          
+            <div class="filter-wrap fn-clear Js-pack-filter-change-flow">
+                <dl>
+                    <dt>上网流量:</dt>
+                    <dd>
+                        <ul class="filter-item-list Js-filter-radio-flow" data-member-key="flow">
+                            <li><a href="javascript:void(0)" data-val="50-60">50~60M</a></li>
+                            <li><a href="javascript:void(0)" data-val="60-120">60~120M</a></li>
+                            <li><a href="javascript:void(0)" data-val="120-300">120~300M</a></li>
+                            <li><a href="javascript:void(0)" data-val="300-600">300~600M</a></li>
+                            <li><a href="javascript:void(0)" data-val="600-1024">600M~1G</a></li>
+                            <li><a href="javascript:void(0)" data-val="1024-">1G以上</a></li>
+                        </ul>
+                    </dd>
+                </dl>
+            </div>
+            <div class="filter-wrap fn-clear Js-pack-filter-change-message">
+                <dl>
+                    <dt>短信条数:</dt>
+                    <dd>
+                        <ul class="filter-item-list Js-filter-radio-message" data-member-key="message">
+                            <li><a href="javascript:void(0)" data-val="30-50">30~50条</a></li>
+                            <li><a href="javascript:void(0)" data-val="50-100">50~100条</a></li>
+                            <li><a href="javascript:void(0)" data-val="100-500">100~500条</a></li>
+                            <li><a href="javascript:void(0)" data-val="500-">500条以上</a></li>
+                        </ul>
+                    </dd>
+                </dl>
+            </div>
+            <div class="filter-wrap fn-clear Js-pack-filter-change-wifi">
+                <dl>
+                    <dt>WIFI时长:</dt>
+                    <dd>
+                        <ul class="filter-item-list Js-filter-radio-wifi" data-member-key="wifi">
+                            <li><a href="javascript:void(0)" data-val="3-10">3~10小时</a></li>
+                            <li><a href="javascript:void(0)" data-val="10-30">10~30小时</a></li>
+                            <li><a href="javascript:void(0)" data-val="30-60">30~60小时</a></li>
+                            <li><a href="javascript:void(0)" data-val="60-120">60~120小时</a></li>
+                            <li><a href="javascript:void(0)" data-val="120-">120小时以上</a></li>
+                        </ul>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="filter-wrap fn-clear Js-pack-filter-change-net">
+            <dl class="fn-clear">
+                <dt>宽带带宽:</dt>
+                <dd>
+                    <ul class="filter-item-list Js-filter-radio-net fn-clear" data-member-key="net">
+                        <li class="selected"><a href="javascript:void(0)" data-val="1-5">1~5M</a></li>
+                        <li><a href="javascript:void(0)" data-val="5-20">5~20M</a></li>
+                        <li><a href="javascript:void(0)" data-val="20-100">20~100M</a></li>
+                        <li><a href="javascript:void(0)" data-val="100-">100M以上</a></li>
+                    </ul>
+                </dd>
+            </dl>
+        </div>
+        <div class="filter-hr-line"></div>
+        <div class="filter-wrap fn-clear">
+            <dl>
+                <dt>您已选择:</dt>
+                <dd>
+                    <ul class="filter-result-list"><li class="selected" data-type="packPay"><a href="javascript:void(0)">不限</a></li>
+                    </ul>
+                    <input type="hidden" data-type="broadband" value="" data-label="" class="Js-filter-hidden-broadband">
+                    <input type="hidden" data-type="phone" value="" data-label="" class="Js-filter-hidden-phone">
+                    <input type="hidden" data-type="tel" value="" data-label="" class="Js-filter-hidden-tel">
+                    <input type="hidden" data-type="packPay" value="5000" data-label="0" class="Js-filter-hidden-packPay">
+                    <input type="hidden" data-type="runtime" value="" data-label="" class="Js-filter-hidden-runtime">
+                    <input type="hidden" data-type="net" value="" data-label="" class="Js-filter-hidden-net">
+                    <input type="hidden" data-type="bag" value="" data-label="" class="Js-filter-hidden-bag">
+                    <input type="hidden" data-type="flow" value="" data-label="" class="Js-filter-hidden-flow">
+                    <input type="hidden" data-type="message" value="" data-label="" class="Js-filter-hidden-message">
+                    <input type="hidden" data-type="wifi" value="" data-label="" class="Js-filter-hidden-wifi">
+                    <input type="hidden" data-type="screen" value="" data-label="" class="Js-filter-hidden-otherdef">
+                </dd>
+            </dl>
+        </div>
+        <div class="module-filter-box-bottom">
+            <div class="drop-btn drop-btn-close Js-filter-drop-btn"></div>
+        </div>
+    </div>
+
+<script>
+$(function() {
+    cgClass.Create(
+        "Filter",
+        {
+            wrap : $(".Js-auto-wrap"),
+            autoList : ".Js-auto-list",
+            autoItem : ".Js-auto-item",
+            autoText : ".Js-auto-text",
+            autoBtn : $(".Js-auto-btn"),
+            hasBtn : true,
+            hoverClass : "selected",
+            init : function(opt){},
+            createSearchList : function(opt, val){
+                var json = {
+                    "success": true,
+                    "list": [
+                        {
+                            "title": "商旅套餐e-什么是商旅套餐e？"
+                        },
+                        {
+                            "title": "八一套餐e-什么是八一套餐e？"
+                        },
+                        {
+                            "title": "八一套餐e-申请了八一套餐e后，可以更改套餐e吗？..."
+                        },
+                        {
+                            "title": "天翼校园套餐e-校园套餐e有什么套餐e可选包？..."
+                        },
+                        {
+                            "title": "八一套餐e-八一套餐e有什么套餐e可选包？..."
+                        },
+                        {
+                            "title": "天翼校园套餐e-申请了校园套餐e后，可以更改套餐e吗..."
+                        },
+                        {
+                            "title": "大众套餐e卡-大众套餐e卡有什么套餐e可选包？..."
+                        }
+                    ]
+                };
+                opt.addItem(json.list);
+                // cgClass.Ajax({
+                //     url : "api/autocomplete.txt",
+                //     type : "post",
+                //     dataType : "textJson",
+                //     success : function(result){
+                //         if ( result.success ) {
+                //             opt.addItem(result.list);
+                //         }else{
+                //             opt.closeList();
+                //         }
+                //     },
+                //     error : function(result){
+                //         opt.closeList();
+                //     }
+                // });
+            },
+            action : function(opt, val, $item){
+                opt.returnText(val);
+                console.log("action:" + val);
+            }
+        }
+    );
+});
+</script>
+</body>
+</html>

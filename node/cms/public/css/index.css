@@ -1,0 +1,378 @@
+.index-nav {
+  height: 40px;
+  background: url("../images/lib/repeat-bg.png") repeat-x left top;
+  line-height: 36px;
+}
+.index-nav .logo {
+  display: inline-block;
+  float: left;
+}
+.index-nav a {
+  float: right;
+  padding: 0 5px;
+  margin: 0 5px;
+  color: #777777;
+}
+.layout-wrap {
+  padding-top: 50px;
+}
+.index-content {
+  width: 980px;
+  height: 559px;
+  margin: 0 auto;
+}
+.index-content .logo {
+  position: relative;
+  z-index: 2;
+  margin: 0 auto;
+  width: 340px;
+  height: 180px;
+}
+.index-content .logo img {
+  margin-top: 30px;
+}
+.index-content .logo .layout-area {
+  top: 40px;
+  right: -70px;
+}
+.index-content .other {
+  position: relative;
+  margin-top: 10px;
+  padding-left: 5px;
+}
+.index-content .other .img,
+.index-content .other .movie {
+  display: inline-block;
+  height: 20px;
+  line-height: 20px;
+  padding-left: 30px;
+  margin-right: 15px;
+  color: #333333;
+  background: url("../images/lib/icon-list.png") no-repeat;
+}
+.index-content .other .img {
+  background-position: 0 0;
+}
+.index-content .other .movie {
+  background-position: 0 -25px;
+}
+.index-content .other .other-pop {
+  position: absolute;
+  top: 100%;
+  left: 10px;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #cccccc;
+}
+.index-content .other .other-pop .file {
+  width: 67px;
+}
+.index-content .flash-wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 300px;
+  width: 300px;
+  margin-top: -150px;
+  margin-left: -150px;
+}
+.index-content .cloud-layout {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 3;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.index-content .discovery-wrap {
+  width: 160px;
+  margin: 20px auto 0;
+}
+.index-content .discovery-wrap a {
+  display: inline-block;
+  height: 42px;
+  width: 42px;
+  background: url("../images/tpls/index-discovery.png") no-repeat;
+}
+.index-content .discovery-wrap .discovery {
+  background-position: 0 0;
+}
+.index-content .discovery-wrap .hot-key {
+  margin-left: 70px;
+  background-position: -45px 0;
+}
+.foot-icon-list {
+  width: 480px;
+  height: 30px;
+  margin: 50px auto 0;
+}
+.foot-icon-list li {
+  float: left;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  height: 30px;
+  margin: 0 20px 0 30px;
+}
+.foot-icon-list a,
+.foot-icon-list span {
+  display: block;
+  height: 30px;
+  background: url("../images/tpls/index-icon-list.png") no-repeat 0 0;
+}
+.foot-icon-list .ios {
+  width: 100px;
+  background-position: 0 0;
+}
+.foot-icon-list .andriod {
+  width: 120px;
+  background-position: -100px 0;
+}
+.foot-icon-list .foot-robot {
+  width: 110px;
+  background-position: -220px 0;
+}
+.layout-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.layout-nav .prev,
+.layout-nav .next {
+  position: absolute;
+  top: 60%;
+  display: block;
+  width: 16px;
+  height: 60px;
+  background: url("../images/lib/nav-icon-more.png") no-repeat;
+}
+.layout-nav .prev {
+  left: 30%;
+  background-position: 0 0;
+}
+.layout-nav .next {
+  right: 30%;
+  background-position: -33px 0px;
+}
+.layout-nav .more {
+  position: relative;
+  top: 50px;
+  z-index: 1003;
+  float: left;
+  width: 30px;
+  height: 30px;
+  background: url("../images/lib/icon.png") #f1f1f1 no-repeat 0px -59px;
+  cursor: pointer;
+}
+.layout-nav .more:hover {
+  background: url("../images/lib/icon.png") #00bfaf no-repeat 0px -120px;
+}
+.layout-nav .more:hover .nav-dropdown {
+  display: block;
+}
+.layout-nav .nav-dropdown {
+  display: none;
+  position: absolute;
+  top: 30px;
+  right: 0;
+  width: 100px;
+  background-color: #00bfaf;
+}
+.layout-nav .nav-dropdown-list {
+  *z-index: 1;
+}
+.layout-nav .nav-dropdown-list a {
+  *z-index: 1;
+  display: block;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  color: #ffffff;
+}
+.layout-nav .nav-dropdown-list a:hover {
+  background-color: #4cd9cd;
+}
+.layout-nav-list-wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  overflow: hidden;
+  margin-left: -225px;
+  width: 450px;
+  height: 200px;
+}
+.layout-nav-list li {
+  float: left;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  width: 80px;
+  height: 80px;
+  margin: 10px 5px;
+}
+.layout-nav-list a {
+  display: block;
+  overflow: hidde;
+  width: 80px;
+  height: 80px;
+  background: url("../images/lib/nav-icon.png") no-repeat;
+  text-indent: -9999px;
+}
+.layout-nav-list a.pack {
+  background-position: 0 0;
+}
+.layout-nav-list a.pack:hover {
+  background-position: 0 -80px;
+}
+.layout-nav-list a.inter {
+  background-position: -80px 0;
+}
+.layout-nav-list a.inter:hover {
+  background-position: -80px -80px;
+}
+.layout-nav-list a.ask {
+  background-position: -160px 0;
+}
+.layout-nav-list a.ask:hover {
+  background-position: -160px -80px;
+}
+.layout-nav-list a.abroad {
+  background-position: -240px 0;
+}
+.layout-nav-list a.abroad:hover {
+  background-position: -240px -80px;
+}
+.layout-nav-list a.mobile {
+  background-position: -320px 0;
+}
+.layout-nav-list a.mobile:hover {
+  background-position: -320px -80px;
+}
+.layout-nav-list a.hall {
+  background-position: -400px 0;
+}
+.layout-nav-list a.hall:hover {
+  background-position: -400px -80px;
+}
+.layout-nav-list a.activity {
+  background-position: -480px 0;
+}
+.layout-nav-list a.activity:hover {
+  background-position: -480px -80px;
+}
+.layout-nav-list a.broadband {
+  background-position: -560px 0;
+}
+.layout-nav-list a.broadband:hover {
+  background-position: -560px -80px;
+}
+.layout-nav-list a.near {
+  background-position: -640px 0;
+}
+.layout-nav-list a.near:hover {
+  background-position: -640px -80px;
+}
+.layout-nav-list a.app {
+  background-position: -720px 0;
+}
+.layout-nav-list a.app:hover {
+  background-position: -720px -80px;
+}
+.layout-nav-list a.message {
+  background-position: -800px 0;
+}
+.layout-nav-list a.message:hover {
+  background-position: -800px -80px;
+}
+.layout-nav-list a.club {
+  background-position: -880px 0;
+}
+.layout-nav-list a.club:hover {
+  background-position: -880px -80px;
+}
+.layout-nav-list a.increment {
+  background-position: -960px 0;
+}
+.layout-nav-list a.increment:hover {
+  background-position: -960px -80px;
+}
+.layout-nav-list a.faq {
+  background-position: -1040px 0;
+}
+.layout-nav-list a.faq:hover {
+  background-position: -1040px -80px;
+}
+.layout-nav-list a.payment {
+  background-position: -1120px 0;
+}
+.layout-nav-list a.payment:hover {
+  background-position: -1120px -80px;
+}
+.layout-nav-list a.diy {
+  background-position: -1200px 0;
+}
+.layout-nav-list a.diy:hover {
+  background-position: -1200px -80px;
+}
+.layout-nav-list a.service {
+  background-position: -1280px 0;
+}
+.layout-nav-list a.service:hover {
+  background-position: -1280px -80px;
+}
+.layout-nav-list li.selected .pack {
+  background-position: 0 -160px;
+}
+.layout-nav-list li.selected .inter {
+  background-position: -80px -160px;
+}
+.layout-nav-list li.selected .ask {
+  background-position: -160px -160px;
+}
+.layout-nav-list li.selected .abroad {
+  background-position: -240px -160px;
+}
+.layout-nav-list li.selected .mobile {
+  background-position: -320px -160px;
+}
+.layout-nav-list li.selected .hall {
+  background-position: -400px -160px;
+}
+.layout-nav-list li.selected .activity {
+  background-position: -480px -160px;
+}
+.layout-nav-list li.selected .broadband {
+  background-position: -560px -160px;
+}
+.layout-nav-list li.selected .near {
+  background-position: -640px -160px;
+}
+.layout-nav-list li.selected .app {
+  background-position: -720px -160px;
+}
+.layout-nav-list li.selected .message {
+  background-position: -800px -160px;
+}
+.layout-nav-list li.selected .club {
+  background-position: -880px -160px;
+}
+.layout-nav-list li.selected .increment {
+  background-position: -960px -160px;
+}
+.layout-nav-list li.selected .faq {
+  background-position: -1040px -160px;
+}
+.layout-nav-list li.selected .payment {
+  background-position: -1120px -160px;
+}
+.layout-nav-list li.selected .diy {
+  background-position: -1200px -160px;
+}
+.layout-nav-list li.selected .service {
+  background-position: -1280px -160px;
+}

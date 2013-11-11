@@ -1,0 +1,146 @@
+@import "less-base.less";
+@import "module-common.less";
+
+.cms-layout {
+	.h(100%);
+	.w(100%);
+	overflow: hidden;
+}
+.cms-page {
+	position: relative;
+	.fl();
+	.w(1010px);
+	.h(100%);
+}
+.cms-option {
+	.h(100%);
+	.w(335px);
+	.ml(1010px);
+	.pd(0 10px);
+	.bl(#ccc);
+	.bc(#fff);
+	overflow: auto;
+	.option-title {
+		.fz(20px);
+		.fw(bold);
+	}
+	.opt-group {
+		.bd(#ccc);
+		.border-radius(5px);
+		.mb(10px);
+	}
+	.opt-tit {
+		.fw(bold);
+	}
+	.group-title {
+		.h(30px);
+		.lh(30px);
+		.border-radius(5px 5px 0 0);
+		.bc(#6f7a9e);
+		.c(#fff);
+		.ti(1em);
+		.cur-p();
+	}
+	.opt-content-wrap {
+		.pd(10px);
+		overflow: hidden;
+	}
+	.opt-content {
+		.mt(10px);
+		.ml(10px);
+		input {
+			.vm();
+			.mg(0 5px 0 0);
+		}
+		label {
+			.vm();
+			.mr(10px);
+		}
+		.label-wrap {
+			.dis-ib();
+			.mg(0px 10px 5px 0);
+		}
+		.palette {
+			.dis-ib();
+			.w(52px);
+			.h(20px);
+			.mg(0);
+			border: 1px solid #ccc;
+			vertical-align: top;
+		}
+		.label-box {
+			.pos-r();
+			.mb(10px);
+		}
+		.screenshot-wrap {
+			.dis-ib();
+			.w(270px);
+			.h(100px);
+			.bd(#ccc);
+			overflow: hidden;
+			vertical-align: top;
+		}
+		.head-img {
+			.dis-ib();
+			.w(100px);
+			.h(120px);
+			.bd(#ccc);
+			overflow: hidden;
+			vertical-align: top;
+		}
+		.input-file {
+			.w(64px);
+			.mb(5px);
+		}
+		.picker {
+		    position: absolute; top: 20px; left:50%; z-index: 5;
+		    margin-left: -100px;
+		    .bc(#fff);
+		    .bd(#000);
+		}
+		.sort-box-list {
+			.pos-r();
+			.h(21px);
+			.mb(5px);
+		}
+		.sort-box {
+			position: absolute;
+			left: 50%;
+			.w(215px);
+			.h(20px);
+			.lh(20px);
+			.ti(1em);
+			.ml(-107px);
+			.bd(#ccc);
+			.border-radius(3px);
+			.bg-lib('sort-bg.png', repeat-x left top);
+			.cur-p();
+			.switch {
+				position: absolute; left: 105px;
+				.dis-ib();
+				.w(52px);
+				.h(20px);
+				.bg-lib("sort-switch.png", no-repeat -60px 0);
+				vertical-align: top;
+			}
+			.on {
+				.bg-lib("sort-switch.png", no-repeat 0px 0);
+			}
+		}
+	}
+	.switch-btn {
+		.w(100px);
+	}
+	.group-btn-wrap {
+		.w(145px);
+		.mg(0 auto);
+		a {
+			.pd(3px 5px);
+			.dis-ib();
+			.bc(#eaeaea);
+			.bd(#ddd);
+			.c(#000);
+			.mg(0 5px);
+		}
+	}
+}

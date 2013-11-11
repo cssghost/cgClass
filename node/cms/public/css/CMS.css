@@ -1,0 +1,153 @@
+.cms-layout {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+.cms-page {
+  position: relative;
+  float: left;
+  width: 1010px;
+  height: 100%;
+}
+.cms-option {
+  height: 100%;
+  width: 335px;
+  margin-left: 1010px;
+  padding: 0 10px;
+  border-left: 1px solid #cccccc;
+  background-color: #ffffff;
+  overflow: auto;
+}
+.cms-option .option-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+.cms-option .opt-group {
+  border: 1px solid #cccccc;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+.cms-option .opt-tit {
+  font-weight: bold;
+}
+.cms-option .group-title {
+  height: 30px;
+  line-height: 30px;
+  -moz-border-radius: 5px 5px 0 0;
+  -webkit-border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0;
+  background-color: #6f7a9e;
+  color: #ffffff;
+  text-indent: 1em;
+  cursor: pointer;
+}
+.cms-option .opt-content-wrap {
+  padding: 10px;
+  overflow: hidden;
+}
+.cms-option .opt-content {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+.cms-option .opt-content input {
+  vertical-align: middle;
+  margin: 0 5px 0 0;
+}
+.cms-option .opt-content label {
+  vertical-align: middle;
+  margin-right: 10px;
+}
+.cms-option .opt-content .label-wrap {
+  display: inline-block;
+  margin: 0px 10px 5px 0;
+}
+.cms-option .opt-content .palette {
+  display: inline-block;
+  width: 52px;
+  height: 20px;
+  margin: 0;
+  border: 1px solid #ccc;
+  vertical-align: top;
+}
+.cms-option .opt-content .label-box {
+  position: relative;
+  margin-bottom: 10px;
+}
+.cms-option .opt-content .screenshot-wrap {
+  display: inline-block;
+  width: 270px;
+  height: 100px;
+  border: 1px solid #cccccc;
+  overflow: hidden;
+  vertical-align: top;
+}
+.cms-option .opt-content .head-img {
+  display: inline-block;
+  width: 100px;
+  height: 120px;
+  border: 1px solid #cccccc;
+  overflow: hidden;
+  vertical-align: top;
+}
+.cms-option .opt-content .input-file {
+  width: 64px;
+  margin-bottom: 5px;
+}
+.cms-option .opt-content .picker {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  z-index: 5;
+  margin-left: -100px;
+  background-color: #ffffff;
+  border: 1px solid #000000;
+}
+.cms-option .opt-content .sort-box-list {
+  position: relative;
+  height: 21px;
+  margin-bottom: 5px;
+}
+.cms-option .opt-content .sort-box {
+  position: absolute;
+  left: 50%;
+  width: 215px;
+  height: 20px;
+  line-height: 20px;
+  text-indent: 1em;
+  margin-left: -107px;
+  border: 1px solid #cccccc;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  background: url("../images/lib/sort-bg.png") repeat-x left top;
+  cursor: pointer;
+}
+.cms-option .opt-content .sort-box .switch {
+  position: absolute;
+  left: 105px;
+  display: inline-block;
+  width: 52px;
+  height: 20px;
+  background: url("../images/lib/sort-switch.png") no-repeat -60px 0;
+  vertical-align: top;
+}
+.cms-option .opt-content .sort-box .on {
+  background: url("../images/lib/sort-switch.png") no-repeat 0px 0;
+}
+.cms-option .switch-btn {
+  width: 100px;
+}
+.cms-option .group-btn-wrap {
+  width: 145px;
+  margin: 0 auto;
+}
+.cms-option .group-btn-wrap a {
+  padding: 3px 5px;
+  display: inline-block;
+  background-color: #eaeaea;
+  border: 1px solid #dddddd;
+  color: #000000;
+  margin: 0 5px;
+}

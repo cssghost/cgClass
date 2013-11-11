@@ -1,0 +1,268 @@
+@import "less-base.less";
+@import "module-common.less";
+@chat-bc:#fff;
+@chat-bg:'i.gif';
+// ------robot--------
+@robot-bc:#f5f5f5;
+@robot-color:#000;
+@robot-maxWidth:80%;
+@robot-fontfamily:'宋体';
+@robot-fontsize: 14px;
+@robot-fontweight:normal;
+@robot-fontstyle : normal;
+@robot-textdecoration : normal;
+// -------user---------
+@user-bc:#ebffcc;
+@user-color:#000;
+@user-maxWidth:80%;
+@user-fontfamily:'宋体';
+@user-fontsize: 14px;
+@user-fontweight:normal;
+@user-fontstyle : normal;
+@user-textdecoration : normal;
+
+
+.robot {
+	position: absolute; left: 50%; top: 50%;
+	width: 1000px;
+	.ml(-500px);
+	.mt(-300px);
+	.robot-title {
+		.h(59px);
+		.bg-tpls("robot-tit.png", repeat-x);
+		.bd(#4c8000);
+		border-bottom: none;
+		border-radius:4px 4px 0 0;
+		.tc();
+		.lh(59px);
+		font-size: 14px;
+		.c(#fff);
+	}
+	.robot-main {
+		.bd(#4c8000);
+		.h(539px);
+		border-top: none;
+		border-radius:0 0 5px 5px;
+	}
+}
+.chat-wrap {
+	.fl();
+	.w(780px);
+	.h(539px);
+}
+.chat-box {
+	*position: relative;
+	_position: relative;
+	.h(429px);
+	.pd(10px);
+	.pt(50px);
+	overflow: auto;
+	.bg-tpls(@chat-bg, @chat-bc no-repeat 0 0);
+	.decorate {
+		.w(9px);
+		.h(8px);
+		.pos-a(); top:15px;
+		.bg-tpls("robot-decorate.png", no-repeat);
+	}
+	.date-wrap {
+		.w(710px);
+		.tc();
+		.pd(3px 5px);
+		.pos-a(); top: -40px;
+
+	}
+	.chat-box-clear {
+		.mb(50px);
+	}
+	.robot-chat {
+		.pos-r();
+		.fl();
+		min-width: 189px;
+		max-width: @robot-maxWidth;
+		*width:80%;
+		_width:80%;
+		.ml(10px);
+		
+		.pd(9px);
+		.bd(#dddddd);
+		.bc(@robot-bc);
+		.c(@robot-color);
+		.fm(@robot-fontfamily);
+		.fz(@robot-fontsize);
+		.fw(@robot-fontweight);
+		font-style:@robot-fontstyle;
+		text-decoration:@robot-textdecoration;
+		& .decorate {
+			left:-9px;
+			.bp(0 0)
+		}
+		& .date-wrap {
+			left: 0;
+		}
+	}
+	.user-chat {
+		.pos-r();
+		.fr();
+		min-width: 189px;
+		max-width: @user-maxWidth;
+		*width:80%;
+		_width:80%;
+		.mr(10px);
+		
+		.pd(9px);
+		.bd(#aed474);
+		.bc(@user-bc);
+		.c(@user-color);
+		.fm(@user-fontfamily);
+		.fz(@user-fontsize);
+		.fw(@user-fontweight);
+		font-style:@user-fontstyle;
+		text-decoration:@user-textdecoration;
+		& .decorate {
+			right:-9px;
+			.bp(0 -8px);
+		}
+		& .date-wrap {
+			right: 0;
+		}
+	}
+}
+.chat-input-wrap {
+	.h(50px);
+	.bc(#daf7ad);
+	.border-radius(0 0 0px 5px);
+	.input-opt {
+		.fl();
+		.mt(15px);
+		li {
+			.fl();
+			.ml(15px);
+		}
+		a {
+			.dis-ib();
+			.h(21px);
+			.w(21px);
+			.bg-tpls("robot-decorate.png", no-repeat);
+		}
+		.face {
+			.pr(10px);
+			.bg-tpls("robot-decorate.png", no-repeat right -46px);
+			a {
+				.bp(0 -16px);
+			}
+		}
+		.screenshot {
+			a {
+				.bp(0 -75px);
+			}
+		}
+		.window {
+			a {
+				.bp(0 -105px);
+			}
+		}
+	}
+	.input-wrap {
+		.fr();
+		.mt(9px);
+		.ml(14px);
+	}
+	.input-box {
+		.fl();
+		.h(20px);
+		.w(411px);
+		.pd(4px 0 2px 5px);
+		.bd(#83c326, 2px);
+		.bg-tpls("robot-input.png", no-repeat 0 0);
+		input {
+			.h(18px);
+			.w(400px);
+			border:none;
+			background: transparent;
+		}
+	}
+	.send {
+		.fl();
+		.dis-ib();
+		.mg(0 10px);
+		.h(28px);
+		.w(70px);
+		.bg-tpls("robot-input.png", no-repeat 0 -28px);
+	}
+}
+.chat-img {
+	.fl();
+	.w(211px);
+	.h(531px);
+	.pd(4px 3px 4px 4px);
+	.bc(#daf7ad);
+	.border-radius(0 0 5px 0);
+	.lv {
+		.h(10px);
+		width: 39px;
+		.mt(5px);
+		overflow: hidden;
+		.bg-lib('lv.png', no-repeat);
+	}
+	.img-name {
+		.fr();
+		.mg(10px);
+		.c(#669900);
+		.fz(14px);
+		.fw(bold);
+		li {
+			.lh(20px);
+		}
+	}
+	.img {
+		.w(100%);
+		.pos-a(); top: 0; left: 0;
+	}
+	.robot-img {
+		.pos-r();
+		.mb(4px);
+		.h(263px);
+		.bc(#f7ffe5);
+		.img {
+			.h(273px);
+			.bg-temp("jn.png", no-repeat center);
+		}
+	}
+	.user-img {
+		.pos-r();
+		.h(263px);
+		.bc(#f7ffe5);
+		.img {
+			.h(217px);
+			.bg-temp("default-img.png", no-repeat center);
+		}
+		.img-name {
+			.mr(0);
+		}
+	}
+	.user-info {
+		.pos-a(); bottom: 0;
+		.h(46px);
+
+		overflow: hidden;
+		li {
+			.fl();
+			.w(95px);
+			.lh(23px);
+			.ml(10px);
+			_margin-left: 5px;
+		}
+		dt,dd {
+			.fl();
+		}
+		dt {
+			.tr();
+		}
+	}
+	.user-money {
+		dd {
+			.pl(12px);
+			.bg-lib('icon-list.png', no-repeat 0 -47px);
+		}
+	}
+}

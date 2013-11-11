@@ -42,11 +42,12 @@ $(function() {
 	var oLogin = cgClass.Create(
 			"ModulePopupLogin",
 			{
-				url : "api/area.txt",
-				dataType : "text",
+				url : "http://localhost:8888/login",
+				dataType : "jsonp",
 				autoShow : false,
 				callback : function(result, opt){
-					opt.showTip("用户名或者密码错误");
+					console.log(result);
+					// opt.showTip("用户名或者密码错误");
 				}
 			}
 		);
