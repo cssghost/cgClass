@@ -1,4 +1,4 @@
-var tools = require('../tools/lessc');
+var robot = require("./robot");
 /*
  * GET home page.
  */
@@ -15,3 +15,15 @@ exports.hello = function(req, res) {
     console.log(tools);
     res.send('The time is ' + new Date().toString());
 }; 
+
+exports.robot = function(req, res){
+    robot.readChatConfig(req, res);
+};
+
+exports.robotBody = function(req, res){
+    res.render('robot-iframe', { title: 'Express' });
+};
+
+exports.robotChatBg = function(req, res){
+    robot.robotChatBg(req, res);
+};

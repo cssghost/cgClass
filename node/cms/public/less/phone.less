@@ -1,0 +1,353 @@
+@import "config/less-base.less";
+@import "config/module-common.less";
+
+.layout-phone {
+	.phone-list-title {
+		.h(32px);
+		.bc(#f5f5f5);
+	}
+	.phone-list-wrap {
+		.bd(#ccc);
+		.bc(#fff);
+		.mb(10px);
+		box-shadow: 1px 1px 1px rgba(0,0,0,.1);
+		.module-paging {
+			.mg(0 10px 10px 0);
+		}
+	}
+	.sort {
+		.fl();
+		li {
+			.fl();
+			.br(#fff);
+		}
+		a {
+			.dis-ib();
+			.h(30px);
+			.lh(30px);
+			.pd(0 12px);
+			.br(#dddddd);
+
+			.tc();
+			.c(#000);
+			span {
+				.dis-ib();
+				.w(11px);
+				.h(11px);
+				.mt(7px);
+				.bg-lib('icon.png', no-repeat -22px -43px);
+			}
+		}
+		.up {
+			span {
+				.bp(-23px -22px);
+			}
+		}
+		.down {
+			span {
+				.bp(-48px -22px);
+			}
+		}
+		.selected-up {
+			.c(#669900);
+			span {
+				.bp(-72px -22px);
+			}
+		}
+		.selected-down {
+			.c(#669900);
+			span {
+				.bp(2px -22px);
+			}
+		}
+	}
+	.statistics {
+		.lh(28px);
+		.pr(10px);
+		.fr();
+		em {
+			.c(#ff6600);
+		}
+	}
+	.phone-list {
+		.pb(10px);
+		.phone-item {
+			.fl();
+			.mg(20px 6px 0);
+			_margin: 20px 3px 0
+		}
+	}
+	.module-paging {
+		*margin-bottom: 10px;
+		*margin-right: 10px;
+	}
+	.phone-box {
+		.w(178px);
+		.bd(#f5f5f5);
+		overflow: hidden;
+		&:hover {
+			.bd(#9fd92b);
+			.phone-info {
+				.bc(#f7ffe5)
+			}
+		}
+		.phone-link-wrap {
+			.h(179px);
+			.dis-b();
+			.bd(transparent);
+		}
+		img {
+			.w(178px);
+			.h(179px);
+			overflow: hidden;
+			.bd(transparent);
+		}
+		.btn-white {
+			.ml(11px);
+		}
+		.phone-info {
+			.w(164px);
+			.pd(7px 8px);
+			.lh(19px);
+			.bc(#f9f9f9);
+			.phone-name {
+				.dis-b();
+				.w(165px);
+				.c(#0055aa);
+				.tc();
+				.lh(20px);
+			}
+			.star {
+				.fl();
+				.mt(4px);
+			}
+			.comment {
+				.fr();
+				.c(#999999);
+			}
+			.price {
+				.tc();
+				.fz(14px);
+				.fw();
+				.c(#ff6600);
+				.lh(30px);
+				span {
+					.c(#999999);
+				}
+			}
+			.btn {
+				.mr(10px);
+				input {
+					.pos-r(); top:-1px;
+				}
+			}
+			.operation-wrap {
+				.pl(15px);
+			}
+		}
+	}
+}
+.phone-detail-wrap {
+	.bd-none();
+	.mb(30px);
+	.phone-img-wrap {
+		.fl();
+		.bd-none();
+	}
+	.phone-overflow-box {
+		.w(281px);
+		.h(243px);
+		overflow: hidden;
+		.mb(10px);
+		.bd(#ccc);
+		ul {
+			.w(1405px);
+		}
+		img {
+			.fl();
+			.w(281px);
+			.h(243px);
+			border: 0;
+			border: none;
+			border-width: 0;
+		}
+	}
+	.img-nav-wrap {
+		*width: 265px;
+		.pos-r();
+		.mg(10px 10px 0);
+		.img-nav-box {
+			.w(246px);
+			.mg(0 auto);
+			overflow: hidden;
+		}
+		ul {
+			.w(1000px);
+			li {
+				.fl();
+				.bd(#ccc);
+				.mr(5px);
+				&.cur {
+					.bd(#ff6600);
+				}
+			}
+		}
+		img {
+			
+			.w(43px);
+			.h(43px);
+		}
+		.prev, .next {
+			.pos-a(); top: 3px;
+			.w(10px);
+			.h(45px);
+				overflow: hidden;
+		}
+		.prev {
+			left:-10px; 
+		}
+		.next {
+			right:-10px;
+		}
+		.prev-icon, .next-icon {
+			top:0; left: 0; z-index: 999;visibility: visible;
+			.dis-b();
+			.w(12px);
+			.h(45px);
+			.bg-tpls('phone-img-toggle.png', no-repeat 0 0);
+		}
+		.next-icon {
+		    right: 0;
+		    .bp(-10px 0);
+		}
+
+	}
+}
+
+.phone-buy-container {
+	.w(260px);
+	.ml(30px);
+	_margin-left: 10px;
+	.fl();
+	dl {
+		.mb(10px);
+	}
+	dd,dt {
+		.fl();
+		.lh(26px);
+	}
+	dt {
+		.c(#999999);
+	}
+	h3 {
+		.mb(10px);
+		.fz(14px);
+		.fw();
+	}
+	.price {
+		dd {
+			.fz(25px);
+			.c(red);
+		}
+	}
+	.score {
+		dt {
+			*line-height: 45px;
+		}
+		dd {
+			*margin-left: 40px;
+		}
+	}
+	.view {
+	}
+	.num {
+		.pb(10px);
+		a {
+			.dis-ib();
+			.fl();
+			.w(15px);
+			.h(15px);
+			.mt(4px);
+			.bg-lib('icon-2.png', no-repeat);
+		}
+		input {
+			.fl();
+			.w(30px);
+			.h(22px);
+			.lh(22px);
+			.fz(16px);
+			.tc();
+		}
+		.less {
+			.mr(5px);
+			.bp(-42px -62px);
+			&:hover {
+				.bp(-42px -82px);
+			}
+		}
+		.add {
+			.ml(5px);
+			.bp(-62px -62px);
+			&:hover {
+				.bp(-62px -82px);
+			}
+		}
+	}
+	.but-btn {
+		.dis-ib();
+		.w(90px);
+		.h(24px);
+		.bg-tpls("pack-purchase-btn.png", no-repeat 0 0);
+		vertical-align: bottom;
+	}
+}
+
+.phone-detail-table {
+	.w();
+	.mb(20px);
+	th,td {
+		.pd(5px);
+		.bd(#dddddd);
+	}
+	th {
+		.w(200px);
+		.bc(#f5f5f5);
+		.fw();
+		.tr();
+	}
+}
+.module-tab-wrap {
+	.mt(20px);
+}
+
+//phone details option
+ 
+.detail-option {
+	.mt(10px);
+    li {
+        .fl-i();
+        .h(26px);
+        .mg(0 10px 4px 0);
+        white-space: nowrap;
+        .lh(24px);
+        & a {
+            .fl(); .dis-b();
+            .h(24px);
+            .pd(0 10px);
+            .bc(#FFF);
+            .bd(#dddddd);
+            .c(#000);
+            &:hover {
+                .bd(#83c326);
+                .c(#000);
+            }
+        }
+        &.selected {
+            & a {
+                .bg-tpls("filter-icon.png", #FFF no-repeat right -154px);
+                .bd(#83c326);
+                .c(#000);
+            }
+        }
+    }
+}

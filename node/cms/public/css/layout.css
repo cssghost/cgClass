@@ -1,4 +1,11 @@
 .layout-topnav {
+  position: fixed;
+  _position: absolute;
+  top: 0;
+  left: 500px;
+  z-index: 9999999;
+  width: 100%;
+  margin-left: -500px;
   padding-left: 10px;
   height: 40px;
   background: url("../images/lib/repeat-bg.png") repeat-x left top;
@@ -89,6 +96,7 @@
   background: url("../images/lib/layout-pop.png") no-repeat 0 -13px;
 }
 .layout-wrap {
+  margin-top: 40px;
   background: url("../images/lib/layout-wrap-bg.png") repeat-x left top;
 }
 .layout-content {
@@ -100,13 +108,54 @@
   padding: 19px 18px;
   border: 2px solid #aed474;
 }
+.layout-common .detail-name {
+  font-size: 14px;
+  font-weight: bold;
+}
+.layout-common .detail-name span {
+  display: inline-block;
+  padding-right: 40px;
+  height: 28px;
+  line-height: 28px;
+  background: url("../images/tpls/detail-name.png") no-repeat right 0;
+}
+.layout-common .detail-name .promotion {
+  background-position: right 0;
+}
+.layout-common .detail-name .new {
+  background-position: right -30px;
+}
 .layout-main {
   margin-left: 70px;
   background-color: #f5f5f5;
 }
 .layout-left {
+  position: relative;
   float: left;
   width: 630px;
+}
+.layout-left .layout-user-head {
+  position: absolute;
+  left: -70px;
+  top: 0;
+  width: 50px;
+}
+.layout-left .layout-user-head img {
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+}
+.layout-left .layout-user-decorate {
+  position: absolute;
+  top: 20px;
+  right: -22px;
+  width: 17px;
+  height: 15px;
+  background: url("../images/lib/layout-user-decorate.png") no-repeat;
+}
+.layout-left .usre-name {
+  line-height: 22px;
+  text-align: center;
 }
 .loading-more {
   display: block;
@@ -626,7 +675,7 @@
   display: inline-block;
   float: left;
   padding-left: 20px;
-  background: url("../images/lib/icon.png") -38px -67px no-repeat;
+  background: url("../images/lib/icon-list.png") left -50px no-repeat;
   color: #ff0000;
 }
 .layout-right .most-ask .time {
@@ -795,4 +844,342 @@
 }
 .lv-2 {
   background-position: -40px 0;
+}
+.star {
+  display: inline-block;
+  height: 12px;
+  _overflow: hidden;
+  width: 68px;
+  margin: 0 auto;
+  background: url("../images/tpls/score.png") no-repeat 0 0;
+}
+.star-1 {
+  background-position: 0 -12px;
+}
+.star-2 {
+  background-position: 0 -24px;
+}
+.star-3 {
+  background-position: 0 -36px;
+}
+.star-4 {
+  background-position: 0 -48px;
+}
+.star-5 {
+  background-position: 0 -60px;
+}
+.module-list-box li {
+  position: relative;
+  border-bottom: 1px solid #eeeeee;
+  padding: 10px;
+}
+.module-list-box li:hover {
+  background-color: #f7ffe5;
+}
+.module-list-box li:hover .details {
+  display: block;
+}
+.module-list-box .list-tit {
+  margin-bottom: 5px;
+}
+.module-list-box .list-tit h6 {
+  float: left;
+  width: 477px;
+  font-weight: bold;
+  color: #669900;
+  font-size: 14px;
+}
+.module-list-box .list-tit .list-name {
+  color: #669900;
+  font-size: 14px;
+}
+.module-list-box .list-tit .star {
+  float: right;
+}
+.module-list-box .text-info {
+  color: #666666;
+}
+.module-list-box .info-name,
+.module-list-box .info-text {
+  float: left;
+  color: #666666;
+}
+.module-list-box .list-info-box {
+  width: 440px;
+}
+.module-list-box .details {
+  display: none;
+  position: absolute;
+  right: 10px;
+  top: 38px;
+  color: #ffffff;
+  padding: 0 20px 0 5px;
+  background: url("../images/lib/toggle-icon.png") #83c326 no-repeat right -66px;
+}
+.module-list-box .date-wrap {
+  padding: 10px 0 0;
+}
+.module-list-box .date-wrap dt,
+.module-list-box .date-wrap dd {
+  float: left;
+}
+.module-list-box .date-wrap .release-time {
+  float: left;
+  color: #999999;
+}
+.module-list-box .date-wrap .valid-time {
+  float: right;
+  color: #999999;
+}
+.module-list-box .left-img-wrap {
+  float: left;
+}
+.module-list-box .right-list-info {
+  float: left;
+  margin-left: 30px;
+}
+.module-list-box .right-list-info h6 {
+  width: 350px;
+}
+.module-list-box .right-list-info .list-info-box {
+  width: 350px;
+}
+.comment-box {
+  margin-top: 10px;
+  padding: 10px 0;
+  border-top: 1px solid #cccccc;
+}
+.comment-content-wrap {
+  padding: 20px 0px 10px 0px;
+  border-bottom: 1px solid #cccccc;
+}
+.comment-content-wrap .header-wrap {
+  float: left;
+  height: 80px;
+  width: 55px;
+  margin-right: 50px;
+}
+.comment-content-wrap .header-wrap img {
+  width: 55px;
+  height: 55px;
+  overflow: hidden;
+}
+.comment-content-wrap .header-wrap .user-name {
+  width: 55px;
+  text-align: center;
+}
+.comment-content-wrap .comment-content {
+  float: left;
+  width: 440px;
+}
+.comment-content-wrap .time {
+  text-align: right;
+}
+.comment-content-wrap .time p {
+  text-align: right;
+}
+.comment-content-wrap .reply,
+.comment-content-wrap .forward {
+  float: right;
+  color: #669900;
+  margin-left: 10px;
+}
+.comment-textarea .action-tit {
+  margin-bottom: 10px;
+}
+.comment-textarea textarea {
+  width: 538px;
+  height: 124px;
+  padding: 5px;
+}
+.comment-textarea .edit-btn {
+  display: inline-block;
+  float: right;
+  width: 70px;
+  height: 24px;
+  text-align: center;
+  line-height: 24px;
+  background-color: #83c326;
+  font-size: 12px;
+  color: #ffffff;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+.module-tab {
+  height: 28px;
+  border: 1px solid #dddddd;
+  background-color: #f5f5f5;
+}
+.module-tab li {
+  position: relative;
+  left: -1px;
+  z-index: 1;
+  zoom: 1;
+  float: left;
+  border-right: 1px solid transparent;
+  _border-right: none;
+}
+.module-tab li:hover {
+  background-color: #eaeaea;
+}
+.module-tab a {
+  display: inline-block;
+  padding: 0 30px;
+  height: 28px;
+  line-height: 30px;
+  _line-height: 33px;
+  color: #666666;
+  vertical-align: top;
+}
+.module-tab a.detail-name {
+  font-weight: normal;
+}
+.module-tab .selected {
+  border-right: 1px solid #dddddd;
+  border-left: 1px solid #dddddd;
+}
+.module-tab .selected a {
+  _position: relative;
+  _z-index: 1;
+  zoom: 1;
+  line-height: 30px;
+  margin-top: -2px;
+  _margin-top: 0px;
+  border-top: 2px solid #83c326;
+  border-bottom: 1px solid #ffffff;
+  background-color: #ffffff;
+  color: #83c326;
+}
+.module-tab .selected a:hover {
+  background-color: #ffffff;
+}
+.module-tab-wrap {
+  position: relative;
+  height: 31px;
+}
+.module-tab-wrap .turn-toggle {
+  position: absolute;
+  right: 0px;
+  top: 1px;
+  z-index: 1;
+  zoom: 1;
+  height: 28px;
+  border-top: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
+  border-right: 1px solid #dddddd;
+  background-color: #f5f5f5;
+  float: right;
+}
+.module-tab-wrap .turn-toggle li {
+  float: left;
+  margin: 2px 5px 0 0;
+}
+.module-tab-wrap .turn-toggle a {
+  display: inline-block;
+  width: 20px;
+  height: 17px;
+  background: url("../images/lib/icon-2.png") no-repeat;
+}
+.module-tab-wrap .turn-toggle .prev a {
+  background-position: 2px -59px;
+}
+.module-tab-wrap .turn-toggle .next a {
+  background-position: -20px -59px;
+}
+.module-tab-wrap .module-tab {
+  position: relative;
+  top: 1px;
+  left: 0;
+  border-right: none;
+}
+.module-tab-wrap .module-tab-box {
+  height: 31px;
+  overflow: hidden;
+}
+.module-frame-list {
+  padding: 19px;
+  border: 1px solid #dddddd;
+  border-top: none;
+}
+.module-frame-list .text {
+  line-height: 30px;
+}
+.module-frame-list .module-frame-item {
+  float: left;
+  margin-right: 10px;
+}
+.inner-frame {
+  overflow-x: auto;
+}
+.module-paging {
+  float: right;
+  margin: 10px 0;
+}
+.module-paging li {
+  float: left;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  margin-left: 3px;
+  background-color: #ffffff;
+}
+.module-paging li a {
+  display: block;
+  padding: 4px 9px;
+  border: 1px solid #cccccc;
+  text-align: center;
+  color: #666666;
+  cursor: pointer;
+}
+.module-paging li a:hover {
+  text-decoration: none;
+  border: 1px solid #009999;
+}
+.module-paging .cur a {
+  background-color: #83c326;
+  border: 1px solid #669900;
+  color: #ffffff;
+}
+.module-paging .cur a:hover {
+  color: #ffffff;
+}
+.module-paging .cur a span {
+  display: block;
+}
+.module-paging .next-page,
+.module-paging .prev-page {
+  position: relative;
+  position: static\0;
+}
+.module-paging .next-page span,
+.module-paging .prev-page span {
+  position: absolute;
+  top: 5px;
+  display: inline-block;
+  height: 20px;
+  width: 15px;
+  background: url("../images/lib/icon-2.png") no-repeat;
+}
+.module-paging .next-page a {
+  padding-right: 15px;
+}
+.module-paging .next-page span {
+  right: 3px;
+  background-position: -20px -61px;
+}
+.module-paging .prev-page a {
+  padding-left: 15px;
+}
+.module-paging .prev-page span {
+  left: 0px;
+  background-position: 0px -61px;
+}
+.module-paging .not-has a {
+  border: 1px solid #cccccc;
+  color: #cccccc;
+}
+.module-paging .not-has a:hover {
+  border: 1px solid #cccccc;
+  color: #cccccc;
 }

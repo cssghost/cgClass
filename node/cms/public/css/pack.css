@@ -1,0 +1,132 @@
+.layout-pack .pack-list-title {
+  font-size: 14px;
+  color: #669900;
+  font-weight: bold;
+  line-height: 25px;
+}
+.layout-pack .pack-list-item {
+  margin-bottom: 15px;
+}
+.layout-pack .pack-table {
+  width: 100%;
+}
+.layout-pack .pack-table th,
+.layout-pack .pack-table td {
+  padding: 8px 10px;
+  text-align: center;
+}
+.layout-pack .pack-table th {
+  background-color: #f5f5f5;
+  color: #000000;
+  font-weight: bold;
+  border-top: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
+}
+.layout-pack .pack-table td {
+  border-bottom: 1px solid #dddddd;
+}
+.layout-pack .pack-table input {
+  vertical-align: middle;
+  margin-right: 5px;
+}
+.layout-pack .pack-table a {
+  color: #000000;
+}
+.pack-detail-wrap .pack-info {
+  float: left;
+  margin-bottom: 20px;
+}
+.pack-detail-wrap .pack-info dl {
+  line-height: 26px;
+  margin-bottom: 5px;
+}
+.pack-detail-wrap .pack-info dd,
+.pack-detail-wrap .pack-info dt {
+  float: left;
+}
+.pack-detail-wrap .pack-info dt {
+  color: #999999;
+  width: 55px;
+}
+.pack-detail-wrap .pack-info dd {
+  margin-left: 5px;
+  width: 500px;
+}
+.pack-detail-wrap .pack-info .price {
+  color: #ff6600;
+  font-size: 24px;
+  font-weight: bold;
+}
+.pack-detail-wrap .pack-info .star {
+  margin-left: 20px;
+}
+.pack-detail-wrap .pack-info .present-info {
+  color: #999999;
+}
+.pack-detail-wrap .pack-info .detail-name {
+  position: relative;
+  top: -7px;
+}
+.pack-detail-wrap .pack-detail-table {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.pack-detail-wrap .pack-detail-table th,
+.pack-detail-wrap .pack-detail-table td {
+  padding: 5px;
+  border: 1px solid #dddddd;
+}
+.pack-detail-wrap .pack-detail-table th {
+  width: 200px;
+  background-color: #f5f5f5;
+  font-weight: bold;
+  text-align: right;
+}
+.pack-detail-wrap .score {
+  *position: relative;
+}
+.pack-detail-wrap .score dt,
+.pack-detail-wrap .score dd {
+  float: left;
+  line-height: 20px;
+}
+.pack-detail-wrap .score .star {
+  margin: 5px 10px 0 0;
+}
+.pack-detail-wrap .score dt {
+  *position: absolute;
+  left: 0;
+  top: -1px;
+  margin-left: 0;
+}
+.pack-detail-wrap .score dd {
+  *margin-left: 80px;
+}
+.pack-detail-wrap .action-tit {
+  font-weight: bold;
+  font-size: 14px;
+}
+.pack-detail-wrap .module-list-box .list-info-box {
+  width: 437px;
+}
+.pack-detail-wrap .date-wrap {
+  padding: 10px 0 0;
+}
+.pack-detail-wrap .date-wrap .release-time {
+  float: left;
+  color: #999999;
+}
+.pack-detail-wrap .date-wrap .valid-time {
+  float: right;
+  color: #ff6600;
+}
+.pack-detail-wrap .pack-purchase-btn {
+  display: inline-block;
+  width: 90px;
+  height: 24px;
+  background: url("../images/tpls/pack-purchase-btn.png") no-repeat 0 0;
+  vertical-align: bottom;
+}
+.pack-detail-frame {
+  margin-bottom: 10px;
+}

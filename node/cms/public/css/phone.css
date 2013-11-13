@@ -1,0 +1,341 @@
+.layout-phone .phone-list-title {
+  height: 32px;
+  background-color: #f5f5f5;
+}
+.layout-phone .phone-list-wrap {
+  border: 1px solid #cccccc;
+  background-color: #ffffff;
+  margin-bottom: 10px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+.layout-phone .phone-list-wrap .module-paging {
+  margin: 0 10px 10px 0;
+}
+.layout-phone .sort {
+  float: left;
+}
+.layout-phone .sort li {
+  float: left;
+  border-right: 1px solid #ffffff;
+}
+.layout-phone .sort a {
+  display: inline-block;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 12px;
+  border-right: 1px solid #dddddd;
+  text-align: center;
+  color: #000000;
+}
+.layout-phone .sort a span {
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  margin-top: 7px;
+  background: url("../images/lib/icon.png") no-repeat -22px -43px;
+}
+.layout-phone .sort .up span {
+  background-position: -23px -22px;
+}
+.layout-phone .sort .down span {
+  background-position: -48px -22px;
+}
+.layout-phone .sort .selected-up {
+  color: #669900;
+}
+.layout-phone .sort .selected-up span {
+  background-position: -72px -22px;
+}
+.layout-phone .sort .selected-down {
+  color: #669900;
+}
+.layout-phone .sort .selected-down span {
+  background-position: 2px -22px;
+}
+.layout-phone .statistics {
+  line-height: 28px;
+  padding-right: 10px;
+  float: right;
+}
+.layout-phone .statistics em {
+  color: #ff6600;
+}
+.layout-phone .phone-list {
+  padding-bottom: 10px;
+}
+.layout-phone .phone-list .phone-item {
+  float: left;
+  margin: 20px 6px 0;
+  _margin: 20px 3px 0;
+}
+.layout-phone .module-paging {
+  *margin-bottom: 10px;
+  *margin-right: 10px;
+}
+.layout-phone .phone-box {
+  width: 178px;
+  border: 1px solid #f5f5f5;
+  overflow: hidden;
+}
+.layout-phone .phone-box:hover {
+  border: 1px solid #9fd92b;
+}
+.layout-phone .phone-box:hover .phone-info {
+  background-color: #f7ffe5;
+}
+.layout-phone .phone-box .phone-link-wrap {
+  height: 179px;
+  display: block;
+  border: 1px solid transparent;
+}
+.layout-phone .phone-box img {
+  width: 178px;
+  height: 179px;
+  overflow: hidden;
+  border: 1px solid transparent;
+}
+.layout-phone .phone-box .btn-white {
+  margin-left: 11px;
+}
+.layout-phone .phone-box .phone-info {
+  width: 164px;
+  padding: 7px 8px;
+  line-height: 19px;
+  background-color: #f9f9f9;
+}
+.layout-phone .phone-box .phone-info .phone-name {
+  display: block;
+  width: 165px;
+  color: #0055aa;
+  text-align: center;
+  line-height: 20px;
+}
+.layout-phone .phone-box .phone-info .star {
+  float: left;
+  margin-top: 4px;
+}
+.layout-phone .phone-box .phone-info .comment {
+  float: right;
+  color: #999999;
+}
+.layout-phone .phone-box .phone-info .price {
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  color: #ff6600;
+  line-height: 30px;
+}
+.layout-phone .phone-box .phone-info .price span {
+  color: #999999;
+}
+.layout-phone .phone-box .phone-info .btn {
+  margin-right: 10px;
+}
+.layout-phone .phone-box .phone-info .btn input {
+  position: relative;
+  top: -1px;
+}
+.layout-phone .phone-box .phone-info .operation-wrap {
+  padding-left: 15px;
+}
+.phone-detail-wrap {
+  border: none;
+  margin-bottom: 30px;
+}
+.phone-detail-wrap .phone-img-wrap {
+  float: left;
+  border: none;
+}
+.phone-detail-wrap .phone-overflow-box {
+  width: 281px;
+  height: 243px;
+  overflow: hidden;
+  margin-bottom: 10px;
+  border: 1px solid #cccccc;
+}
+.phone-detail-wrap .phone-overflow-box ul {
+  width: 1405px;
+}
+.phone-detail-wrap .phone-overflow-box img {
+  float: left;
+  width: 281px;
+  height: 243px;
+  border: 0;
+  border: none;
+  border-width: 0;
+}
+.phone-detail-wrap .img-nav-wrap {
+  *width: 265px;
+  position: relative;
+  margin: 10px 10px 0;
+}
+.phone-detail-wrap .img-nav-wrap .img-nav-box {
+  width: 246px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.phone-detail-wrap .img-nav-wrap ul {
+  width: 1000px;
+}
+.phone-detail-wrap .img-nav-wrap ul li {
+  float: left;
+  border: 1px solid #cccccc;
+  margin-right: 5px;
+}
+.phone-detail-wrap .img-nav-wrap ul li.cur {
+  border: 1px solid #ff6600;
+}
+.phone-detail-wrap .img-nav-wrap img {
+  width: 43px;
+  height: 43px;
+}
+.phone-detail-wrap .img-nav-wrap .prev,
+.phone-detail-wrap .img-nav-wrap .next {
+  position: absolute;
+  top: 3px;
+  width: 10px;
+  height: 45px;
+  overflow: hidden;
+}
+.phone-detail-wrap .img-nav-wrap .prev {
+  left: -10px;
+}
+.phone-detail-wrap .img-nav-wrap .next {
+  right: -10px;
+}
+.phone-detail-wrap .img-nav-wrap .prev-icon,
+.phone-detail-wrap .img-nav-wrap .next-icon {
+  top: 0;
+  left: 0;
+  z-index: 999;
+  visibility: visible;
+  display: block;
+  width: 12px;
+  height: 45px;
+  background: url("../images/tpls/phone-img-toggle.png") no-repeat 0 0;
+}
+.phone-detail-wrap .img-nav-wrap .next-icon {
+  right: 0;
+  background-position: -10px 0;
+}
+.phone-buy-container {
+  width: 260px;
+  margin-left: 30px;
+  _margin-left: 10px;
+  float: left;
+}
+.phone-buy-container dl {
+  margin-bottom: 10px;
+}
+.phone-buy-container dd,
+.phone-buy-container dt {
+  float: left;
+  line-height: 26px;
+}
+.phone-buy-container dt {
+  color: #999999;
+}
+.phone-buy-container h3 {
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: bold;
+}
+.phone-buy-container .price dd {
+  font-size: 25px;
+  color: #ff0000;
+}
+.phone-buy-container .score dt {
+  *line-height: 45px;
+}
+.phone-buy-container .score dd {
+  *margin-left: 40px;
+}
+.phone-buy-container .num {
+  padding-bottom: 10px;
+}
+.phone-buy-container .num a {
+  display: inline-block;
+  float: left;
+  width: 15px;
+  height: 15px;
+  margin-top: 4px;
+  background: url("../images/lib/icon-2.png") no-repeat;
+}
+.phone-buy-container .num input {
+  float: left;
+  width: 30px;
+  height: 22px;
+  line-height: 22px;
+  font-size: 16px;
+  text-align: center;
+}
+.phone-buy-container .num .less {
+  margin-right: 5px;
+  background-position: -42px -62px;
+}
+.phone-buy-container .num .less:hover {
+  background-position: -42px -82px;
+}
+.phone-buy-container .num .add {
+  margin-left: 5px;
+  background-position: -62px -62px;
+}
+.phone-buy-container .num .add:hover {
+  background-position: -62px -82px;
+}
+.phone-buy-container .but-btn {
+  display: inline-block;
+  width: 90px;
+  height: 24px;
+  background: url("../images/tpls/pack-purchase-btn.png") no-repeat 0 0;
+  vertical-align: bottom;
+}
+.phone-detail-table {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.phone-detail-table th,
+.phone-detail-table td {
+  padding: 5px;
+  border: 1px solid #dddddd;
+}
+.phone-detail-table th {
+  width: 200px;
+  background-color: #f5f5f5;
+  font-weight: bold;
+  text-align: right;
+}
+.module-tab-wrap {
+  margin-top: 20px;
+}
+.detail-option {
+  margin-top: 10px;
+}
+.detail-option li {
+  float: left;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  height: 26px;
+  margin: 0 10px 4px 0;
+  white-space: nowrap;
+  line-height: 24px;
+}
+.detail-option li a {
+  float: left;
+  display: block;
+  height: 24px;
+  padding: 0 10px;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  color: #000000;
+}
+.detail-option li a:hover {
+  border: 1px solid #83c326;
+  color: #000000;
+}
+.detail-option li.selected a {
+  background: url("../images/tpls/filter-icon.png") #ffffff no-repeat right -154px;
+  border: 1px solid #83c326;
+  color: #000000;
+}

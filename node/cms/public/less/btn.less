@@ -1,0 +1,54 @@
+@import "config/module-common.less";
+@import "config/less-base.less";
+
+/* btn-base-基本样式*/
+
+.btn {
+    .btn ('btn.png', 0, 0);
+    input {
+        .vm();
+    }
+    .btn-text {
+        .btn-text('btn.png',#333,0, 0);
+        .caret {
+            margin-left: 5px;
+        }
+    }
+}
+
+.btn-yellow {
+    // .bp(left -122px);
+    .btn ('btn.png',0, -71px);
+    .btn-text {
+        // .bp(right -122px);
+        .btn-text('btn.png',#fff, right, -94px);
+        input {
+            .vm();
+            .mr(5px);
+        }
+    }
+    &:hover {
+        .bp(0 -71px);
+        .btn-text {
+            .bp(right -94px);
+        }
+    };
+}
+.btn-white {
+    .btn('btn.png',left, -25px);
+    .btn-text {
+        .btn-text('btn.png',#333, right, -48px);
+        .c(#333);
+        input {
+            .vm();
+            .mr(5px);
+        }
+    }
+    &:hover {
+        .bp(left -25px);
+        .btn-text {
+            .bp(right -48px);
+        }
+    };
+}
+

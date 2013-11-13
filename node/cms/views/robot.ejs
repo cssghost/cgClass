@@ -1,0 +1,341 @@
+<link href="js/plugin/farbtastic/farbtastic.css" rel="stylesheet" type="text/css" />
+<script src="js/lib/cgClass.Set.js"></script>
+
+<div class="cms-layout fn-clear">
+        <!-- <div class="cms-page"> -->
+            <iframe src="/robot-body" class="cms-page" frameborder="0" scrolling="no"></iframe>
+        <!-- </div> -->
+        <div class="cms-option">
+            <div class="option-title">
+                机器人端主界面设置
+            </div>
+            <div class="opt-group">
+                <div class="group-title">
+                    窗体背景设置
+                </div>
+                <div class="opt-content-wrap Js-chat-wrap">
+                    <form id="formChat" class="form" method="post" enctype="multipart/form-data" action="/robot/chat">
+                        <div class="opt-tit">
+                            窗体背景设置
+                        </div>
+                        <div class="opt-content">
+                            <div class="label-box">
+                                <label class="label-wrap"><input type="checkbox" name="color" <%=chatColorChecked%> />纯色</label>
+                                <input type="text" class="palette-chat-box-bc palette" name="colorValue" value="<%=chatColor%>" />
+                                <div class="picker-chat-box-bc picker" style=""></div>
+                            </div>
+                            <div class="label-box">
+                                <label class="label-wrap"><input type="checkbox" name="isImage" <%=chatImageChecked%> />图片</label>
+                                <label class="label-wrap"><input type="checkbox" name="isRepeat" <%=chatImageRepeatChecked%> />循环</label>
+                                <input class="input-file" type="file" name="image">
+                            </div>
+                                
+                        </div>
+                        <div class="group-btn-wrap">
+                            <a class="preview Js-chat-preview" href="javascript:void(0)">预览</a>
+                            <a class="reset Js-chat-reset" href="javascript:void(0)">恢复</a>
+                            <a class="apply Js-chat-apply" href="javascript:void(0)">应用</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="opt-group">
+                <div class="group-title">
+                    对话气泡设置
+                </div>
+                <div class="opt-content-wrap">
+                    <div class="opt-tit">
+                        用户对话气泡设置
+                    </div>
+                    <div class="opt-content">
+                        <div class="label-box">
+                            <div class="label-wrap user-chat-bc">
+                                背景色设置
+                                <input type="text" class="palette palette-user-chat-bc" name="color" value="#123456" />
+                                <div class="picker picker-user-chat-bc" style=""></div>
+                            </div>
+                            <div class="label-wrap user-chat-c">
+                                文字颜色
+                                <input type="text" class="palette palette-user-chat-c" name="color" value="#123456" />
+                                <div class="picker picker-user-chat-c" style=""></div>
+                            </div>
+                            <div class="label-wrap">
+                                字体
+                                <select>
+                                    <option value="">宋体</option>
+                                    <option value="">arial</option>
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                            <div class="label-wrap">
+                                字号
+                                <select>
+                                    <option value="">18</option>
+                                    <option value="">16</option>
+                                    <option value="">14</option>
+                                </select>
+                            </div>
+                        </div>
+                            
+                    </div>
+                    <div class="opt-tit">
+                        客服对话气泡设置
+                    </div>
+                    <div class="opt-content">
+                        <div class="label-box">
+                            <div class="label-wrap robot-chat-bc">
+                                背景色设置
+                                <input type="text" class="palette palette-robot-chat-bc" name="color" value="#123456" />
+                                <div class="picker picker-robot-chat-bc" style=""></div>
+                            </div>
+                            <div class="label-wrap robot-chat-c">
+                                文字颜色
+                                <input type="text" class="palette palette-robot-chat-c" name="color" value="#123456" />
+                                <div class="picker picker-robot-chat-c" style=""></div>
+                            </div>
+                            <div class="label-wrap">
+                                字体
+                                <select>
+                                    <option value="">宋体</option>
+                                    <option value="">arial</option>
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                            <div class="label-wrap">
+                                字号
+                                <select>
+                                    <option value="">18</option>
+                                    <option value="">16</option>
+                                    <option value="">14</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="opt-tit">
+                        对话时间显示设置
+                    </div>
+                    <div class="opt-content">
+                        <div class="label-box"><label><input type="radio" name="chat-time">自动模式</label></div>
+                        <div class="label-box">
+                            <label>
+                                <input type="radio" name="chat-time">手动模式
+                            </label>
+                            <label>
+                                <input type="checkbox" name="day">日期+
+                            </label>
+                            <label>
+                                <input type="checkbox" name="week">星期+
+                            </label>
+                            <label>
+                                <input type="checkbox" name="time">时间
+                            </label>
+                            
+                        </div>
+                        
+                    </div>
+                    <div class="group-btn-wrap">
+                        <a class="preview" href="javascript:void(0)">预览</a>
+                        <a class="reset" href="javascript:void(0)">恢复</a>
+                        <a class="apply" href="javascript:void(0)">应用</a>
+                    </div>
+                </div>
+            </div>
+            <div class="opt-group">
+                <div class="group-title">
+                    客户与用户信息设置
+                </div>
+                <div class="opt-content-wrap">
+                    <div class="opt-tit">
+                        客户信息设置
+                    </div>
+                    <div class="opt-content">
+                        <div class="label-box">
+                            <label class="label-wrap">客服昵称 <input type="text" name="" id=""></label>
+                        </div>
+                        <div class="label-box">
+                            客服头像
+                            <div class="head-img">
+                                
+                            </div>
+                            <input class="input-file" type="file" name="" id="">
+                        </div>
+                    </div>
+                    <div class="opt-tit">
+                        用户信息设置
+                    </div>
+                    <div class="opt-content">
+                        <div class="label-box">
+                            <label class="label-wrap">默认用户名 <input type="text"></label>
+                        </div>
+                        <div class="label-box">
+                            <label class="label-wrap">级别图标
+                                <select>
+                                    <option>方案1</option>
+                                    <option>方案2</option>
+                                    <option>方案3</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="label-box">
+                            <div class="opt-tit">显示以下详情(拖拽可排序)</div>
+                            <ul class="sort-box-wrap">
+                                <li class="sort-box-list">
+                                    <div class="sort-box">
+                                        地区
+                                        <span class="switch"></span>
+                                    </div>
+                                </li>
+                                <li class="sort-box-list">
+                                    <div class="sort-box">
+                                        头衔
+                                        <span class="switch on"></span>
+                                    </div>
+                                </li>
+                                <li class="sort-box-list">
+                                    <div class="sort-box">
+                                        智慧币
+                                        <span class="switch on"></span>
+                                    </div>
+                                </li>
+                                <li class="sort-box-list">
+                                    <div class="sort-box">
+                                        经验值
+                                        <span class="switch on"></span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="group-btn-wrap">
+                        <a class="preview" href="javascript:void(0)">预览</a>
+                        <a class="reset" href="javascript:void(0)">恢复</a>
+                        <a class="apply" href="javascript:void(0)">应用</a>
+                    </div>
+                </div>
+            </div>
+            <div class="opt-group">
+                <div class="group-title">
+                    输入区设置
+                </div>
+                <div class="opt-content-wrap">
+                    <div class="opt-tit">
+                        功能开关(拖拽可排序)
+                    </div>
+                    <div class="opt-content">
+                        <div class="label-box">
+                            <ul class="sort-box-wrap">
+                                <li class="sort-box-list">
+                                    <div class="sort-box">
+                                        表情
+                                        <span class="switch"></span>
+                                    </div>
+                                </li>
+                                <li class="sort-box-list">
+                                    <div class="sort-box">
+                                        截屏
+                                        <span class="switch on"></span>
+                                    </div>
+                                </li>
+                                <li class="sort-box-list">
+                                    <div class="sort-box">
+                                        上传图片
+                                        <span class="switch on"></span>
+                                        <input class="switch-btn" type="checkbox">
+                                    </div>
+                                </li>
+                            </ul>
+                            
+                            
+                            
+                        </div>
+                    </div>
+                    <div class="group-btn-wrap">
+                        <a class="preview" href="javascript:void(0)">预览</a>
+                        <a class="reset" href="javascript:void(0)">恢复</a>
+                        <a class="apply" href="javascript:void(0)">应用</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/plugin/farbtastic/farbtastic.js"></script>
+    <script>
+$(document).ready(function() {
+    $('.picker-chat-box-bc').farbtastic('.palette-chat-box-bc');
+    $('.picker-chat-box-bc').hide();
+    $('.palette-chat-box-bc').focus(function () {
+        $('.picker-chat-box-bc').show();
+    }).blur(function () {
+        $('.picker-chat-box-bc').hide();
+    })
+
+    // user
+    $('.picker-user-chat-bc').farbtastic('.palette-user-chat-bc');
+    $('.picker-user-chat-bc').hide();
+    $('.palette-user-chat-bc').focus(function () {
+        $('.picker-user-chat-bc').show();
+    }).blur(function () {
+        $('.picker-user-chat-bc').hide();
+    })
+
+    $('.picker-user-chat-c').farbtastic('.palette-user-chat-c');
+    $('.picker-user-chat-c').hide();
+    $('.palette-user-chat-c').focus(function () {
+        $('.picker-user-chat-c').show();
+    }).blur(function () {
+        $('.picker-user-chat-c').hide();
+    })
+    // robot
+    $('.picker-robot-chat-bc').farbtastic('.palette-robot-chat-bc');
+    $('.picker-robot-chat-bc').hide();
+    $('.palette-robot-chat-bc').focus(function () {
+        $('.picker-robot-chat-bc').show();
+    }).blur(function () {
+        $('.picker-robot-chat-bc').hide();
+    })
+
+    $('.picker-robot-chat-c').farbtastic('.palette-robot-chat-c');
+    $('.picker-robot-chat-c').hide();
+    $('.palette-robot-chat-c').focus(function () {
+        $('.picker-robot-chat-c').show();
+    }).blur(function () {
+        $('.picker-robot-chat-c').hide();
+    })
+
+});
+$('.group-title').click(function () {
+    if ($(this).siblings('.opt-content-wrap').is(':visible')) {
+        $(this).siblings('.opt-content-wrap').slideUp();
+    } else {
+        $(this).siblings('.opt-content-wrap').slideDown();
+    }
+});
+$('.sort-box').each(function () {   
+    $('.cms-option').on('mousedown', '.sort-box', function (e) {
+        var _this = $(this);
+        var x = e.pageX;
+        var y = e.pageY;
+        var _left = _this.position().left;
+        var _top = _this.position().top;
+        _this.css({
+            'z-index' : 999
+        });
+        _this.on('mousemove', function (even) {
+            event.preventDefault();
+            event.stopPropagation();
+            _this.css({
+                'left' :_left +( even.pageX - x),
+                'top' : _top + (even.pageY - y)
+            })
+        });
+        $(document).on('mouseup', function () {
+            $('.sort-box').off('mousemove');
+            $('.sort-box').css({
+                'z-index' : 1
+            });
+        });
+    });
+});
+</script>
+
+<script src="js/tpls/robot.js"></script>

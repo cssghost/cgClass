@@ -35,7 +35,7 @@
   padding: 10px;
   padding-top: 50px;
   overflow: auto;
-  background: url("../images/tpls/i.gif") #ffffff no-repeat 0 0;
+  background: url("../images/tpls/i.gif") transparent no-repeat center;
 }
 .chat-box .decorate {
   width: 9px;

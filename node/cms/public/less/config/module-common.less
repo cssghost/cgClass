@@ -1,0 +1,29 @@
+.nav () {
+	.h(40px);
+	.bg-lib('repeat-bg.png', repeat-x left top);
+	.lh(36px);
+	.logo {
+		.dis-ib();
+		.fl();
+	}
+	
+}
+
+// ---------------------------------------------- btn
+
+.btn (@url, @left, @right) {
+    .dis-ib();
+    .pl(4px);
+    .mr(10px);
+    .bg-lib(@url, no-repeat @left @right );
+}
+.btn-text (@url @color, @left, @right) {
+    .dis-ib();
+    .pd(1px 12px 2px 10px);
+    line-height: 20px;
+    color: @color;
+    text-align: center;
+    .vm();
+    .cur-p();
+    .bg-lib(@url, no-repeat @left @right);
+}

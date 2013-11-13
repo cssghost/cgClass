@@ -1,4 +1,4 @@
-﻿@import "less-base.less";
+﻿@import "config/less-base.less";
 
 .module-filter {
     &-box {
@@ -275,11 +275,11 @@
     line-height: 35px;
     text-align: center;
     padding: 0 18px;
-    border: 2px solid #9DC38C;
+    border: 2px solid #ff9900;
     border-bottom: none;
     background-color: #fff;
     font-size: 14px; font-weight: bold;
-    color: #000;
+    color: #ff6600;
 }
 .contrast-box .title em { 
     float:right; display:inline-block;
@@ -301,7 +301,7 @@
     position:relative; z-index: 4;
     width: 978px; height: 90px;
     margin: -2px 0 0 -2px;
-    border: 2px solid #9DC38C;
+    border: 2px solid #ff9900;
 }
 .contrast-box .contrast-list {
     height: 66px;
@@ -350,12 +350,12 @@
 .contrast-box .contrast-list li .right-con .del {
     position: absolute; right: 4px; top: -5px;
     width: 20px; height: 20px;
-    background: url("../images/lib/icon-list.png") no-repeat 0px -42px;
+    background: url("../images/lib/layout-close.png") no-repeat 0px -4px;
     color: #000;
     cursor:pointer;
 }
 .contrast-box .contrast-list li .right-con .del:hover {
-    background-position: 0px -62px;
+    background-position: 0px -34px;
 }
 .contrast-box .contrast-list li .right-con .del:hover{ color:red; text-decoration:underline;}
 
@@ -376,11 +376,11 @@
     color: #FFFFFF;
 }
 .contrast-box .contrast-operation .contrast-btn {
-    background-position:  0 -139px;
+    background-position:  0 -117px;
     cursor:pointer;
 }
 .contrast-box .contrast-operation .contrast-submit-btn {
-    background-position: 0 -163px;
+    background-position: 0 -141px;
 }
 .contrast-box .contrast-operation .contrast-text {
     cursor: pointer;
@@ -399,15 +399,4 @@
     top: -67px;
     width: 982px;
     display:none;
-}
-.sidebar-contrast {
-    display: block; overflow: hidden;
-    .pos-f(); left:50%; bottom: 100px;
-    width: 30px; height: 90px;
-    .ml(520px);
-    .bg-lib("scroll-float-bg.png", no-repeat 0 0);
-    text-indent: -999px;
-}
-.sidebar-contrast:hover {
-    .bg-lib("scroll-float-bg.png", no-repeat 0 -90px);
 }
