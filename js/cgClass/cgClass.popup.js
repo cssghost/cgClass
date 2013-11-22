@@ -426,7 +426,7 @@ cgClass.AddClass(
 	            event.preventDefault();
 	            var _position = self.popup.position();
 	            _drag.posLeft = _position.left;
-	            _drag.posTop = _position.top;
+	            _drag.posTop = _position.top - $(window).scrollTop();
 	            _drag.dl = event.pageX;
 	            _drag.dt = event.pageY;
 	            $(document).on("mousemove", function(e){
