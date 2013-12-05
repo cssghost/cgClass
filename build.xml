@@ -2,7 +2,7 @@
 <project name="doc" default="render" basedir=".">
     <description>build jsdoc</description>
     <!--jsdoc-toolkit所在目录-->
-    <property name="jsdoc.dir" location="E:/jsTools/jsdoc-toolkit/" />
+    <property name="jsdoc.dir" location="/Users/Mac/jsTools/jsdoc-toolkit/" />
     <!--源代码目录-->
     <property name="cssFolder" location="css" />
     <property name="libJs" location="js" />
